@@ -9,9 +9,9 @@
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
-	<script type="text/javascript" src="/Oggle/js/jquery-2.0.2.js"></script> 
-	<script type="text/javascript" src="/Oggle/js/bootstrap.js"></script> 
-	<link rel="stylesheet" type="text/css" href="/Oggle/css/bootstrap.min.css" media="all" />
+	<script type="text/javascript" src="resources/js/jquery-2.0.2.js"></script> 
+	<script type="text/javascript" src="resources/js/bootstrap.js"></script> 
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" media="all" />
 
 	<script>
 		$(function() {
