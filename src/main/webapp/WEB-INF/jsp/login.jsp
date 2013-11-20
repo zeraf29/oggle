@@ -1,62 +1,72 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-	<title>Oggle Login</title>
-	
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<script type="text/javascript" src="resources/js/jquery-2.0.2.js"></script> 
-	<script type="text/javascript" src="resources/js/bootstrap.js"></script> 
-	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" media="all" />
+  <head>
+    <title>OGGLE_oggleoggle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="resources/css/bootstrap.css" rel="stylesheet">
 
-	<script>
-		$(function() {
-			$("#login").click(function(e){
-				var id = $("#id").val();
-				var pwd = $("#pwd").val();
-				
-				if(id == "" || pwd == "")	
-					alert("Input Text");
-				else {
-					$.post( "login.do", { 	
-							id: id, 
-							pwd: pwd, 
-						},
-						function (data) {
-							var obj = jQuery.parseJSON(data);
-							alert(obj.msg);
-							if(obj.user != null){
-								location.replace("/Oggle/home.do"); 
-							}
-	                    }
-					);
-				}
-			});
-		});
-	</script>
-</head>
-<body>
-	<form method="post" action="/Oggle/login.do" id="uploadForm">
-		<div class="control-group warning">
-			<label class="control-label" for="inputWarning">ID</label>
-			<div class="controls">
-				<input type="text" id="id" name="id">
-			</div>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  
+    <div class="container margin_padding_100px">
+      <form class="form-signin">
+        <h1>OGGLE</h1>
+        <p class="lead">project explain</p>
+		<div class="well">update news</div>
+        <input type="text" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" required>
+
+		<div class = "float_right">
+        <button class="btn btn-mini btn-primary" type="button">SIGN-IN</button>
+		<button class="btn btn-mini btn-primary" type="button" data-toggle="modal" data-target="#myModal4">SIGN-UP</button>
 		</div>
+      </form>
+ 	 </div>
 	 
-		<div class="control-group info">
-			<label class="control-label" for="inputInfo">Password</label>
-			<div class="controls">
-				<input type="text" id="pwd" name="pwd">
-			</div>
-		</div>
-		
-		<button id="login" type="button" class="btn btn-primary">Login</button>
-	</form>
-			
-</body>
+	 
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">SIGN-UP</h4>
+      </div>
+      <div class="modal-body" id = "#user_profile">
+	  <p>E-mail</p>
+        <input type="text" class="form-control" placeholder="Email address" required autofocus>
+	  <p>Password</p>
+        <input type="password" class="form-control" placeholder="Password" required>
+	  <p>confirm_Password</p>
+        <input type="password" class="form-control" placeholder="confirm_Password" required>
+      <p>User_name</p>
+        <input type="text" class="form-control" placeholder="User_name" required autofocus>
+      </div>
+      <div class="modal-footer">
+	    <button type="button" class="btn btn-default">sign-up</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "cancel">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$('body').fadeIn(); 
+	});
+	$("#cancel").click(function() {  
+		$("input").val("");
+	});
+	</script>
+  </body>
 </html>
