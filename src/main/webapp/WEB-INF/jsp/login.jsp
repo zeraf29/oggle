@@ -25,8 +25,7 @@
 				var email = $("#email").val();
 				var pwd = $("#pwd").val();
 				
-				// 인자 email_address를 정규식 format 으로 검색
-			//	var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
+				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
 				
 				if(email == "" || pwd == "")	
 					alert("Input Text");
@@ -35,7 +34,7 @@
 				else {
 					$.post( "login.do", { 	
 							email: email, 
-							pwd: pwd, 
+							pwd: pwd
 						},
 						function (data) {
 							var obj = jQuery.parseJSON(data);
@@ -50,12 +49,11 @@
 			
 			$("#signup").click(function(e){
 				
-				var email = $("#email").val();
-				var pwd1 = $("#pwd1").val();
-				var pwd2 = $("#pwd2").val();
-				var name = $("#name").val();
+				var email = $("#sEmail").val();
+				var pwd1 = $("#sPwd1").val();
+				var pwd2 = $("#sPwd2").val();
+				var name = $("#sName").val();
 				
-				// 인자 email_address를 정규식 format 으로 검색
 				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
 				
 				if(email == "" || pwd1 == "" || pwd2 == "" || name == "" )	
@@ -76,8 +74,8 @@
 						},
 						function (data) {
 							var obj = jQuery.parseJSON(data);
-							var msg = obj.email;
-							msg += "로 인증 mail을 전송 하였습니다.\n인증 후 로그인 해주세요"; 
+							var msg = "Mail transmission completion \n("+ obj.email;
+							msg += ")";
 							alert(msg);
 							location.replace("/Oggle/login.do"); 
 	                    }
@@ -118,13 +116,13 @@
 	      </div>
 	      <div class="modal-body" id="#user_profile">
 			  <p>E-mail</p>
-		        <input type="text" id="email" class="form-control" placeholder="Email address" required autofocus>
+		        <input type="text" id="sEmail" class="form-control" placeholder="Email address" required autofocus>
 			  <p>Password</p>
-		        <input type="password" id="pwd1" class="form-control" placeholder="Password" required>
+		        <input type="password" id="sPwd1" class="form-control" placeholder="Password" required>
 			  <p>confirm_Password</p>
-		        <input type="password" id="pwd2" class="form-control" placeholder="confirm_Password" required>
+		        <input type="password" id="sPwd2" class="form-control" placeholder="confirm_Password" required>
 		      <p>User_name</p>
-		        <input type="text" id="name" class="form-control" placeholder="User_name" required autofocus>
+		        <input type="text" id="sName" class="form-control" placeholder="User_name" required autofocus>
 	      </div>
 	      <div class="modal-footer">
 			<button type="button" class="btn btn-default" id="signup" >Signup</button>

@@ -52,7 +52,7 @@ public class UserDAO {
  
          SqlSession session = sqlSessionFactory.openSession();
          try {
-              list = session.selectList("com.cheese.mapper.UserMapper.getUserList");     
+              list = session.selectList("com.mju.mapper.UserMapper.getUserList");     
          } catch (Exception e){
               e.printStackTrace();
          } finally {

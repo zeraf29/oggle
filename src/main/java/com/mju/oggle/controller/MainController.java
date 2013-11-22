@@ -17,6 +17,9 @@ import com.mju.oggle.mongodb.PersonService;
 
 @Controller
 public class MainController {
+
+	@Autowired
+	private PersonService personService;
 	
 	/*
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
@@ -26,25 +29,24 @@ public class MainController {
 		return mav;
 	}
 	*/
-	@Autowired
-	private PersonService personService;
 	
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView getAuth(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
-		String id = request.getParameter("id");
+		String email = request.getParameter("email");
 		String nonce = request.getParameter("nonce");
 
-		ModelAndView mav = new ModelAndView("main");
+		ModelAndView mav = new ModelAndView("login");
 		
-		if(id == null || nonce == null)
+		if(email == null || nonce == null)
 			return mav;
 		else {
-			System.out.println("id : " + id);
+			
+			System.out.println("email : " + email);
 			System.out.println("nonce : " + nonce);
 			
 			UserDAO userDAO = new UserDAO();
-			User user = userDAO.selectUser(id);
+			User user = userDAO.selectUser(email);
 			
 			String msg;
 			
@@ -53,14 +55,12 @@ public class MainController {
 			
 			else if(!(nonce.equals(user.getNonce()))){
 				msg = "Auth Error";
-				System.out.println(nonce);
-				System.out.println(user.getNonce());
 			}
 			
 			else {
 				msg = "Auth Success";
-				userDAO.changeUserState(id);
-				mav.addObject("id", id);
+				userDAO.changeUserState(email);
+				mav.addObject("email", email);
 			}
 			
 			mav.addObject("msg", msg);

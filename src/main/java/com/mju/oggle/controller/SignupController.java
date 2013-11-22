@@ -42,32 +42,41 @@ public class SignupController {
 		Random random = new Random();
 		String nonce = Long.toString(Math.abs(random.nextLong()));
 		
-		User user = new User(); 
-		user.setEmail(email);
-		user.setPwd(pwd1);
-		user.setName(name);
-		user.setState("n");
-		user.setNonce(nonce);
-
 		UserDAO userDAO = new UserDAO();
-		userDAO.insertUser(user);
-		
-		System.out.println(email+ " " + pwd1+ " " + name);
-		
+		User user1 = userDAO.selectUser(email);
 
-		JSONObject obj = new JSONObject();
-		try {
-			obj.put("email", email);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(user1 == null) {
+			
+			User user = new User(); 
+			user.setEmail(email);
+			user.setPwd(pwd1);
+			user.setName(name);
+			user.setState("n");
+			user.setNonce(nonce);
+	
+			userDAO.insertUser(user);
+			
+			System.out.println(email+ " " + pwd1+ " " + name);
+			
+	
+			JSONObject obj = new JSONObject();
+			try {
+				obj.put("email", email);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			PrintWriter writer = response.getWriter();
+			writer.write(obj.toString());
+
+			// 인증 이메일 전송
+			sender.sendEmail(email, nonce);
 		}
 		
-		PrintWriter writer = response.getWriter();
-		writer.write(obj.toString());
-
-		// 인증 이메일 전송
-		sender.sendEmail(email, nonce);
+		else {
+			System.out.println("존재하는 Email");
+		}
+		
 	}
 	
 }

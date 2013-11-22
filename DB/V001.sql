@@ -12,3 +12,5 @@ CREATE TABLE User (
 )DEFAULT CHARSET=utf8;
 
 select * from user;
+
+delete from user where email='pooingx2@naver.com';

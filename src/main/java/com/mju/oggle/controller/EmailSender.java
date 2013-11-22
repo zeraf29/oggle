@@ -15,7 +15,9 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
 
-	private final String url="http://211.189.127.145:8080/Oggle";
+//	private final String url="http://211.189.127.145:8080/Oggle";
+	private final String url="http://localhost:8080/Oggle";
+	
 	public EmailSender() {
 		
 	}
@@ -45,7 +47,7 @@ public class EmailSender {
 			msg.addRecipient(Message.RecipientType.TO, toAddr); 
 
 			String message = "Oggle email 인증을 위해 아래 링크를 클릭하세요\n";
-			message+=url+"/main.do?"+nonce+"=nonce";
+			message+=url+"/main.do?email="+to+"&nonce="+nonce;
 			msg.setContent(message, "text/plain;charset=KSC5601");
 
 			Transport.send(msg);
