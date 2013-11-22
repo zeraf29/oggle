@@ -43,7 +43,13 @@
       </div>
     </div>
 
-<div id = "Contents"></div>
+<div id = "Contents">
+<%!
+	String s= "MyContents.jsp";
+%>
+
+	<jsp:include page = "<%= s %>" flush="true" />
+</div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -52,7 +58,7 @@
 	<script>
 		$(document).ready(function(){
 			$("body").fadeIn("slow"); 
-			$("#Contents").load("MyContents.jsp");
+	//		$("#Contents").load("MyContents.jsp");
 		});
 		
 		$("#MyContents_btn").click(function(){
