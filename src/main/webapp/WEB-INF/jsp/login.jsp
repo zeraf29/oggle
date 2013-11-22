@@ -58,10 +58,9 @@
 				// 인자 email_address를 정규식 format 으로 검색
 				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
 				
-
-								
 				if(email == "" || pwd1 == "" || pwd2 == "" || name == "" )	
 					alert("Input Text");
+				
 				else if(pwd1 != pwd2)	
 					alert("Confirm Password");
 				else if(pwd1 < 5 || pwd2 < 5)
@@ -70,10 +69,10 @@
 					alert("Incorrect email");
 				else {
 					$.post( "signup.do", { 	
-							email: email 
+							email: email,
 							pwd1: pwd1, 
 							pwd2: pwd2, 
-							name: name, 
+							name: name
 						},
 						function (data) {
 							var obj = jQuery.parseJSON(data);
