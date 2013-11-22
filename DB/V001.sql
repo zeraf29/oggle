@@ -13,4 +13,4 @@ CREATE TABLE User (
 
 select * from user;
 
-delete from user where email='pooingx2@naver.com';
+delete from user where email='pooingx2@gmail.com';
