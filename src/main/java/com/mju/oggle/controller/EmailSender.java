@@ -20,7 +20,7 @@ public class EmailSender {
 		
 	}
 	
-	public void sendEmail(String to, String id, String nonce) {
+	public void sendEmail(String to, String nonce) {
 		Properties p = new Properties();
 		p.put("mail.smtp.user", "pooingx2@gmail.com");
 		p.put("mail.smtp.host", "smtp.gmail.com");
@@ -45,7 +45,7 @@ public class EmailSender {
 			msg.addRecipient(Message.RecipientType.TO, toAddr); 
 
 			String message = "Oggle email 인증을 위해 아래 링크를 클릭하세요\n";
-			message+=url+"/main.do?id="+id+"&nonce="+nonce;
+			message+=url+"/main.do?"+nonce+"=nonce";
 			msg.setContent(message, "text/plain;charset=KSC5601");
 
 			Transport.send(msg);

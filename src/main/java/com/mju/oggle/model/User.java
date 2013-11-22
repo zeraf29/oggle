@@ -6,22 +6,21 @@ import java.util.List;
 
 public class User implements Serializable{
 
-	private String uid;
+	private String email;
 	private String pwd;
 	private String name;
-	private String email;
 	private String state;
 	private String nonce;
 	
 	public User(){
 	}
 
-	public String getUid() {
-		return uid;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPwd() {
@@ -38,14 +37,6 @@ public class User implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getState() {

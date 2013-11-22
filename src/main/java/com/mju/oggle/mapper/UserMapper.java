@@ -4,6 +4,6 @@ import com.mju.oggle.model.User;
 
 public interface UserMapper {
 	void insertUser(User user);
-	void changeUserState(String uid);
-	User selectUser(String uid);
+	void changeUserState(String email);
+	User selectUser(String email);
 }

@@ -12,6 +12,86 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript" src="resources/js/jquery-2.0.2.js"></script> 
+	<script type="text/javascript" src="resources/js/bootstrap.js"></script> 
+	
+    <script>
+		$(function() {
+
+			$('body').fadeIn(); 
+			
+			$("#login").click(function(e){
+				var email = $("#email").val();
+				var pwd = $("#pwd").val();
+				
+				// 인자 email_address를 정규식 format 으로 검색
+			//	var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
+				
+				if(email == "" || pwd == "")	
+					alert("Input Text");
+				else if (email.search(reg_email) == -1)
+					alert("Incorrect email");
+				else {
+					$.post( "login.do", { 	
+							email: email, 
+							pwd: pwd, 
+						},
+						function (data) {
+							var obj = jQuery.parseJSON(data);
+							alert(obj.msg);
+							if(obj.user != null){
+								location.replace("/Oggle/home.do"); 
+							}
+	                    }
+					);
+				}
+			});
+			
+			$("#signup").click(function(e){
+				
+				var email = $("#email").val();
+				var pwd1 = $("#pwd1").val();
+				var pwd2 = $("#pwd2").val();
+				var name = $("#name").val();
+				
+				// 인자 email_address를 정규식 format 으로 검색
+				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
+				
+
+								
+				if(email == "" || pwd1 == "" || pwd2 == "" || name == "" )	
+					alert("Input Text");
+				else if(pwd1 != pwd2)	
+					alert("Confirm Password");
+				else if(pwd1 < 5 || pwd2 < 5)
+					alert("ID & Password are too short\n(minimum is 6 characters)");
+				else if (email.search(reg_email) == -1)
+					alert("Incorrect email");
+				else {
+					$.post( "signup.do", { 	
+							email: email 
+							pwd1: pwd1, 
+							pwd2: pwd2, 
+							name: name, 
+						},
+						function (data) {
+							var obj = jQuery.parseJSON(data);
+							var msg = obj.email;
+							msg += "로 인증 mail을 전송 하였습니다.\n인증 후 로그인 해주세요"; 
+							alert(msg);
+							location.replace("/Oggle/login.do"); 
+	                    }
+					);
+				}
+			});
+			
+			$("#cancel").click(function() {  
+				$("input").val("");
+			});
+			
+		});
+	</script>
   </head>
   <body>
   
@@ -20,53 +100,45 @@
         <h1>OGGLE</h1>
         <p class="lead">project explain</p>
 		<div class="well">update news</div>
-        <input type="text" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" id="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" id="pwd" class="form-control" placeholder="Password" required>
 
 		<div class = "float_right">
-        <button class="btn btn-mini btn-primary" type="button">SIGN-IN</button>
-		<button class="btn btn-mini btn-primary" type="button" data-toggle="modal" data-target="#myModal4">SIGN-UP</button>
+	        <button id="login" class="btn btn-mini btn-primary" type="button" >Login</button>
+			<button class="btn btn-mini btn-primary" type="button" data-toggle="modal" data-target="#myModal4">Signup</button>
 		</div>
       </form>
  	 </div>
 	 
-	 
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">SIGN-UP</h4>
-      </div>
-      <div class="modal-body" id = "#user_profile">
-	  <p>E-mail</p>
-        <input type="text" class="form-control" placeholder="Email address" required autofocus>
-	  <p>Password</p>
-        <input type="password" class="form-control" placeholder="Password" required>
-	  <p>confirm_Password</p>
-        <input type="password" class="form-control" placeholder="confirm_Password" required>
-      <p>User_name</p>
-        <input type="text" class="form-control" placeholder="User_name" required autofocus>
-      </div>
-      <div class="modal-footer">
-	    <button type="button" class="btn btn-default">sign-up</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "cancel">Cancel</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">SIGNUP</h4>
+	      </div>
+	      <div class="modal-body" id="#user_profile">
+			  <p>E-mail</p>
+		        <input type="text" id="email" class="form-control" placeholder="Email address" required autofocus>
+			  <p>Password</p>
+		        <input type="password" id="pwd1" class="form-control" placeholder="Password" required>
+			  <p>confirm_Password</p>
+		        <input type="password" id="pwd2" class="form-control" placeholder="confirm_Password" required>
+		      <p>User_name</p>
+		        <input type="text" id="name" class="form-control" placeholder="User_name" required autofocus>
+	      </div>
+	      <div class="modal-footer">
+			<button type="button" class="btn btn-default" id="signup" >Signup</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal" id = "cancel">Cancel</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-	<script>
-	$(document).ready(function(){
-		$('body').fadeIn(); 
-	});
-	$("#cancel").click(function() {  
-		$("input").val("");
-	});
-	</script>
+    <!-- <script src="resources/js/bootstrap.min.js"></script>-->
+
   </body>
 </html>

@@ -33,29 +33,26 @@ public class SignupController {
 	public void postSignup(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
 		System.out.println("Post");
-		String id = request.getParameter("id");
+		String email = request.getParameter("email");
 		String pwd1 = request.getParameter("pwd1");
 		String pwd2 = request.getParameter("pwd2");
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
 		
 		// 이메일 인증을 위한 64비트 난수 발생
 		Random random = new Random();
 		String nonce = Long.toString(Math.abs(random.nextLong()));
 		
 		User user = new User(); 
-		user.setUid(id);
+		user.setEmail(email);
 		user.setPwd(pwd1);
 		user.setName(name);
-		user.setEmail(email);
 		user.setState("n");
 		user.setNonce(nonce);
 
 		UserDAO userDAO = new UserDAO();
 		userDAO.insertUser(user);
 		
-		System.out.println(id+ " " + pwd1+ " " + pwd2);
-		System.out.println(name+ " " + email+ " ");
+		System.out.println(email+ " " + pwd1+ " " + name);
 		
 
 		JSONObject obj = new JSONObject();
@@ -70,7 +67,7 @@ public class SignupController {
 		writer.write(obj.toString());
 
 		// 인증 이메일 전송
-		sender.sendEmail(email, id, nonce);
+		sender.sendEmail(email, nonce);
 	}
 	
 }

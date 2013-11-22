@@ -17,7 +17,7 @@ public class UserDAO {
 	
 	public void insertUser(User user){
 		
-		if(selectUser(user.getUid())!=null) return;
+		if(selectUser(user.getEmail())!=null) return;
 		
 		SqlSession session = sqlSessionFactory.openSession();
 			
@@ -32,12 +32,12 @@ public class UserDAO {
 		}
 	}
 	
-	public User selectUser(String uid){
+	public User selectUser(String email){
 		SqlSession session = sqlSessionFactory.openSession();
 		User user = null;
 		try{
 			UserMapper mapper = session.getMapper(UserMapper.class);
-			user = mapper.selectUser(uid);
+			user = mapper.selectUser(email);
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -62,11 +62,11 @@ public class UserDAO {
     }  
 	
 
-	public void changeUserState(String uid){
+	public void changeUserState(String email){
 		SqlSession session = sqlSessionFactory.openSession();
 		try{
 			UserMapper mapper = session.getMapper(UserMapper.class);
-			mapper.changeUserState(uid);
+			mapper.changeUserState(email);
 			session.commit();
 		}catch(Exception e){
 			e.printStackTrace();

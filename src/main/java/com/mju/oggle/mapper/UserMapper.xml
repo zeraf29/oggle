@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.oggle.mapper.UserMapper">
+<mapper namespace="com.mju.oggle.mapper.UserMapper">
 
 <!--
 	<resultMap type="User" id="userResultMap">
@@ -17,17 +17,17 @@
 	</resultMap>
 	  -->
 	
-	<resultMap id="user" type="com.oggle.bean.User">
+	<resultMap id="user" type="com.mju.oggle.model.User">
 	</resultMap>
 	
 	<insert id="insertUser" parameterType="user">
-		INSERT INTO User (uid,pwd,name,email,state,nonce)
-		VALUES(#{uid},#{pwd},#{name},#{email},#{state},#{nonce})
+		INSERT INTO User (email,pwd,name,state,nonce)
+		VALUES(#{email},#{pwd},#{name},#{state},#{nonce})
 	</insert>
 
 	<select id="selectUser" parameterType="String" resultType="User">
 		SELECT * FROM User 
-		WHERE uid = #{uid}
+		WHERE email = #{email}
 	</select>
 	
 	<select id="getUserList" resultType="User">
@@ -36,7 +36,7 @@
 	
 	<update id="changeUserState" parameterType="String">
 		UPDATE User SET state='y' 
-		WHERE uid = #{uid};
+		WHERE email = #{email};
 	</update>
 	
 	

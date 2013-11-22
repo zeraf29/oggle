@@ -11,7 +11,7 @@ public class SqlSessionManager {
 	
 	public static SqlSessionFactory getInstance(){
 		if(sqlSession == null){
-			String resource = "com/oggle/dbconfig/mybatis-config.xml";
+			String resource = "com/mju/oggle/dbconfig/mybatis-config.xml";
 			try{
 				Reader reader = Resources.getResourceAsReader(resource);
 				sqlSession = new SqlSessionFactoryBuilder().build(reader);

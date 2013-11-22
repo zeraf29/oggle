@@ -52,11 +52,11 @@
 	<script>
 		$(document).ready(function(){
 			$("body").fadeIn("slow"); 
-			$("#Contents").load("MyContents.html");
+			$("#Contents").load("MyContents.jsp");
 		});
 		
 		$("#MyContents_btn").click(function(){
-			$("#Contents").load("MyContents.html");
+			$("#Contents").load("MyContents.jsp");
 		});
 		$("#FriendContents_btn").click(function(){
 			$("#Contents").load("FriendsContents.html");

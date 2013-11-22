@@ -30,23 +30,24 @@ public class SessionController {
 	public void PostLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException{
 
 		System.out.println("Post");
-		String id = request.getParameter("id");
+		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		
+		System.out.println(email + " " + pwd);
 		UserDAO userDAO = new UserDAO();
-		User user = userDAO.selectUser(id);
+		User user = userDAO.selectUser(email);
 
 		JSONObject obj = new JSONObject();
 		String msg;
 		
 		if(user == null)
-			msg = "ID doesn't exist";
+			msg = "Email doesn't exist";
 		
 		else if(!(user.getPwd().equals(pwd)))
 			msg = "Incorrect password";
 		
 		else if(!(user.getState().equals("y")))
-			msg = "Unauthorized ID : Check your email \n("+user.getEmail()+")";
+			msg = "Unauthorized Email : Check your email \n("+user.getEmail()+")";
 		
 		else {
 			HttpSession session = request.getSession();

@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="com/oggle/dbconfig/database.properties"/>
+	<properties resource="com/mju/oggle/dbconfig/database.properties"/>
 	<typeAliases>
-    	<package name="com/oggle/bean"/>
+    	<package name="com/mju/oggle/model"/>
 		<!-- <typeAlias type="com.cheese.bean.User" alias="User"/>  -->
 	</typeAliases>
 	<environments default="development">
@@ -20,6 +20,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/oggle/mapper/UserMapper.xml" />
+		<mapper resource="com/mju/oggle/mapper/UserMapper.xml" />
 	</mappers>
 </configuration>
