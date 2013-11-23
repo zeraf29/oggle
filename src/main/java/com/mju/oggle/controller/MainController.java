@@ -22,6 +22,13 @@ public class MainController {
 	@Autowired
 	private PersonService personService;
 	
+	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
+	public ModelAndView test(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		ModelAndView mav = new ModelAndView("test");
+		mav.addObject("msg", "Asdasd");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/main2.do", method = RequestMethod.GET)
 	public ModelAndView getMain(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("main2");
