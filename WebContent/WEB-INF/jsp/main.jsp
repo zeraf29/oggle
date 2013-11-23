@@ -111,19 +111,19 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="height_600px backGround_1"></div>
+				<div class="height_60 backGround_1"></div>
 				<div class="carousel-caption">
 					<h1>show me the money</h1>
 				</div>
 			</div>
 			<div class="item">
-				<div class="height_600px backGround_2"></div>
+				<div class="height_60 backGround_2"></div>
 				<div class="carousel-caption">
 					<h1>show me the money</h1>
 				</div>
 			</div>
 			<div class="item">
-				<div class="height_600px backGround_3"></div>
+				<div class="height_60 backGround_3"></div>
 				<div class="carousel-caption">
 					<h1>show me the money</h1>
 				</div>
