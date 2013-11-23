@@ -7127,16 +7127,18 @@ font-size:15px;
 text-align : right;
 }
 
-.height_600px{
-	height : 600px;
+.height_60{
+	padding-bottom : 50%;
 }
 
 .backGround_1{
 	background-color : #333333;
 }
+
 .backGround_2{
 	background-color : #999999;
 }
+
 .backGround_3{
 	background-color : #523953;
 }
