@@ -3,6 +3,8 @@ package com.mju.oggle.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,17 +20,13 @@ import com.mju.oggle.dao.UserDAO;
 import com.mju.oggle.model.User;
 
 @Controller
-public class SessionController {
-	
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public ModelAndView getLogin(HttpServletRequest request, HttpServletResponse response){
-		ModelAndView mav = new ModelAndView("login");
-		return mav;
-	}
+public class LoginController {
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public void PostLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException{
 
+		ModelAndView mav = new ModelAndView("login");
+		
 		System.out.println("Post");
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
@@ -50,13 +48,12 @@ public class SessionController {
 			msg = "Unauthorized Email : Check your email \n("+user.getEmail()+")";
 		
 		else {
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(true);
 			session.setAttribute("user",user);
 			msg = "Welcome";
-			obj.put("user", user);
+			obj.put("email", user.getEmail());
 		}
 		
-		System.out.println("\n\n\n\n"+msg);
 		try {
 			obj.put("msg", msg);
 		} catch (JSONException e) {
@@ -66,14 +63,9 @@ public class SessionController {
 		
 		PrintWriter writer = response.getWriter();
 		writer.write(obj.toString());
+		
 	}
-	
-	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-	public ModelAndView getLogout(HttpServletRequest request, HttpServletResponse response){
-		ModelAndView mav = new ModelAndView("home");
-		return mav;
-	}
-	
+
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public ModelAndView getHome(HttpServletRequest request, HttpServletResponse response){
 		

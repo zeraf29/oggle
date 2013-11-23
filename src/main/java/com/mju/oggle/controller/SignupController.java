@@ -45,6 +45,9 @@ public class SignupController {
 		UserDAO userDAO = new UserDAO();
 		User user1 = userDAO.selectUser(email);
 
+		JSONObject obj = new JSONObject();
+		String msg=null;
+		
 		if(user1 == null) {
 			
 			User user = new User(); 
@@ -57,25 +60,25 @@ public class SignupController {
 			userDAO.insertUser(user);
 			
 			System.out.println(email+ " " + pwd1+ " " + name);
-			
-	
-			JSONObject obj = new JSONObject();
-			try {
-				obj.put("email", email);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			PrintWriter writer = response.getWriter();
-			writer.write(obj.toString());
+			msg = "Mail transmission completion \n("+email+")";
 
 			// 인증 이메일 전송
 			sender.sendEmail(email, nonce);
+
+		}
+		else {
+			msg = email + " is already taken";
 		}
 		
-		else {
-			System.out.println("존재하는 Email");
+		try {
+			obj.put("msg", msg);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		PrintWriter writer = response.getWriter();
+		writer.write(obj.toString());
+
 		
 	}
 	

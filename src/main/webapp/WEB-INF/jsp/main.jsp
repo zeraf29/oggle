@@ -2,12 +2,9 @@
 <html>
   <head>
     <title>OGGLE_oggleoggle</title>
-	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.css" rel="stylesheet">
-   <link href="resources/css/bootstrap-responsive.css" rel="stylesheet">
-
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,65 +12,128 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript" src="resources/js/jquery-2.0.2.js"></script> 
+	<script type="text/javascript" src="resources/js/bootstrap.js"></script> 
+	
+    <script>
+		$(function() {
+
+			$('body').fadeIn(); 
+			
+			$("#login").click(function(e){
+				var email = $("#email").val();
+				var pwd = $("#pwd").val();
+				
+				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
+				
+				if(email == "" || pwd == "")	
+					alert("Input Text");
+				else if (email.search(reg_email) == -1)
+					alert("Incorrect email");
+				else {
+					$.post( "login.do", { 	
+							email: email, 
+							pwd: pwd
+						},
+						function (data) {
+							var obj = jQuery.parseJSON(data);
+							alert(obj.msg);
+							if(obj.email != null){
+								location.replace("/Oggle/home.do"); 
+							}
+	                    }
+					);
+				}
+			});
+			
+			$("#signup").click(function(e){
+				
+				var email = $("#sEmail").val();
+				var pwd1 = $("#sPwd1").val();
+				var pwd2 = $("#sPwd2").val();
+				var name = $("#sName").val();
+				
+				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
+				
+				if(email == "" || pwd1 == "" || pwd2 == "" || name == "" )	
+					alert("Input Text");
+				else if(pwd1 != pwd2)
+					alert("Confirm Password");
+				else if(pwd1.length < 5 || pwd2.length < 5)
+					alert("ID & Password are too short\n(minimum is 6 characters)");
+				else if (email.search(reg_email) == -1)
+					alert("Incorrect email");
+				else {
+
+					$.post( "signup.do", {
+							email: email,
+							pwd1: pwd1, 
+							pwd2: pwd2, 
+							name: name
+						},
+						function (data) {
+							var obj = jQuery.parseJSON(data);
+							var msg = obj.msg;
+							alert(msg);
+							location.replace("/Oggle/main.do"); 
+	                    }
+					);
+				}
+			});
+			
+			$("#cancel").click(function() {  
+				$("input").val("");
+			});
+			
+		});
+	</script>
   </head>
   <body>
+  
+    <div class="container margin_padding_100px">
+      <form class="form-signin">
+        <h1>OGGLE</h1>
+        <p class="lead">project explain</p>
+		<div class="well">update news</div>
+        <input type="text" id="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" id="pwd" class="form-control" placeholder="Password" required>
 
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">OGGLE</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active" id = "MyContents_btn"><a href="#">My Contents</a></li>
-            <li id = "FriendContents_btn"><a href="#">Friend's Contents</a></li>
-			<li id = "History_btn"><a href="#">Search History</a></li>
-			<li id = "Config_btn"><a href="#">Config</a></li>
-          </ul>
-		  	<p class="navbar-text pull-right">
-     			  <a href="#" class="navbar-link">User_name</a>
-    		 </p>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+		<div class = "float_right">
+	        <button id="login" class="btn btn-mini btn-primary" type="button" >Login</button>
+			<button class="btn btn-mini btn-primary" type="button" data-toggle="modal" data-target="#myModal4">Signup</button>
+		</div>
+      </form>
+ 	 </div>
+	 
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">SIGNUP</h4>
+	      </div>
+	      <div class="modal-body" id="#user_profile">
+			  <p>E-mail</p>
+		        <input type="text" id="sEmail" class="form-control" placeholder="Email address" required autofocus>
+			  <p>Password</p>
+		        <input type="password" id="sPwd1" class="form-control" placeholder="Password" required>
+			  <p>confirm_Password</p>
+		        <input type="password" id="sPwd2" class="form-control" placeholder="confirm_Password" required>
+		      <p>User_name</p>
+		        <input type="text" id="sName" class="form-control" placeholder="User_name" required autofocus>
+	      </div>
+	      <div class="modal-footer">
+			<button type="button" class="btn btn-default" id="signup" >Signup</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal" id = "cancel">Cancel</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
-<div id = "Contents">
-<%!
-	String s= "MyContents.jsp";
-%>
-
-	<jsp:include page = "<%= s %>" flush="true" />
-</div>
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="resources/js/bootstrap.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("body").fadeIn("slow"); 
-	//		$("#Contents").load("MyContents.jsp");
-		});
-		
-		$("#MyContents_btn").click(function(){
-			$("#Contents").load("MyContents.jsp");
-		});
-		$("#FriendContents_btn").click(function(){
-			$("#Contents").load("FriendsContents.html");
-		});
-		$("#History_btn").click(function(){
-			$("#Contents").load("SearchHistory.html");
-		});
-		$("#Config_btn").click(function(){
-			$("#Contents").load("config.html");
-		});
-		
-	</script>
+    <!-- <script src="resources/js/bootstrap.min.js"></script>-->
   </body>
 </html>

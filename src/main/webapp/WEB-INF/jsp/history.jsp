@@ -17,10 +17,9 @@
     <![endif]-->
   </head>
   <body>
-
-<div id = "Contents___">
-<p>Search_history</p>
-</div>
+	<div id = "Contents___">
+	<p>Search_history</p>
+	</div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
