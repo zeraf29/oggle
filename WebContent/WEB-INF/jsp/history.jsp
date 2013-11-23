@@ -19,6 +19,10 @@
     <![endif]-->
   </head>
   <body>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 	<div id = "Contents___">
 	<p>Search_history</p>
 	</div>

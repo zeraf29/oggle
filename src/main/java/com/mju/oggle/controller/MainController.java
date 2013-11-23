@@ -108,4 +108,10 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("fContentsSub");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
+	public ModelAndView getHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		ModelAndView mav = new ModelAndView("history");
+		return mav;
+	}
 }
