@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <title>OGGLE_oggleoggle</title>
@@ -32,8 +34,8 @@
 						<div class="panel-heading sidemenu_header">User_config</div>
 						<ul class="nav nav-stacked sidemenu_list">
 							<li><a href="#" id = "modify_profile">modify_profile</a></li>
+							<li><a href="#" id = "keyword_setting">keyword_setting</a></li>
 							<li><a href="#" id = "friends">friends</a></li>
-							<li><a href="#">keyword_setting</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</nav>
@@ -45,12 +47,29 @@
 		</div>
 		
 	<script>
+		
 		$("#modify_profile").click(function(){
-			$("#Config_subContents").load("config_modify_profile.html");
+			$('#Config_subContents').fadeOut('slow', function(){
+				$("#Config_subContents").load("configSub1.do", function(){
+			        $("#Config_subContents").fadeIn('slow');
+			    });
+			});
+		});
+		
+		$("#keyword_setting").click(function(){
+			$('#Config_subContents').fadeOut('slow', function(){
+				$("#Config_subContents").load("configSub2.do", function(){
+			        $("#Config_subContents").fadeIn('slow');
+			    });
+			});
 		});
 		
 		$("#friends").click(function(){
-			$("#Config_subContents").load("config_friends.html");
+			$('#Config_subContents').fadeOut('slow', function(){
+				$("#Config_subContents").load("configSub3.do", function(){
+			        $("#Config_subContents").fadeIn('slow');
+			    });
+			});
 		});
 	</script>
   </body>

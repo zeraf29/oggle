@@ -87,7 +87,6 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("home");
 		
 		mav.addObject("user",user);
-		mav.addObject("msg","Asdf");
 		
 		return mav;
 	}
@@ -104,16 +103,9 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
-	public ModelAndView getHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		ModelAndView mav = new ModelAndView("history");
+	@RequestMapping(value = "/fContentsSub.do", method = RequestMethod.GET)
+	public ModelAndView getFcontentsSub(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		ModelAndView mav = new ModelAndView("fContentsSub");
 		return mav;
 	}
-	
-	@RequestMapping(value = "/config.do", method = RequestMethod.GET)
-	public ModelAndView getConfig(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		ModelAndView mav = new ModelAndView("config");
-		return mav;
-	}
-
 }

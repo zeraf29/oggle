@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <title>OGGLE_oggleoggle</title>
@@ -51,7 +53,11 @@
 		</div>
 	<script>
 		$(".friend_email").click(function(){
-			$("#F_contents").load("FriendsContents_Contents.html");
+			$('#F_contents').fadeOut('slow', function(){
+				$("#F_contents").load("fContentsSub.do", function(){
+			        $("#F_contents").fadeIn('slow');
+			    });
+			});
 		});
 	</script>
   </body>

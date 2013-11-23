@@ -74,6 +74,19 @@ public class UserDAO {
 			session.close();
 		}
 	}
+	
+	public void updateUser(User user){
+		SqlSession session = sqlSessionFactory.openSession();
+		try{
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			mapper.updateUser(user);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+	}
 
 	/*
 	public List<User> getUserList(){	

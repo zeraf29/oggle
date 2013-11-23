@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <title>OGGLE_oggleoggle</title>
@@ -6,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.css" rel="stylesheet">
-   <link href="resources/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="resources/css/bootstrap-responsive.css" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,7 +38,8 @@
 			<li id = "Config_btn"><a href="#">Config</a></li>
           </ul>
 		  	<p class="navbar-text pull-right">
-				<a href="#" class="navbar-link">Logout</a>
+				<b> ${user.name} </b>
+				<a href="logout.do" class="navbar-link">Logout</a>
 			</p>
         </div><!--/.nav-collapse -->
       </div>
@@ -44,8 +47,6 @@
 <div id = "Contents">
 	
 </div>
-${user.email}
-${msg}
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
