@@ -20,10 +20,15 @@
 	<script type="text/javascript" src="resources/js/bootstrap.js"></script> 
 	
     <script>
+   
 		$(function() {
 
 			$('body').fadeIn(); 
 			
+			$('.carousel').carousel({
+				  interval: 1500
+				})
+
 			$("#login").click(function(e){
 				var email = $("#email").val();
 				var pwd = $("#pwd").val();
@@ -90,25 +95,72 @@
 			});
 			
 		});
+		
+		$("intro_carousel").carousel('cycle');
 	</script>
   </head>
   <body>
-  
-    <div class="container margin_padding_100px">
-      <form class="form-signin">
-        <h1>OGGLE</h1>
-        <p class="lead">project explain</p>
-		<div class="well">update news</div>
-        <input type="text" id="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" id="pwd" class="form-control" placeholder="Password" required>
-
-		<div class = "float_right">
-	        <button id="login" class="btn btn-mini btn-primary" type="button" >Login</button>
-			<button class="btn btn-mini btn-primary" type="button" data-toggle="modal" data-target="#myModal4">Signup</button>
+	<div id="intro_carousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#intro_carousel" data-slide-to="0" class="active"></li>
+			<li data-target="#intro_carousel" data-slide-to="1"></li>
+			<li data-target="#intro_carousel" data-slide-to="2"></li>
+		</ol>
+	
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<div class="height_600px backGround_1"></div>
+				<div class="carousel-caption">
+					<h1>show me the money</h1>
+				</div>
+			</div>
+			<div class="item">
+				<div class="height_600px backGround_2"></div>
+				<div class="carousel-caption">
+					<h1>show me the money</h1>
+				</div>
+			</div>
+			<div class="item">
+				<div class="height_600px backGround_3"></div>
+				<div class="carousel-caption">
+					<h1>show me the money</h1>
+				</div>
+			</div>
 		</div>
-      </form>
- 	 </div>
-	 
+		<!-- /.carousel -->
+</div>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<form class="form-signin">
+					<h1>OGGLE</h1>
+					<div class="row">
+						<div class="col-md-8"></div>
+						
+						<div class="col-md-4">
+							<input type="text" id="email" class="form-control"
+								placeholder="Email address" required autofocus> <input
+								type="password" id="pwd" class="form-control"
+								placeholder="Password" required>
+
+							<div class="float_right">
+								<button id="login" class="btn btn-mini btn-primary"
+									type="button">Login</button>
+								<button class="btn btn-mini btn-primary" type="button"
+									data-toggle="modal" data-target="#myModal4">Signup</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--LogIn Modal -->
 	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
