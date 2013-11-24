@@ -31,12 +31,19 @@
 	</select>
 	
 	<select id="getUserList" resultType="User">
-		SELECT * FROM User; 
+		SELECT * FROM User
 	</select>
 	
 	<update id="changeUserState" parameterType="String">
 		UPDATE User SET state='y' 
-		WHERE email = #{email};
+		WHERE email = #{email}
+	</update>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE User SET 
+		name=#{name}, 
+		pwd=#{pwd}
+		WHERE email = #{email}
 	</update>
 	
 	

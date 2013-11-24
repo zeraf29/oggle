@@ -14,3 +14,7 @@ CREATE TABLE User (
 select * from user;
 
 delete from user where email='pooingx2@gmail.com';
+
+UPDATE User SET name='qqq', pwd='asdasd'
+WHERE email = 'pooingx2@gmail.com';
+

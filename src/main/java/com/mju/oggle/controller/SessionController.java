@@ -20,7 +20,7 @@ import com.mju.oggle.dao.UserDAO;
 import com.mju.oggle.model.User;
 
 @Controller
-public class LoginController {
+public class SessionController {
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public void PostLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException{
@@ -72,6 +72,7 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView("main");
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
+		session.invalidate();
 		
 		return mav;
 	}

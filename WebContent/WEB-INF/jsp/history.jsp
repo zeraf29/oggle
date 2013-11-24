@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <title>OGGLE_oggleoggle</title>
@@ -17,16 +19,25 @@
     <![endif]-->
   </head>
   <body>
-	<div id = "Contents___">
-	<p>Search_history</p>
+	<div class="margin_50px">
+		<div class = "backGround_4" id = "history_background">
+			<div class="row">
+				<div class="col-md-3" id = "history_menu">sisisisisifif</div>
+				<div class="col-md-9 backGround_2" style = "box-shadow : 3px 3px 50px 3px"id = "history_content">history</div>
+			</div>
+		</div>
 	</div>
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="resources/js/bootstrap.min.js"></script>
 	<script>
-		
+		$(document).ready(function(){
+		    $("#history_background").height(($(window).height() - 50) );
+		    $("#history_menu").height(($(window).height() - 50) )
+		    $("#history_content").height(($(window).height() - 50) )
+		});
+		 $(window).resize(function(){
+			 $("#history_background").height(($(window).height() - 50) );
+			 $("#history_menu").height(($(window).height() - 50) )
+			 $("#history_content").height(($(window).height() - 50) )
+		});
 	</script>
   </body>
 </html>
