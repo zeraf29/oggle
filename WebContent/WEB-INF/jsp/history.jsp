@@ -19,14 +19,25 @@
     <![endif]-->
   </head>
   <body>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-	<div id = "Contents___">
-	<p>Search_history</p>
+	<div class="margin_50px">
+		<div class = "backGround_4" id = "history_background">
+			<div class="row">
+				<div class="col-md-3" id = "history_menu">sisisisisifif</div>
+				<div class="col-md-9 backGround_2" style = "box-shadow : 3px 3px 50px 3px"id = "history_content">history</div>
+			</div>
+		</div>
 	</div>
-
+	<script>
+		$(document).ready(function(){
+		    $("#history_background").height(($(window).height() - 50) );
+		    $("#history_menu").height(($(window).height() - 50) )
+		    $("#history_content").height(($(window).height() - 50) )
+		});
+		 $(window).resize(function(){
+			 $("#history_background").height(($(window).height() - 50) );
+			 $("#history_menu").height(($(window).height() - 50) )
+			 $("#history_content").height(($(window).height() - 50) )
+		});
 	</script>
   </body>
 </html>

@@ -20,12 +20,11 @@
     <![endif]-->
   </head>
   <body>
-  
-<div class="container margin_200px">
+<div class="backGround_4 padding_20px" style = "text-align: center;">
+	<div class = "margin_50px">
       <div class="row">
         <div class="col-md-4">
-          <h2>TITLE 1</h2>
-          <p>contents</p>
+          <h2>TITLE 1</h1>
          <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first">show more>></button>
         </div>
         <div class="col-md-4">
@@ -40,22 +39,32 @@
         </div>
       </div>
     </div> <!-- /container -->
-
-
-
-<div class="container">
-	<div class="page-header">
-	  <h3>Search Keyword </h3>
-	</div>
-
-	<!-- Tab panes -->
-	<div class="tab-content">
-	  <div class="tab-pane fade in active" id="first">KKIKIKIIKIKSdfsdfsdfsdf</div>
-	  <div class="tab-pane fade" id="second">sdfsdfsd</div>
-	  <div class="tab-pane fade" id="third">zzzzzzz</div>
-	</div>
 </div>
 
+
+	<div id="result">
+		<div class="container">
+			<div class="page-header">
+				<h3>Search Keyword</h3>
+			</div>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="first">KKIKIKIIKIKSdfsdfsdfsdf</div>
+				<div class="tab-pane fade" id="second">sdfsdfsd</div>
+				<div class="tab-pane fade" id="third">zzzzzzz</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	$(document).ready(function(){
+	    $('#result').height(($(window).height() - 213) );
+	});
+	 $(window).resize(function(){
+		 $('#result').height(($(window).height() - 213) );
+	 });
+
+	</script>
   </body>
 </html>
 

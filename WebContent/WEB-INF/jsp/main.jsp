@@ -110,7 +110,8 @@
 		$("intro_carousel").carousel('cycle');
 	</script>
   </head>
-  <body>
+  
+  <body class = "backGround_4">
 	<div id="intro_carousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -143,63 +144,69 @@
 		<!-- /.carousel -->
 </div>
 
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<form class="form-signin">
-					<h1>OGGLE</h1>
-					<div class="row">
-						<div class="col-md-8"></div>
-						
-						<div class="col-md-4">
-							<input type="text" id="email" class="form-control"
-								placeholder="Email address" required autofocus> <input
-								type="password" id="pwd" class="form-control"
-								placeholder="Password" required>
-
-							<div class="float_right">
-								<button id="login" class="btn btn-mini btn-primary"
-									type="button">Login</button>
-								<button class="btn btn-mini btn-primary" type="button"
-									data-toggle="modal" data-target="#myModal4">Signup</button>
-							</div>
-						</div>
-					</div>
-				</form>
+	<div class = "margin_left_10">
+		<h1>OGGLE</h1>
+	</div>
+	<div class = "backGround_4">
+		<div class="container">
+			<div class="col-md-8"></div>
+	
+			<div class="col-md-4 padding_top_10">
+				<input type="text" id="email" class="form-control"
+					placeholder="Email address" style = "background-color :  #F3CA5A; box-shadow : 1px 1px 1px 1px inset;"required autofocus> <input
+					type="password" id="pwd" class="form-control " style = "background-color :  #F3CA5A; box-shadow : 1px 1px 1px 1px inset;" placeholder="Password"
+					required>
+	
+				<div class="float_right">
+					<button id="login" class="btn btn-mini btn-primary" type="button">Login</button>
+					<button class="btn btn-mini btn-primary" type="button"
+						data-toggle="modal" data-target="#myModal4">Signup</button>
+				</div>
 			</div>
+			</button>
 		</div>
 	</div>
-
+	
+	
 	<!--LogIn Modal -->
-	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel">SIGNUP</h4>
-	      </div>
-	      <div class="modal-body" id="#user_profile">
-			  <p>E-mail</p>
-		        <input type="text" id="sEmail" class="form-control" placeholder="Email address" required autofocus>
-			  <p>Password</p>
-		        <input type="password" id="sPwd1" class="form-control" placeholder="Password" required>
-			  <p>confirm_Password</p>
-		        <input type="password" id="sPwd2" class="form-control" placeholder="confirm_Password" required>
-		      <p>User_name</p>
-		        <input type="text" id="sName" class="form-control" placeholder="User_name" required autofocus>
-	      </div>
-	      <div class="modal-footer">
-			<button type="button" class="btn btn-default" id="signup" >Signup</button>
-			<button type="button" class="btn btn-default" data-dismiss="modal" id = "cancel">Cancel</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+		<div class="modal fade" id="myModal4" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">SIGNUP</h4>
+					</div>
+					<div class="modal-body" id="#user_profile">
+						<p>E-mail</p>
+						<input type="text" id="sEmail" class="form-control"
+							placeholder="Email address" required autofocus>
+						<p>Password</p>
+						<input type="password" id="sPwd1" class="form-control"
+							placeholder="Password" required>
+						<p>confirm_Password</p>
+						<input type="password" id="sPwd2" class="form-control"
+							placeholder="confirm_Password" required>
+						<p>User_name</p>
+						<input type="text" id="sName" class="form-control"
+							placeholder="User_name" required autofocus>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="signup">Signup</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							id="cancel">Cancel</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- <script src="resources/js/bootstrap.min.js"></script>-->
-  </body>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<!-- <script src="resources/js/bootstrap.min.js"></script>-->
+</body>
 </html>

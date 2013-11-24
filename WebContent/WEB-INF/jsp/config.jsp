@@ -18,7 +18,7 @@
     <![endif]-->
   </head>
   <body>
-		<div class = "margin_200px">
+		<div class = "margin_50px padding_20px">
 			<div class="col-md-2">
 				<nav class="navbar navbar-default" role ="navigation">
 
