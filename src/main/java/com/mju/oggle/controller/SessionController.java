@@ -3,8 +3,10 @@ package com.mju.oggle.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -48,7 +50,7 @@ public class SessionController {
 			msg = "Unauthorized Email : Check your email \n("+user.getEmail()+")";
 		
 		else {
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession();
 			session.setAttribute("user",user);
 			msg = "Welcome";
 			obj.put("email", user.getEmail());
@@ -67,13 +69,19 @@ public class SessionController {
 	}
 
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
-	public ModelAndView getHome(HttpServletRequest request, HttpServletResponse response){
+	public String getHome(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		
-		ModelAndView mav = new ModelAndView("main");
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
 		session.invalidate();
 		
-		return mav;
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		response.setHeader("Pragma", "no-cache"); 
+		response.setDateHeader("Expires", 0);
+//		
+		return "main";
+		
+//		return mav;
 	}
+
 }

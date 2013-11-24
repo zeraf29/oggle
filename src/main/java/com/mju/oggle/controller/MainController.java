@@ -41,7 +41,7 @@ public class MainController {
 		
 		String email = request.getParameter("email");
 		String nonce = request.getParameter("nonce");
-
+		
 		ModelAndView mav = new ModelAndView("main");
 		
 		if(email == null || nonce == null)
@@ -54,22 +54,22 @@ public class MainController {
 			UserDAO userDAO = new UserDAO();
 			User user = userDAO.selectUser(email);
 			
-			String msg;
+			String auth;
 			
 			if(user == null)
-				msg = "Auth Error";
+				auth = "Error";
 			
 			else if(!(nonce.equals(user.getNonce()))){
-				msg = "Auth Error";
+				auth = "Error";
 			}
 			
 			else {
-				msg = "Auth Success";
+				auth = "Success";
 				userDAO.changeUserState(email);
 				mav.addObject("email", email);
 			}
 			
-			mav.addObject("msg", msg);
+			mav.addObject("auth", auth);
 			
 			return mav;
 		}
@@ -78,7 +78,7 @@ public class MainController {
 	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
 	public ModelAndView getHome(HttpServletRequest request, HttpServletResponse response){
 		
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		System.out.println("session(name) : " + user.getName());
 		System.out.println("session(email) : " + user.getEmail());

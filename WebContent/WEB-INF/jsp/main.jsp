@@ -22,7 +22,18 @@
     <script>
    
 		$(function() {
-
+			
+			var auth = "${auth}";
+			
+			if(auth == "Success") {
+				alert("Thank you");
+				location.replace("/Oggle/main.do"); 
+			}
+			
+			if(window.location.pathname == "/Oggle/logout.do"){
+				location.replace("/Oggle/main.do"); 
+			}
+			
 			$('body').fadeIn(); 
 			
 			$('.carousel').carousel({
@@ -48,7 +59,7 @@
 							var obj = jQuery.parseJSON(data);
 							alert(obj.msg);
 							if(obj.email != null){
-								location.replace("/Oggle/home.do"); 
+								location.replace("/Oggle/home.do");
 							}
 	                    }
 					);

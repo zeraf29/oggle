@@ -38,7 +38,7 @@ public class EmailSender {
 			session.setDebug(true);
 			
 			MimeMessage msg = new MimeMessage(session);
-			msg.setSubject("Oggle 시작하기(인증)");
+			msg.setSubject("Oggle에서 email 인증을 희망합니다. ");
 
 			Address fromAddr = new InternetAddress("oggleManager@gmail.com"); // 보내는 사람의 메일주소
 			msg.setFrom(fromAddr);
@@ -46,8 +46,10 @@ public class EmailSender {
 			Address toAddr = new InternetAddress(to);  // 받는 사람의 메일주소
 			msg.addRecipient(Message.RecipientType.TO, toAddr); 
 
-			String message = "Oggle email 인증을 위해 아래 링크를 클릭하세요\n";
+			String message = "\n\n고객님의 회원가입을 감사드립니다.\n\n";
+			message+="다음 링크를 클릭하셔서 회원 인증을 하시면  Oggle서비스를 이용하실 수 있습니다.\n"; 
 			message+=url+"/main.do?email="+to+"&nonce="+nonce;
+			message+="\n\nOggle 팀 일동";
 			msg.setContent(message, "text/plain;charset=KSC5601");
 
 			Transport.send(msg);
