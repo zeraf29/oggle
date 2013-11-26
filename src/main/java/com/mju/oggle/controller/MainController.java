@@ -2,6 +2,7 @@ package com.mju.oggle.controller;
 
 import java.io.IOException;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,11 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mju.oggle.dao.UserDAO;
 import com.mju.oggle.model.User;
+import com.mju.oggle.mongodb.DocumentService;
 import com.mju.oggle.mongodb.PersonService;
+
 
 @Controller
 public class MainController {
 
+	@Autowired
+	private DocumentService documentService;
+	
 	@Autowired
 	private PersonService personService;
 	
@@ -95,7 +101,7 @@ public class MainController {
 	public ModelAndView getMcontents(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("mContents");
 		
-		
+		mav.addObject("docList", documentService.listDocument(3));
 		
 		return mav;
 	}

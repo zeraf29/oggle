@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.css" rel="stylesheet">
-   <link href="resources/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="resources/css/bootstrap-responsive.css" rel="stylesheet">
 
 
 
@@ -23,21 +23,32 @@
   
   <div id = "result" class = "row" style = "margin : 50px 0px 0px 0px">
 	  <div id = "result1" class = "col-md-4" style = "background-color:#FFE766;">
-	  	<div style = "text-align: center;"><h1>Keyword1</h1></div>
+	  	<div style = "text-align: center;"><h1>${user.tag1}</h1></div>
 		<div id = "result_content1" class = "result_content">
-		<div>title</div>
+		<div>
+			<b>title :${docList[0].title}</b><br/>
+			url : ${docList[0].url}</div>
+			content : ${docList[0].content}<br/>
 		</div>
 	  </div>
 	  <div id = "result2" class = "col-md-4" style = "background-color:#FFCF66;  box-shadow: 1px 1px 10px 1px;">
-	 	<div style = "text-align: center;"><h1>Keyword2</h1></div>
+	 	<div style = "text-align: center;"><h1>${user.tag2}</h1></div>
 	 	<div id = "result_content2" class = "result_content">
-	 	<div>title</div>
+	 	<div>
+		 	<b>title :${docList[1].title}</b><br/>
+		 	url : ${docList[1].url}<br/>
+		 	content : ${docList[1].content}
+	 	</div>
 	 	</div>
 	  </div>
 	  <div id = "result3" class = "col-md-4" style = "background-color:#F7FD65;  box-shadow: 0px 1px 10px 1px;">
-	  	<div style = "text-align: center;"><h1>Keyword3</h1></div>
+	  	<div style = "text-align: center;"><h1>${user.tag3}</h1></div>
 	  	<div id = "result_content3" class = "result_content">
-	  	<div>title</div>
+	  	<div>
+		  	<b>title :${docList[2].title}</b><br/>
+		  	url : ${docList[2].url}<br/>
+		  	content : ${docList[2].content}
+	  	</div>
 	  	</div>
 	  </div>
   </div>
