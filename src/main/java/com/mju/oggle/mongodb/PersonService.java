@@ -5,10 +5,12 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.Person;
-import com.mongodb.Mongo;
 
 @Repository
 public class PersonService {
@@ -28,6 +30,14 @@ public class PersonService {
 	
 	public List<Person> listPerson() {
 		return mongoTemplate.findAll(Person.class, COLLECTION_NAME);
+	}
+	
+	public Person selectPerson() {
+		
+//		BasicQuery query = new BasicQuery("{name : 'aaa'}");
+		BasicQuery query = new BasicQuery("{\"name\": {$regex : '" + "vc" + "'} }");
+		
+		return mongoTemplate.findOne(query, Person.class);
 	}
 	
 	public void deletePerson(Person person) {

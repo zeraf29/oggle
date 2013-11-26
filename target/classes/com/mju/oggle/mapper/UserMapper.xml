@@ -21,8 +21,8 @@
 	</resultMap>
 	
 	<insert id="insertUser" parameterType="user">
-		INSERT INTO User (email,pwd,name,state,nonce)
-		VALUES(#{email},#{pwd},#{name},#{state},#{nonce})
+		INSERT INTO User (email,pwd,name,tag1,tag2,tag3,state,nonce)
+		VALUES(#{email},#{pwd},#{name},#{tag1},#{tag2},#{tag3},#{state},#{nonce})
 	</insert>
 
 	<select id="selectUser" parameterType="String" resultType="User">

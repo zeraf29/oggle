@@ -35,8 +35,10 @@ public class SignupController {
 		System.out.println("Post");
 		String email = request.getParameter("email");
 		String pwd1 = request.getParameter("pwd1");
-		String pwd2 = request.getParameter("pwd2");
 		String name = request.getParameter("name");
+		String tag1 = request.getParameter("tag1");
+		String tag2 = request.getParameter("tag2");
+		String tag3 = request.getParameter("tag3");
 		
 		// 이메일 인증을 위한 64비트 난수 발생
 		Random random = new Random();
@@ -54,12 +56,16 @@ public class SignupController {
 			user.setEmail(email);
 			user.setPwd(pwd1);
 			user.setName(name);
+			user.setTag1(tag1);
+			user.setTag2(tag2);
+			user.setTag3(tag3);
 			user.setState("n");
 			user.setNonce(nonce);
 	
 			userDAO.insertUser(user);
 			
 			System.out.println(email+ " " + pwd1+ " " + name);
+			System.out.println(tag1+ " " + tag2+ " " + tag3);
 			msg = "Mail transmission completion \n("+email+")";
 
 			// 인증 이메일 전송

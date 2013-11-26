@@ -38,15 +38,25 @@ public class MongoController {
 	
     @RequestMapping(value = "/person.do", method = RequestMethod.GET)  
 	public ModelAndView getPersonList(ModelMap model) {
+    	
     	ModelAndView mav = new ModelAndView("pOutput");
     	mav.addObject("personList", personService.listPerson());  
-        return mav;  
+    	mav.addObject("person", personService.selectPerson());  
+    	
+    	System.out.println(personService.selectPerson()+"!!!!!");
+        return mav; 
+    	
     } 
     
     @RequestMapping(value = "/document.do", method = RequestMethod.GET)  
 	public ModelAndView getdocList(ModelMap model) {
+    	
     	ModelAndView mav = new ModelAndView("dOutput");
-    	mav.addObject("docList", documentService.listDocument());  
+//    	mav.addObject("docList", documentService.listDocument()); 
+    	mav.addObject("docList", documentService.listDocument(3)); 
+    	mav.addObject("test", documentService.selectDocument()); 
+
+    	System.out.println(documentService.selectDocument()+"!!!!!");
         return mav;  
     }  
     
