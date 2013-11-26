@@ -75,11 +75,24 @@ public class UserDAO {
 		}
 	}
 	
-	public void updateUser(User user){
+	public void updateProfile(User user){
 		SqlSession session = sqlSessionFactory.openSession();
 		try{
 			UserMapper mapper = session.getMapper(UserMapper.class);
-			mapper.updateUser(user);
+			mapper.updateProfile(user);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+	}
+	
+	public void updateTag(User user){
+		SqlSession session = sqlSessionFactory.openSession();
+		try{
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			mapper.updateTag(user);
 			session.commit();
 		}catch(Exception e){
 			e.printStackTrace();
