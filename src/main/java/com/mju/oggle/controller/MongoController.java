@@ -17,6 +17,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.mju.oggle.model.Person;
+import com.mju.oggle.mongodb.DocumentService;
 import com.mju.oggle.mongodb.PersonService;
    
 @Controller    
@@ -25,33 +26,43 @@ public class MongoController {
 	@Autowired
 	private PersonService personService;
 	
+	@Autowired
+	private DocumentService documentService;
+	
 	
 	@RequestMapping(value = "/mongo.do", method = RequestMethod.GET)
 	public ModelAndView getMongoDB(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		
 		ModelAndView mav = new ModelAndView("mongo");
 		return mav;
 	}
 	
-    @RequestMapping(value = "/mongo.do/person", method = RequestMethod.GET)  
-	public String getPersonList(ModelMap model) {  
-        model.addAttribute("personList", personService.listPerson());  
-        return "output";  
+    @RequestMapping(value = "/person.do", method = RequestMethod.GET)  
+	public ModelAndView getPersonList(ModelMap model) {
+    	ModelAndView mav = new ModelAndView("pOutput");
+    	mav.addObject("personList", personService.listPerson());  
+        return mav;  
+    } 
+    
+    @RequestMapping(value = "/document.do", method = RequestMethod.GET)  
+	public ModelAndView getdocList(ModelMap model) {
+    	ModelAndView mav = new ModelAndView("dOutput");
+    	mav.addObject("docList", documentService.listDocument());  
+        return mav;  
     }  
     
-    @RequestMapping(value = "/mongo.do/person/save", method = RequestMethod.POST)  
+    @RequestMapping(value = "/insert.do", method = RequestMethod.POST)  
 	public View createPerson(@ModelAttribute Person person, ModelMap model) {
     	if(StringUtils.hasText(person.getId())) {
     		personService.updatePerson(person);
     	} else {
     		personService.addPerson(person);
     	}
-    	return new RedirectView("/Oggle/mongo.do/person");  
+    	return new RedirectView("/Oggle/person.do");
     }
         
-    @RequestMapping(value = "/mongo.do/person/delete", method = RequestMethod.GET)  
+    @RequestMapping(value = "/delete.do", method = RequestMethod.GET)  
 	public View deletePerson(@ModelAttribute Person person, ModelMap model) {  
         personService.deletePerson(person);  
-        return new RedirectView("/Oggle/mongo.do/person");  
+        return new RedirectView("/Oggle/person.do");  
     }    
 }
