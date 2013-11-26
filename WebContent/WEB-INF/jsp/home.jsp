@@ -60,7 +60,7 @@
 		//page Change
 		$(document).ready(function(){
 			$('#Contents').fadeOut('slow', function(){
-				$("#Contents").load("mContents.do", function(){
+				$("#Contents").load("contents.do", function(){
 			        $("#Contents").fadeIn('slow');
 			    });
 			});

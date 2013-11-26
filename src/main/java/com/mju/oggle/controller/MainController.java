@@ -1,6 +1,8 @@
 package com.mju.oggle.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mju.oggle.dao.UserDAO;
+import com.mju.oggle.model.Document;
 import com.mju.oggle.model.User;
 import com.mju.oggle.mongodb.DocumentService;
 import com.mju.oggle.mongodb.PersonService;
@@ -97,24 +100,29 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/mContents.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/contents.do", method = RequestMethod.GET)
 	public ModelAndView getMcontents(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		ModelAndView mav = new ModelAndView("mContents");
 		
-		mav.addObject("docList", documentService.listDocument(3));
+		ModelAndView mav = new ModelAndView("contents");
 		
-		return mav;
-	}
-	
-	@RequestMapping(value = "/fContents.do", method = RequestMethod.GET)
-	public ModelAndView getFcontents(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		ModelAndView mav = new ModelAndView("fContents");
-		return mav;
-	}
-	
-	@RequestMapping(value = "/fContentsSub.do", method = RequestMethod.GET)
-	public ModelAndView getFcontentsSub(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		ModelAndView mav = new ModelAndView("fContentsSub");
+		User user = (User) request.getSession().getAttribute("user");
+		UserDAO dao = new UserDAO();
+		
+		User user2 = dao.selectUser(user.getEmail());
+		
+		mav.addObject("tag1", user2.getTag1());
+		mav.addObject("tag2", user2.getTag2());
+		mav.addObject("tag3", user2.getTag3());
+		
+    	List<Document> docList = new ArrayList<Document>();
+
+    	docList.add(documentService.selectTopBoostDocument(user2.getTag1()));
+    	docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
+    	docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
+//    	docList.add(documentService.selectDocument("to"));
+		
+    	mav.addObject("docList", docList);
+    	
 		return mav;
 	}
 	

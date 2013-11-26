@@ -52,11 +52,9 @@ public class MongoController {
 	public ModelAndView getdocList(ModelMap model) {
     	
     	ModelAndView mav = new ModelAndView("dOutput");
-//    	mav.addObject("docList", documentService.listDocument()); 
-    	mav.addObject("docList", documentService.listDocument(3)); 
-    	mav.addObject("test", documentService.selectDocument()); 
+    	mav.addObject("docList", documentService.listDocument()); 
+//    	mav.addObject("docList", documentService.sortDocument()); 
 
-    	System.out.println(documentService.selectDocument()+"!!!!!");
         return mav;  
     }  
     

@@ -24,13 +24,12 @@
 		<h3>${user.email}</h3> <br/>
 		
 		  <p>Keyword1</p>
-	        <input type="text" id="tag1" class="form-control" placeholder="Keyword1" required>
+	        <input type="text" id="tag1" class="form-control" placeholder="tag1">
 		  <p>Keyword2</p>
-	        <input type="text" id="tag2" class="form-control" placeholder="Keyword2" required>
+	        <input type="text" id="tag2" class="form-control" placeholder="tag2">
 	      <p>Keyword13</p>
-	        <input type="text" id="tag3" class="form-control" placeholder="Keyword3" required>
+	        <input type="text" id="tag3" class="form-control" placeholder="tag3">
 	        <br/>
-	        
 	       <button type="button" id="update" class="btn btn-default">Update</button>
           <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal" id = "cancel">Cancel</button>
     </div> <!-- /container -->
@@ -44,9 +43,14 @@
 	<script>
 	$(document).ready(function(){
 		
-		var name = "${user.name}";
+		var tag1 = "${user.tag1}";
+		var tag2 = "${user.tag2}";
+		var tag3 = "${user.tag3}";
+
+		$("#tag1").val(tag1);
+		$("#tag2").val(tag2);
+		$("#tag3").val(tag3);
 		
-		$("#name").val(name);
 		
 		$("#update").click(function(e){
 			
@@ -67,7 +71,7 @@
 						var msg = obj.msg;
 						alert(msg);
 						location.replace("/Oggle/home.do"); 
-						$("input").val("");
+						//$("input").val("");
                     }
 				);
 			}
@@ -75,7 +79,9 @@
 		
 		$("#cancel").click(function(e){
 			$("input").val("");
-			$("#name").val(name);
+			$("#name").val(tag1);
+			$("#name").val(tag2);
+			$("#name").val(tag3);
 		});
 		
 	});

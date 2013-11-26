@@ -2,6 +2,8 @@ package com.mju.oggle.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mju.oggle.dao.UserDAO;
+import com.mju.oggle.model.Document;
 import com.mju.oggle.model.User;
+import com.mju.oggle.mongodb.DocumentService;
 import com.mju.oggle.mongodb.PersonService;
 
 @Controller
@@ -25,6 +29,9 @@ public class ConfigController {
 
 	@Autowired
 	private PersonService personService;
+	
+	@Autowired
+	private DocumentService documentService;
 	
 	@RequestMapping(value = "/config.do", method = RequestMethod.GET)
 	public ModelAndView getConfig(HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -41,6 +48,16 @@ public class ConfigController {
 	@RequestMapping(value = "/configSub2.do", method = RequestMethod.GET)
 	public ModelAndView getConfigSub2(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("configSub2");
+		
+		User user = (User) request.getSession().getAttribute("user");
+		UserDAO dao = new UserDAO();
+		
+		User user2 = dao.selectUser(user.getEmail());
+		
+		mav.addObject("tag1", user2.getTag1());
+		mav.addObject("tag2", user2.getTag2());
+		mav.addObject("tag3", user2.getTag3());
+		
 		return mav;
 	}
 	
@@ -69,7 +86,7 @@ public class ConfigController {
 		user.setPwd(pwd1);
 		
 		UserDAO userDAO = new UserDAO();
-		userDAO.updateUser(user);
+		userDAO.updateProfile(user);
 		
 		msg = "Profile update completion";
 		
@@ -82,6 +99,7 @@ public class ConfigController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		PrintWriter writer = response.getWriter();
 		writer.write(obj.toString());
 	}
@@ -101,17 +119,24 @@ public class ConfigController {
 		JSONObject obj = new JSONObject();
 		String msg=null;
 		
+		System.out.println(user.getEmail());
+		
 		user.setTag1(tag1);
 		user.setTag2(tag2);
 		user.setTag3(tag3);
 		
 		UserDAO userDAO = new UserDAO();
+<<<<<<< HEAD
 		userDAO.updateUser(user);
 		System.out.println(user.getName());
+=======
+		userDAO.updateTag(user);
+>>>>>>> e32045ec569246981f4ecfe5479685c216a9c98e
 		
 		msg = "keyword update completion";
 		
 		System.out.println(tag1+ " " + tag2+ " " + tag3);
+		System.out.println(user.getTag1()+ " " + user.getTag2()+ " " + user.getTag3());
 		System.out.println(msg);
 
 		try {
@@ -120,6 +145,7 @@ public class ConfigController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		PrintWriter writer = response.getWriter();
 		writer.write(obj.toString());
 	}

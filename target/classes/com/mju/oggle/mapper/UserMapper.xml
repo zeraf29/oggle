@@ -39,10 +39,18 @@
 		WHERE email = #{email}
 	</update>
 	
-	<update id="updateUser" parameterType="User">
+	<update id="updateProfile" parameterType="User">
 		UPDATE User SET 
 		name=#{name}, 
 		pwd=#{pwd}
+		WHERE email = #{email}
+	</update>
+	
+	<update id="updateTag" parameterType="User">
+		UPDATE User SET 
+		tag1=#{tag1}, 
+		tag2=#{tag2},
+		tag3=#{tag3}
 		WHERE email = #{email}
 	</update>
 	

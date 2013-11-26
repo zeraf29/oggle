@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.Document;
-import com.mju.oggle.model.Person;
 
 @Repository
 public class DocumentService {
@@ -17,7 +20,7 @@ public class DocumentService {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 	
-	public static final String COLLECTION_NAME = "index";
+	public static final String COLLECTION_NAME = "oggletest";
 	
 	public void addDocument(Document doc) {
 		if (!mongoTemplate.collectionExists(Document.class)) {
@@ -42,16 +45,13 @@ public class DocumentService {
 		return mongoTemplate.find(query, Document.class, COLLECTION_NAME);
 	}
 	
-	public Document selectDocument() {
+	public Document selectTopBoostDocument(String regex) {
 
+		//(?i)
 //		BasicQuery query = new BasicQuery("{name : 'aaa'}");
-//		BasicQuery query = new BasicQuery("{\"name\": {$regex : '" + "vc" + "'} }");
-//		BasicQuery query = new BasicQuery("{title : 'Welcome to Apache Nutch'}");
-		BasicQuery query = new BasicQuery("{\"title\": {$regex : '" + "to" + "'} }");
-
+		BasicQuery query = new BasicQuery("{\"title\": {$regex : '" +"(?i)"+ regex + "'} }");
+		query.with(new Sort(Direction.DESC, "boost"));
 //		query.limit(limit);
-		
-		System.out.println(query.toString());
 		
 		return mongoTemplate.findOne(query, Document.class, COLLECTION_NAME);
 	}
