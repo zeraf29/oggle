@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.Person;
+import com.mongodb.Mongo;
 
 @Repository
 public class PersonService {

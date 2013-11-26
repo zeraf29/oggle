@@ -22,15 +22,29 @@
 
 	<!-- Factory bean that creates the Mongo instance -->
 	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
-		<property name="host" value="localhost" />
+		<property name="host" value="117.17.158.70" />
+		<property name="port" value="9927" />
+		<!-- <property name="host" value="localhost" /> -->
 	</bean>
 	
 	<!-- MongoTemplate for connecting and quering the documents in the database -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo" />
-		<constructor-arg name="databaseName" value="test" />
+		<constructor-arg name="databaseName" value="oggle" />
 	</bean>
-
+	
+	<bean id="mongoCredentials" class="org.springframework.data.authentication.UserCredentials">
+	     <constructor-arg name="username" value="sseong" />
+	     <constructor-arg name="password" value="5707" />
+	</bean>
+	
+	<!-- 
+	<bean id="mongoCredentials" class="com.mju.oggle.mongod.UserCredentials">
+	     <constructor-arg name="username" value="sseong" />
+	     <constructor-arg name="password" value="5707" />
+	</bean>
+	 -->
+ 
 	<!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
     
