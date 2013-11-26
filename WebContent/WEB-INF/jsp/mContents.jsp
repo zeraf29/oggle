@@ -26,7 +26,10 @@
 	  	<div style = "text-align: center;"><h1>${user.tag1}</h1></div>
 		<div id = "result_content1" class = "result_content">
 			<div class = "title" style = "margin :15px;"><h3><strong>${docList[0].title}</strong></h3></div>
-			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[0].url}</h5><img src = "resources/image/move_icon.png"/>
+			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[0].url}</h5></div>
+			<div class = "link_group">
+				<a id = "move_src_docList0" href = "#"><img src = "resources/image/move_icon.png"/></a>
+				<a id = "like_docList0" href = "#"><img src = "resources/image/like_icon.png"/></a>
 			</div>
 			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[0].content}</div>
 		</div>
@@ -37,6 +40,10 @@
 	 	<div>
 		 	<div class = "title" style = "margin :15px;"><h3><strong>${docList[1].title}</strong></h3></div>
 			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[1].url}</h5></div>
+			<div class = "link_group">
+				<a id = "move_src_docList1" href = "#"><img src = "resources/image/move_icon.png"/></a>
+				<a id = "like_docList1" href = "#"><img src = "resources/image/like_icon.png"/></a>
+			</div>
 			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[1].content}</div>
 	 	</div>
 	 	</div>
@@ -47,6 +54,10 @@
 	  	<div>
 		  	<div class = "title" style = "margin :15px;"><h3><strong>${docList[2].title}</strong></h3></div>
 			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[2].url}</h5></div>
+				<div class = "link_group">
+				<a id = "move_src_docList2" href = "#"><img src = "resources/image/move_icon.png"/></a>
+				<a id = "like_docList2" href = "#"><img src = "resources/image/like_icon.png"/></a>
+			</div>
 			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[2].content}</div>
 	  	</div>
 	  	</div>
@@ -70,6 +81,20 @@
 		    $("#result_content1").height(($(window).height() - 190) );
 		    $("#result_content2").height(($(window).height() - 190) );
 		    $("#result_content3").height(($(window).height() - 190) );
+		});
+		
+		$("#move_src_docList0").click(function(){
+			window.open("${docList[0].url}", 'window name', 'window settings');
+		});
+		$("#move_src_docList1").click(function(){
+			window.open("${docList[1].url}", 'window name', 'window settings');
+		});
+		$("#move_src_docList2").click(function(){
+			window.open("${docList[2].url}", 'window name', 'window settings');
+		});
+		
+		$("#like_docList0").click(function(){
+			alert("kkdd");
 		});
 	</script>
   </body>

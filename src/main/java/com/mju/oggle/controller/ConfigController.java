@@ -107,6 +107,7 @@ public class ConfigController {
 		
 		UserDAO userDAO = new UserDAO();
 		userDAO.updateUser(user);
+		System.out.println(user.getName());
 		
 		msg = "keyword update completion";
 		

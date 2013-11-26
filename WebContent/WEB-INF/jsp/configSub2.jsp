@@ -6,8 +6,8 @@
 <title>OGGLE_oggleoggle</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
+   <link href="resources/css/bootstrap.css" rel="stylesheet">
+   <link href="resources/css/bootstrap-responsive.css" rel="stylesheet">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,11 +24,11 @@
 		<h3>${user.email}</h3> <br/>
 		
 		  <p>Keyword1</p>
-	        <input type="text" id="tag1" class="form-control" placeholder="Keyword1">
+	        <input type="text" id="tag1" class="form-control" placeholder="Keyword1" required>
 		  <p>Keyword2</p>
-	        <input type="text" id="tag2" class="form-control" placeholder="Keyword2">
+	        <input type="text" id="tag2" class="form-control" placeholder="Keyword2" required>
 	      <p>Keyword13</p>
-	        <input type="text" id="tag3" class="form-control" placeholder="Keyword3">
+	        <input type="text" id="tag3" class="form-control" placeholder="Keyword3" required>
 	        <br/>
 	        
 	       <button type="button" id="update" class="btn btn-default">Update</button>
@@ -77,7 +77,6 @@
 			$("input").val("");
 			$("#name").val(name);
 		});
-		
 		
 	});
 	</script>
