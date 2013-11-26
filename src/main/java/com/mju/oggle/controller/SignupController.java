@@ -69,8 +69,9 @@ public class SignupController {
 			msg = "Mail transmission completion \n("+email+")";
 
 			// 인증 이메일 전송
-			sender.sendEmail(email, nonce);
-
+			//sender.sendEmail(email, nonce);
+			sender.setParameter(email, nonce);
+			new Thread(sender).start();
 		}
 		else {
 			msg = email + " is already taken";

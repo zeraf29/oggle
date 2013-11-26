@@ -38,7 +38,7 @@
 			
 			$('.carousel').carousel({
 				  interval: 1500
-				})
+				});
 
 			$("#login").click(function(e){
 				var email = $("#email").val();

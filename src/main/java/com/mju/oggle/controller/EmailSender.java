@@ -13,13 +13,20 @@ import javax.mail.internet.MimeMessage;
 
 
 
-public class EmailSender {
+public class EmailSender implements Runnable{
 
 //	private final String url="http://211.189.127.145:8080/Oggle";
 	private final String url="http://localhost:8080/Oggle";
 	
+	private String to;
+	private String nonce;
+	
 	public EmailSender() {
-		
+	}
+	
+	public void setParameter(String to, String nonce){
+		this.to = to;
+		this.nonce = nonce;
 	}
 	
 	public void sendEmail(String to, String nonce) {
@@ -64,7 +71,12 @@ public class EmailSender {
 		public PasswordAuthentication getPasswordAuthentication() {
 			return new PasswordAuthentication("oggleManager@gmail.com", "ogglemju"); // paran.com id, pwd
 		}
-	} 
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		sendEmail(to,nonce);
+	}
 }
 
 
