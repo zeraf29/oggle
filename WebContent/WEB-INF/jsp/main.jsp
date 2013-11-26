@@ -184,13 +184,20 @@
 							placeholder="Email address" required autofocus>
 						<p>Password</p>
 						<input type="password" id="sPwd1" class="form-control"
-							placeholder="Password" required>
+							placeholder="Password">
 						<p>confirm_Password</p>
 						<input type="password" id="sPwd2" class="form-control"
-							placeholder="confirm_Password" required>
+							placeholder="confirm_Password" >
 						<p>User_name</p>
 						<input type="text" id="sName" class="form-control"
-							placeholder="User_name" required autofocus>
+							placeholder="User_name" >
+						<p>Keyword</p>
+						<input type="text" id="sName" class="form-control"
+							placeholder="Keyword1" >
+						<input type="text" id="sName" class="form-control"
+						placeholder="Keyword2" >
+						<input type="text" id="sName" class="form-control"
+						placeholder="Keyword3" >
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" id="signup">Signup</button>
