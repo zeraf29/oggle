@@ -20,50 +20,46 @@
     <![endif]-->
   </head>
   <body>
-<div class="backGround_4 padding_20px" style = "text-align: center;">
-	<div class = "margin_50px">
-      <div class="row">
-        <div class="col-md-4">
-          <h2>TITLE 1</h1>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first">show more>></button>
-        </div>
-        <div class="col-md-4">
-          <h2>TITLE 2</h2>
-          <p>contents</p>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#second">show more>></button>
-       </div>
-        <div class="col-md-4">
-          <h2>TITLE 3</h2>
-          <p>contents</p>
-           <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#third">show more>></button>
-        </div>
-      </div>
-    </div> <!-- /container -->
-</div>
-
-
-	<div id="result">
-		<div class="container">
-			<div class="page-header">
-				<h3>Search Keyword</h3>
-			</div>
-
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<div class="tab-pane fade in active" id="first">KKIKIKIIKIKSdfsdfsdfsdf</div>
-				<div class="tab-pane fade" id="second">sdfsdfsd</div>
-				<div class="tab-pane fade" id="third">zzzzzzz</div>
-			</div>
+  
+  <div id = "result" class = "row" style = "margin : 50px 0px 0px 0px">
+	  <div id = "result1" class = "col-md-4" style = "background-color:#FFE766;">
+	  	<div style = "text-align: center;"><h1>Keyword1</h1></div>
+		<div id = "result_content1" class = "result_content">
+		<div>title</div>
 		</div>
-	</div>
+	  </div>
+	  <div id = "result2" class = "col-md-4" style = "background-color:#FFCF66;  box-shadow: 1px 1px 10px 1px;">
+	 	<div style = "text-align: center;"><h1>Keyword2</h1></div>
+	 	<div id = "result_content2" class = "result_content">
+	 	<div>title</div>
+	 	</div>
+	  </div>
+	  <div id = "result3" class = "col-md-4" style = "background-color:#F7FD65;  box-shadow: 0px 1px 10px 1px;">
+	  	<div style = "text-align: center;"><h1>Keyword3</h1></div>
+	  	<div id = "result_content3" class = "result_content">
+	  	<div>title</div>
+	  	</div>
+	  </div>
+  </div>
+ 
 	<script>
 	$(document).ready(function(){
-	    $('#result').height(($(window).height() - 213) );
-	});
-	 $(window).resize(function(){
-		 $('#result').height(($(window).height() - 213) );
-	 });
-
+	    $("#result1").height(($(window).height() - 50) );
+	    $("#result2").height(($(window).height() - 50) );
+	    $("#result3").height(($(window).height() - 50) );
+	    $("#result3").height(($(window).height() - 50) );
+	    $("#result_content1").height(($(window).height() - 190) );
+	    $("#result_content2").height(($(window).height() - 190) );
+	    $("#result_content3").height(($(window).height() - 190) );
+		});
+		$(window).resize(function() {
+			$("#result1").height(($(window).height() - 50));
+			$("#result2").height(($(window).height() - 50));
+			$("#result3").height(($(window).height() - 50));
+		    $("#result_content1").height(($(window).height() - 190) );
+		    $("#result_content2").height(($(window).height() - 190) );
+		    $("#result_content3").height(($(window).height() - 190) );
+		});
 	</script>
   </body>
 </html>

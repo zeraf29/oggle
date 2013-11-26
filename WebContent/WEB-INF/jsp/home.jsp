@@ -33,8 +33,8 @@
 			</button>
 			<a class="navbar-brand" href="#"><strong class="margin_left_30">OGGLE</strong></a>
 		</div>
-			<div class = "col-md-4">
-				<div class="collapse navbar-collapse col-md-6 col-md-offset-3">
+			<div class = "col-md-4"  style = "text-align:center;">
+				<div class="collapse navbar-collapse col-md-5 col-md-offset-3">
 					<ul class="nav navbar-nav .menu_btn">
 						<li id="MyContents_btn"><a href="#"><img src = "resources/image/icon_selected.png"/></a></li>
 						<li id="History_btn"><a href="#"><img src = "resources/image/icon.png"/></a></li>

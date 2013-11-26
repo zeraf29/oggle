@@ -145,7 +145,7 @@
 </div>
 
 	<div class = "margin_left_10">
-		<h1>OGGLE</h1>
+		<p style = "font-size: 150px;">OGGLE</p>
 	</div>
 	<div class = "backGround_4">
 		<div class="container">
