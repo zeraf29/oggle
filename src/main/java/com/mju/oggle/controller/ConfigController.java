@@ -86,4 +86,41 @@ public class ConfigController {
 		writer.write(obj.toString());
 	}
 	
+	@RequestMapping(value = "/updateTag.do", method = RequestMethod.POST)
+	public void updateTag(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		System.out.println("Post");
+		
+		HttpSession session = request.getSession(true);
+		User user = (User)session.getAttribute("user");
+		
+		String tag1 = request.getParameter("tag1");
+		String tag2 = request.getParameter("tag2");
+		String tag3 = request.getParameter("tag3");
+
+		JSONObject obj = new JSONObject();
+		String msg=null;
+		
+		user.setTag1(tag1);
+		user.setTag2(tag2);
+		user.setTag3(tag3);
+		
+		UserDAO userDAO = new UserDAO();
+		userDAO.updateUser(user);
+		
+		msg = "keyword update completion";
+		
+		System.out.println(tag1+ " " + tag2+ " " + tag3);
+		System.out.println(msg);
+
+		try {
+			obj.put("msg", msg);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PrintWriter writer = response.getWriter();
+		writer.write(obj.toString());
+	}
+	
 }

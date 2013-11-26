@@ -25,19 +25,19 @@
 	  <div id = "result1" class = "col-md-4" style = "background-color:#FFE766;">
 	  	<div style = "text-align: center;"><h1>${user.tag1}</h1></div>
 		<div id = "result_content1" class = "result_content">
-		<div>
-			<b>title :${docList[0].title}</b><br/>
-			url : ${docList[0].url}</div>
-			content : ${docList[0].content}<br/>
+			<div class = "title" style = "margin :15px;"><h3><strong>${docList[0].title}</strong></h3></div>
+			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[0].url}</h5><img src = "resources/image/move_icon.png"/>
+			</div>
+			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[0].content}</div>
 		</div>
 	  </div>
 	  <div id = "result2" class = "col-md-4" style = "background-color:#FFCF66;  box-shadow: 1px 1px 10px 1px;">
 	 	<div style = "text-align: center;"><h1>${user.tag2}</h1></div>
 	 	<div id = "result_content2" class = "result_content">
 	 	<div>
-		 	<b>title :${docList[1].title}</b><br/>
-		 	url : ${docList[1].url}<br/>
-		 	content : ${docList[1].content}
+		 	<div class = "title" style = "margin :15px;"><h3><strong>${docList[1].title}</strong></h3></div>
+			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[1].url}</h5></div>
+			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[1].content}</div>
 	 	</div>
 	 	</div>
 	  </div>
@@ -45,9 +45,9 @@
 	  	<div style = "text-align: center;"><h1>${user.tag3}</h1></div>
 	  	<div id = "result_content3" class = "result_content">
 	  	<div>
-		  	<b>title :${docList[2].title}</b><br/>
-		  	url : ${docList[2].url}<br/>
-		  	content : ${docList[2].content}
+		  	<div class = "title" style = "margin :15px;"><h3><strong>${docList[2].title}</strong></h3></div>
+			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[2].url}</h5></div>
+			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[2].content}</div>
 	  	</div>
 	  	</div>
 	  </div>

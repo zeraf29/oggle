@@ -18,8 +18,69 @@
     <![endif]-->
 </head>
 <body>
-	<div class="keyword">
-		keyword setting!!
-	</div>
+  <body>
+  
+	<div class="container">
+		<h3>${user.email}</h3> <br/>
+		
+		  <p>Keyword1</p>
+	        <input type="text" id="tag1" class="form-control" placeholder="Keyword1">
+		  <p>Keyword2</p>
+	        <input type="text" id="tag2" class="form-control" placeholder="Keyword2">
+	      <p>Keyword13</p>
+	        <input type="text" id="tag3" class="form-control" placeholder="Keyword3">
+	        <br/>
+	        
+	       <button type="button" id="update" class="btn btn-default">Update</button>
+          <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal" id = "cancel">Cancel</button>
+    </div> <!-- /container -->
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="resources/js/bootstrap.min.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+		
+		var name = "${user.name}";
+		
+		$("#name").val(name);
+		
+		$("#update").click(function(e){
+			
+			var tag1 = $("#tag1").val();
+			var tag2 = $("#tag2").val();
+			var tag3 = $("#tag3").val();
+			
+			if(tag1 == "" || tag2 == "" || tag3 == "" )	
+				alert("Input Text");
+			else {
+				$.post( "updateTag.do", {
+						tag1: tag1, 
+						tag2: tag2,
+						tag3: tag3
+					},
+					function (data) {
+						var obj = jQuery.parseJSON(data);
+						var msg = obj.msg;
+						alert(msg);
+						location.replace("/Oggle/home.do"); 
+						$("input").val("");
+                    }
+				);
+			}
+		});
+		
+		$("#cancel").click(function(e){
+			$("input").val("");
+			$("#name").val(name);
+		});
+		
+		
+	});
+	</script>
+  </body>
 </body>
 </html>
