@@ -4,6 +4,9 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <body>
+${test}
+${test.title}
+${test.url}
 	<table border="1">
 		<tr>
 			<td>id</td>
@@ -22,10 +25,5 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
-	<br/><br/><br/><br/>
-	<c:forEach var="doc" items="${docList}">
-		content : ${doc.title}<br/>
-	</c:forEach>
 </body>
 </html>

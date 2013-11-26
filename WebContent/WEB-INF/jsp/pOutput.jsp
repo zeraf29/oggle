@@ -14,6 +14,9 @@
 		</form>
 	<br/>
 	
+	${person.name}
+	${person.id}
+	
 	<table border="1">
 		<c:forEach var="person" items="${personList}">
 			<tr>

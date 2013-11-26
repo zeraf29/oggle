@@ -6,10 +6,10 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.Document;
+import com.mju.oggle.model.Person;
 
 @Repository
 public class DocumentService {
@@ -29,15 +29,31 @@ public class DocumentService {
 	
 	public List<Document> listDocument() {
 		
-//		Criteria cri = new Criteria(COLLECTION_NAME);
-//		Query query = new Query();
-//		query.with(new Sort(Sort.Direction.ASC, COLLECTION_NAME));
-//		query.fields().
+		return mongoTemplate.findAll(Document.class, COLLECTION_NAME);
+	}
+	
+	public List<Document> listDocument(int limit) {
 		
-		Query query = new BasicQuery("{ title : /.*asd.*/ }");
-		return mongoTemplate.find(query, Document.class);
+		BasicQuery query = new BasicQuery("{\"title\": {$regex : '" + "All Classes" + "'} }");
+		query.limit(limit);
 		
-//		return mongoTemplate.findAll(Document.class, COLLECTION_NAME);
+		System.out.println(query.toString());
+
+		return mongoTemplate.find(query, Document.class, COLLECTION_NAME);
+	}
+	
+	public Document selectDocument() {
+
+//		BasicQuery query = new BasicQuery("{name : 'aaa'}");
+//		BasicQuery query = new BasicQuery("{\"name\": {$regex : '" + "vc" + "'} }");
+//		BasicQuery query = new BasicQuery("{title : 'Welcome to Apache Nutch'}");
+		BasicQuery query = new BasicQuery("{\"title\": {$regex : '" + "to" + "'} }");
+
+//		query.limit(limit);
+		
+		System.out.println(query.toString());
+		
+		return mongoTemplate.findOne(query, Document.class, COLLECTION_NAME);
 	}
 	
 	
