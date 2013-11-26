@@ -94,6 +94,9 @@ public class MainController {
 	@RequestMapping(value = "/mContents.do", method = RequestMethod.GET)
 	public ModelAndView getMcontents(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("mContents");
+		
+		
+		
 		return mav;
 	}
 	

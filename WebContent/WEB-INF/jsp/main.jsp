@@ -72,10 +72,14 @@
 				var pwd1 = $("#sPwd1").val();
 				var pwd2 = $("#sPwd2").val();
 				var name = $("#sName").val();
+				var tag1 = $("#tag1").val();
+				var tag2 = $("#tag2").val();
+				var tag3 = $("#tag3").val();
 				
 				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
 				
-				if(email == "" || pwd1 == "" || pwd2 == "" || name == "" )	
+				if(email == "" || pwd1 == "" || pwd2 == "" || name == "" 
+						|| tag1== ""|| tag2== ""|| tag3== "")	
 					alert("Input Text");
 				else if(pwd1 != pwd2)
 					alert("Confirm Password");
@@ -89,7 +93,10 @@
 							email: email,
 							pwd1: pwd1, 
 							pwd2: pwd2, 
-							name: name
+							name: name,
+							tag1: tag1,
+							tag2: tag2,
+							tag3: tag3
 						},
 						function (data) {
 							var obj = jQuery.parseJSON(data);
@@ -191,13 +198,13 @@
 						<p>User_name</p>
 						<input type="text" id="sName" class="form-control"
 							placeholder="User_name" >
-						<p>Keyword</p>
-						<input type="text" id="sName" class="form-control"
-							placeholder="Keyword1" >
-						<input type="text" id="sName" class="form-control"
-						placeholder="Keyword2" >
-						<input type="text" id="sName" class="form-control"
-						placeholder="Keyword3" >
+						<p>Tag</p>
+						<input type="text" id="tag1" class="form-control"
+							placeholder="tag1" >
+						<input type="text" id="tag2" class="form-control"
+						placeholder="tag2" >
+						<input type="text" id="tag3" class="form-control"
+						placeholder="tag3" >
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" id="signup">Signup</button>
