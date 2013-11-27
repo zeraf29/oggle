@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.UserTags;
+import com.mongodb.WriteResult;
 
 @Repository
 public class UserTagsService {
@@ -22,6 +23,23 @@ public class UserTagsService {
 	private MongoTemplate mongoTemplate;
 	
 	public static final String COLLECTION_NAME = "userTags";
+	
+	public boolean updateLikeList(String email, String id){
+		boolean rValue = false;
+		Query query = new Query();
+		query.addCriteria(Criteria.where("_id").is(email));
+		//BasicQuery query = new BasicQuery("{\"email\": \""+ email + "\" }");
+		UserTags user =  mongoTemplate.findOne(query, UserTags.class, COLLECTION_NAME);
+
+		if(!user.getEmail().isEmpty()){
+			Update update = new Update();
+			update.addToSet("likeList", id);
+			mongoTemplate.updateFirst(query, update, UserTags.class);
+			rValue = true;
+		}
+
+		return rValue;
+	}
 	
 	public void addUserTags(UserTags userTags) {
 		if (!mongoTemplate.collectionExists(UserTags.class)) {

@@ -43,16 +43,6 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/doLike.do",method=RequestMethod.GET)
-	public boolean doLike(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		boolean rValue = false;
-		/*
-		String email = request.getParameter("email");
-		String id = request.getParameter("id");
-		*/
-		
-		return rValue;
-	}
 	@RequestMapping(value = "/main2.do", method = RequestMethod.GET)
 	public ModelAndView getMain(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("main2");
@@ -159,6 +149,21 @@ public class MainController {
     	mav.addObject("docList", docList);
     	
 		return mav;
+	}
+	
+
+	@RequestMapping(value="/doLike.do",method=RequestMethod.GET)
+	public boolean doLike(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		boolean rValue = false;
+		/*
+		String email = request.getParameter("email");
+		String id = request.getParameter("id");
+		*/
+		String email = "pooingx2@gmail.com";
+		String id = "155511123";
+		
+		return userTagsService.updateLikeList(email, id);
 	}
 	
 	@RequestMapping(value = "/history.do", method = RequestMethod.GET)

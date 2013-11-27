@@ -75,4 +75,6 @@ public class UserTags {
 	public void setLikeList(List<String> likeList) {
 		this.likeList = likeList;
 	}
+
+	
 }
