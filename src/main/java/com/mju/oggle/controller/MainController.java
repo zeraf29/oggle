@@ -50,6 +50,15 @@ public class MainController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/doLike.do", method = RequestMethod.GET)
+	public boolean doLike(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		boolean rValue = false;
+		
+		ModelAndView mav = new ModelAndView("main2");
+		mav.addObject("msg", "Asdasd");
+		return rValue;
+	}
+	
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView getAuth(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
