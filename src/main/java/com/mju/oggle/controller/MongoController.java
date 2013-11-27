@@ -1,6 +1,8 @@
 package com.mju.oggle.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.mju.oggle.model.MinDocument;
 import com.mju.oggle.model.Person;
+import com.mju.oggle.model.UserTags;
 import com.mju.oggle.mongodb.DocumentService;
 import com.mju.oggle.mongodb.PersonService;
+import com.mju.oggle.mongodb.UserTagsService;
    
 @Controller    
 public class MongoController {  
@@ -28,6 +33,9 @@ public class MongoController {
 	
 	@Autowired
 	private DocumentService documentService;
+	
+	@Autowired
+	private UserTagsService userTagsService;
 	
 	
 	@RequestMapping(value = "/mongo.do", method = RequestMethod.GET)
@@ -54,9 +62,36 @@ public class MongoController {
     	ModelAndView mav = new ModelAndView("dOutput");
     	mav.addObject("docList", documentService.listDocument()); 
 //    	mav.addObject("docList", documentService.sortDocument()); 
+    	
+        return mav;  
+    }  
+    
+    @RequestMapping(value = "/userTag.do", method = RequestMethod.GET)  
+	public ModelAndView getTagList(ModelMap model) {
+    	
+    	ModelAndView mav = new ModelAndView("uOutput");
+    	
+    	UserTags userTags = new UserTags();
+    	userTags.setEmail("pooasd@naver.com");
+    	
+//    	MinDocument minDoc = new MinDocument();
+//    	minDoc.setId("Asdfasdf");
+//    	minDoc.setSegment("123432");
+    	
+//    	userTags.getWatchedList().add(minDoc);
+    	userTags.getWatchedList().add("asdfasdf");
+    	userTags.getTag1().add("tag1");
+    	userTagsService.addUserTags(userTags);
+    	
+    	userTagsService.update("tag2");
+//    	userTagsService.
+    	
+    	mav.addObject("utList", userTagsService.listUserTags()); 
+//    	mav.addObject("docList", documentService.sortDocument()); 
 
         return mav;  
     }  
+    
     
     @RequestMapping(value = "/insert.do", method = RequestMethod.POST)  
 	public View createPerson(@ModelAttribute Person person, ModelMap model) {
@@ -68,9 +103,11 @@ public class MongoController {
     	return new RedirectView("/Oggle/person.do");
     }
         
+    
     @RequestMapping(value = "/delete.do", method = RequestMethod.GET)  
 	public View deletePerson(@ModelAttribute Person person, ModelMap model) {  
         personService.deletePerson(person);  
         return new RedirectView("/Oggle/person.do");  
     }    
+    
 }

@@ -18,8 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mju.oggle.dao.UserDAO;
 import com.mju.oggle.model.Document;
 import com.mju.oggle.model.User;
+import com.mju.oggle.model.UserTags;
 import com.mju.oggle.mongodb.DocumentService;
 import com.mju.oggle.mongodb.PersonService;
+import com.mju.oggle.mongodb.UserTagsService;
 
 
 @Controller
@@ -30,6 +32,9 @@ public class MainController {
 	
 	@Autowired
 	private PersonService personService;
+	
+	@Autowired
+	private UserTagsService userTagsService;
 	
 	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
 	public ModelAndView test(HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -120,8 +125,18 @@ public class MainController {
     	docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
     	docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
 //    	docList.add(documentService.selectDocument("to"));
-		
+    	
+//    	watcgedList.
+    	UserTags userTags = new UserTags();
+    	userTags.setEmail(user.getEmail());
+    	userTags.getWatchedList().add(docList.get(0).getId());
+    	userTags.getWatchedList().add(docList.get(1).getId());
+    	userTags.getWatchedList().add(docList.get(2).getId());
+    	
+    	userTagsService.addUserTags(userTags);
+    	
     	mav.addObject("docList", docList);
+//    	mav.addObject("utList", docList);
     	
 		return mav;
 	}
