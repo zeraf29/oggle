@@ -71,6 +71,13 @@
 		
 		$("#MyContents_btn").click(function() {
 			$(this).attr("src", "resources/image/icon_selected.png");
+			if(page_flag == 2){
+				$("#History_btn img").attr("src", "resources/image/icon.png");
+			}
+		else if(page_flag ==3)
+			{
+				$("#Config_btn  img").attr("src", "resources/image/icon.png");
+			}
 			page_flag = 1;
 			$('#Contents').fadeOut('slow', function() {
 				$("#Contents").load("contents.do", function() {
@@ -81,6 +88,13 @@
 
 		$("#History_btn").click(function() {
 			$(this).attr("src", "resources/image/icon_selected.png");
+			if(page_flag == 1){
+					$("#MyContents_btn img").attr("src", "resources/image/icon.png");
+				}
+			else if(page_flag ==3)
+				{
+					$("#Config_btn img").attr("src", "resources/image/icon.png");
+				}
 			page_flag = 2;
 			$('#Contents').fadeOut('slow', function() {
 				$("#Contents").load("history.do", function() {
@@ -91,6 +105,13 @@
 
 		$("#Config_btn").click(function() {
 			$(this).attr("src", "resources/image/icon_selected.png");
+			if(page_flag == 1){
+				$("#MyContents_btn img").attr("src", "resources/image/icon.png");
+			}
+		else if(page_flag ==2)
+			{
+				$("#History_btn img").attr("src", "resources/image/icon.png");
+			}
 			page_flag = 3;
 			$('#Contents').fadeOut('slow', function() {
 				$("#Contents").load("config.do", function() {
@@ -102,23 +123,36 @@
 		//hover
 		
 		$("#MyContents_btn img").mouseover(function() {
-			$(this).attr("src", "resources/image/icon_selected.png");
+			if(page_flag != 1){
+				$(this).attr("src", "resources/image/icon_selected.png");
+			}
 		});
 		$("#MyContents_btn img").mouseout(function(){
+			if(page_flag != 1){
 				$(this).attr("src", "resources/image/icon.png");
+			}
 		});
 		$("#History_btn img").mouseover(function() {
+			if(page_flag != 2){
 			$(this).attr("src", "resources/image/icon_selected.png");
+			}
 		});
 		$("#History_btn img").mouseout(function(){
+			if(page_flag != 2)
+			{
 				$(this).attr("src", "resources/image/icon.png");
+			}
 		});
 		
 		$("#Config_btn img").mouseover(function() {
+			if(page_flag !=3){
 			$(this).attr("src", "resources/image/icon_selected.png");
+			}
 		});
 		$("#Config_btn img").mouseout(function(){
+			if(page_flag !=3){
 			$(this).attr("src", "resources/image/icon.png");
+			}
 		});
 
 	</script>

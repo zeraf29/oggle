@@ -135,13 +135,22 @@ public class MainController {
     	docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
     	docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
     	
+
+//    	watcgedList.
+//    	UserTags userTags = new UserTags();
+//    	userTags.setEmail(user.getEmail());
+//    	userTags.getWatchedList().add(docList.get(0).getId());
+//    	userTags.getWatchedList().add(docList.get(1).getId());
+//    	userTags.getWatchedList().add(docList.get(2).getId());
+
     	UserTags userTags = new UserTags();
     	userTags.setEmail(user.getEmail());
     	userTags.getWatchedList().add(docList.get(0).getId());
     	userTags.getWatchedList().add(docList.get(1).getId());
     	userTags.getWatchedList().add(docList.get(2).getId());
+
     	
-    	userTagsService.addUserTags(userTags);
+//    	userTagsService.addUserTags(userTags);
     	
     	userTagsService.updateWatchList(user.getEmail(), docList.get(0).getId());
     	userTagsService.updateWatchList(user.getEmail(), docList.get(1).getId());
