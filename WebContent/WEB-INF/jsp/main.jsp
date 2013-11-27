@@ -37,7 +37,7 @@
 			$('body').fadeIn(); 
 			
 			$('.carousel').carousel({
-				  interval: 1500
+				  interval: 4000
 				});
 
 			$("#login").click(function(e){
@@ -112,6 +112,8 @@
 				$("input").val("");
 			});
 			
+			
+			
 		});
 		
 		$("intro_carousel").carousel('cycle');
@@ -126,28 +128,33 @@
 			<li data-target="#intro_carousel" data-slide-to="1"></li>
 			<li data-target="#intro_carousel" data-slide-to="2"></li>
 		</ol>
-	
+
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="height_60 backGround_1"></div>
-				<div class="carousel-caption"><img src = "resources/image/explain.png"/></div>
-			</div>
-			<div class="item">
 				<div class="height_60 backGround_2"></div>
 				<div class="carousel-caption">
-					<h1>show me the money</h1>
+					<img src="resources/image/explain3.png" />
+					<h3>Get information variable things</h3>
 				</div>
 			</div>
 			<div class="item">
 				<div class="height_60 backGround_3"></div>
 				<div class="carousel-caption">
-					<h1>show me the money</h1>
+					<img src="resources/image/explain2.png" />
+					<h3>Get Recommended page to your Keyword</h3>
+
+				</div>
+				</div>
+				<div class="item">
+					<div class="height_60 backGround_1"></div>
+					<div class="carousel-caption">
+						<img src="resources/image/explain.png" />
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- /.carousel -->
-</div>
 
 	<div class = "margin_left_10">
 		<p style = "font-size: 150px;">OGGLE</p>
