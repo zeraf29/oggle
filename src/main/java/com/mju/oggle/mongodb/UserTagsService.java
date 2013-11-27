@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.UserTags;
@@ -44,10 +45,23 @@ public class UserTagsService {
 		return mongoTemplate.find(query, UserTags.class, COLLECTION_NAME);
 	}
 	
-	public void update(String tag) {
-//		BasicQuery query = new BasicQuery("tag,{$addToSet: { tag1: asd }}");
-//		System.out.println(query.toString());
-//		mongoTemplate.updateFirst(query, update, entityClass);
+	public void updateWatchList(String email, String id) {
+		
+//		BasicQuery query = new BasicQuery("{email : 'pooingx2@gmail.com'}");
+		BasicQuery query = new BasicQuery("{email : \'"+email+"\'}");
+		UserTags userTags = new UserTags();
+		userTags = mongoTemplate.findOne(query, UserTags.class, COLLECTION_NAME);
+		
+		System.out.println(userTags.getEmail());
+		System.out.println(userTags.getWatchedList());
+		
+		for (String item : userTags.getWatchedList()) {
+			if (item.equals(id)) return;
+		}
+		
+		userTags.getWatchedList().add(id);
+		
+		mongoTemplate.save(userTags);
 	}
 	
 	/*
