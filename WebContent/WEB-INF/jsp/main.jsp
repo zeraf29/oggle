@@ -131,9 +131,7 @@
 		<div class="carousel-inner">
 			<div class="item active">
 				<div class="height_60 backGround_1"></div>
-				<div class="carousel-caption">
-					<h1>show me the money</h1>
-				</div>
+				<div class="carousel-caption"><img src = "resources/image/explain.png"/></div>
 			</div>
 			<div class="item">
 				<div class="height_60 backGround_2"></div>

@@ -73,7 +73,7 @@
 			$(this).attr("src", "resources/image/icon_selected.png");
 			page_flag = 1;
 			$('#Contents').fadeOut('slow', function() {
-				$("#Contents").load("mContents.do", function() {
+				$("#Contents").load("contents.do", function() {
 					$("#Contents").fadeIn('slow');
 				});
 			});
