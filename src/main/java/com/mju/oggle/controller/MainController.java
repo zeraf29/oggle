@@ -139,8 +139,6 @@ public class MainController {
         	docList.add(documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()));
     	}
 
-    	
-  
 		if(documentService.selectTopBoostDocument(user2.getTag1()) != null)
 			userTags.getWatchedList().add(docList.get(0).getId());
     	if(documentService.selectTopBoostDocument(user2.getTag2()) != null)
@@ -155,6 +153,21 @@ public class MainController {
     	mav.addObject("docList", docList);
     	
 		return mav;
+	}
+	
+
+	@RequestMapping(value="/doLike.do",method=RequestMethod.GET)
+	public boolean doLike(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		boolean rValue = false;
+		/*
+		String email = request.getParameter("email");
+		String id = request.getParameter("id");
+		*/
+		String email = "pooingx2@gmail.com";
+		String id = "155511123";
+		
+		return userTagsService.updateLikeList(email, id);
 	}
 	
 	@RequestMapping(value = "/history.do", method = RequestMethod.GET)

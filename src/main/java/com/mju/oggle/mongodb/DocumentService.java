@@ -10,9 +10,12 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.Document;
+import com.mju.oggle.model.UserTags;
+import com.mongodb.WriteResult;
 
 @Repository
 public class DocumentService {
@@ -26,6 +29,7 @@ public class DocumentService {
 		
 		return mongoTemplate.findAll(Document.class, COLLECTION_NAME);
 	}
+	
 	
 	public List<Document> listDocument(int limit) {
 		
