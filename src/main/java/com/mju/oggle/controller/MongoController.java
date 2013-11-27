@@ -71,23 +71,16 @@ public class MongoController {
     	
     	ModelAndView mav = new ModelAndView("uOutput");
     	
-    	UserTags userTags = new UserTags();
-    	userTags.setEmail("pooasd@naver.com");
+//    	UserTags userTags = new UserTags();
+//    	userTags.setEmail("pooasd@naver.com");
     	
-//    	MinDocument minDoc = new MinDocument();
-//    	minDoc.setId("Asdfasdf");
-//    	minDoc.setSegment("123432");
+//    	userTags.getWatchedList().add("asdfasdf");
+//    	userTags.getTag1().add("tag1");
+//    	userTagsService.addUserTags(userTags);
     	
-//    	userTags.getWatchedList().add(minDoc);
-    	userTags.getWatchedList().add("asdfasdf");
-    	userTags.getTag1().add("tag1");
-    	userTagsService.addUserTags(userTags);
-    	
-    	userTagsService.update("tag2");
-//    	userTagsService.
+//    	userTagsService.updateWatchList("pooingx2@gmail.com","123133323");
     	
     	mav.addObject("utList", userTagsService.listUserTags()); 
-//    	mav.addObject("docList", documentService.sortDocument()); 
 
         return mav;  
     }  

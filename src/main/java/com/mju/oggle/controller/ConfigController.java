@@ -27,11 +27,11 @@ import com.mju.oggle.mongodb.PersonService;
 @Controller
 public class ConfigController {
 
-	@Autowired
-	private PersonService personService;
-	
-	@Autowired
-	private DocumentService documentService;
+//	@Autowired
+//	private PersonService personService;
+//	
+//	@Autowired
+//	private DocumentService documentService;
 	
 	@RequestMapping(value = "/config.do", method = RequestMethod.GET)
 	public ModelAndView getConfig(HttpServletRequest request, HttpServletResponse response) throws IOException{
