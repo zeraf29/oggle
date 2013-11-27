@@ -126,12 +126,7 @@ public class ConfigController {
 		user.setTag3(tag3);
 		
 		UserDAO userDAO = new UserDAO();
-<<<<<<< HEAD
-		userDAO.updateUser(user);
-		System.out.println(user.getName());
-=======
 		userDAO.updateTag(user);
->>>>>>> e32045ec569246981f4ecfe5479685c216a9c98e
 		
 		msg = "keyword update completion";
 		

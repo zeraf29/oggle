@@ -22,14 +22,6 @@ public class DocumentService {
 	
 	public static final String COLLECTION_NAME = "oggletest";
 	
-	public void addDocument(Document doc) {
-		if (!mongoTemplate.collectionExists(Document.class)) {
-			mongoTemplate.createCollection(Document.class);
-		}		
-		doc.setId(UUID.randomUUID().toString());
-		mongoTemplate.insert(doc, COLLECTION_NAME);
-	}
-	
 	public List<Document> listDocument() {
 		
 		return mongoTemplate.findAll(Document.class, COLLECTION_NAME);
