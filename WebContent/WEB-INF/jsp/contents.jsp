@@ -21,6 +21,7 @@
   </head>
   <body>
   <jsp:include page="header.jsp"></jsp:include>
+  
   <div id = "Keyword_list" class = "row" style = "margin : 50px 0px 0px 0px; text-align:center;">
  	 <div class="col-md-4">
          <div style = "text-align: center;"><h1>${user.tag1}</h1></div>
@@ -40,9 +41,9 @@
 	<div class="page-header">
 	  <div><h3>${doc.title}</h3></div>
 	  <div>
-	  <a id = "move" href = "#"><img src = "resources/image/move_icon.png"/></a>
-	  <a id = "next" href = "#"><img src = "resources/image/move_icon.png"/></a>
-	  <a id = "like" href = "#"><img src = "resources/image/move_icon.png"/></a>
+		  <a id = "move" href = "#"><img src = "resources/image/move_icon.png"/></a>
+		  <a id = "next" href = "#"><img src = "resources/image/move_icon.png"/></a>
+		  <a id = "like" href = "#"><img src = "resources/image/move_icon.png"/></a>
 	  </div>
 	</div>
 
@@ -65,12 +66,10 @@
  
 	<script>
 	
-	$(document).ready(function(){
-    
-		//$("#result1").height(($(window).height() - 50) );
-		//var content = "${content}";
-		//alert(content);
-		getHTML("${doc.url}","article_c_1");
+		$(document).ready(function(){
+			var content = "${content}";
+			alert(content);
+			getHTML("${doc.url}","article_c_"+content);
 		
 		});
 	
@@ -89,18 +88,20 @@
 		});
 		
 		$("#firstBtn").click(function(){
-			getHTML("${doc.url}","article_c_1");
+			location.replace("/Oggle/contents.do?content=1");
+			//getHTML("${doc.url}","article_c_1");
 		});
 		$("#secondBtn").click(function(){
-			//location.r("/Oggle/contents.do?content=2");
-			alert("${doc.url}");
+			location.replace("/Oggle/contents.do?content=2");
 			//alert("${doc.url}");
-			getHTML("${doc.url}","article_c_2");
+			//alert("${doc.url}");
+			//getHTML("${doc.url}","article_c_2");
 		});
 		$("#thirdBtn").click(function(){
+			location.replace("/Oggle/contents.do?content=3");
 			//location.replace("/Oggle/contents.do?content=3");
-			alert("${doc.url}");
-			getHTML("${doc.url}","article_c_3");
+			//alert("${doc.url}");
+			//getHTML("${doc.url}","article_c_3");
 		});
 		
 		function getHTML(url,id){

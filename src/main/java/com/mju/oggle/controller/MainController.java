@@ -94,6 +94,7 @@ public class MainController {
 
 	@RequestMapping(value ="/getHtml.do",method = RequestMethod.GET)
 	public ModelAndView getHtml(HttpServletRequest request, HttpServletResponse response){
+		System.out.println("getHtml");
 		response.setContentType("text/html;charset=UTF-8");
 		String str = "";
 		String urls = request.getParameter("url");
@@ -226,21 +227,23 @@ public class MainController {
 			userTagsService.addUserTags(userTags);
 			
 			switch(content){
-			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1()); break;
-			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2()); break;
-			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3()); break;
+			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1()); System.out.println(1); break;
+			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2()); System.out.println(2); break;
+			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3()); System.out.println(3); break;
 			}
 		}
 		else {
 			switch(content){
-			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()); break;
-			case 2: doc = documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()); break;
-			case 3: doc = documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()); break;
+			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()); System.out.println(4); break;
+			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()); System.out.println(5); break;
+			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()); System.out.println(6); break;
 			}
 		}
 		
+
 		System.out.println(doc.getTitle());
 		System.out.println(doc.getContent());
+		System.out.println(doc.getUrl());
 		
 		mav.addObject("doc", doc);
 		mav.addObject("content", content);
