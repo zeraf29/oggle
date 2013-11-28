@@ -50,15 +50,6 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/doLike.do", method = RequestMethod.GET)
-	public boolean doLike(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		boolean rValue = false;
-		
-		ModelAndView mav = new ModelAndView("main2");
-		mav.addObject("msg", "Asdasd");
-		return rValue;
-	}
-	
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView getAuth(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
@@ -129,26 +120,54 @@ public class MainController {
 		mav.addObject("tag3", user2.getTag3());
 		
     	List<Document> docList = new ArrayList<Document>();
+    	
+    	UserTags userTags = userTagsService.findOneUserTags(user.getEmail());
+    	
+    	if(userTags == null) {
+    		userTags = new UserTags();
+        	userTags.setEmail(user.getEmail());
+        	userTagsService.addUserTags(userTags);
+        	
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag1()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
+    	}
+    	else {
+//    		System.out.println(userTags.getWatchedList().size());
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()));
+    	}
 
-    	docList.add(documentService.selectTopBoostDocument(user2.getTag1()));
-    	docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
-    	docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
+		if(documentService.selectTopBoostDocument(user2.getTag1()) != null)
+			userTags.getWatchedList().add(docList.get(0).getId());
+    	if(documentService.selectTopBoostDocument(user2.getTag2()) != null)
+    		userTags.getWatchedList().add(docList.get(1).getId());
+    	if(documentService.selectTopBoostDocument(user2.getTag3()) != null)
+    		userTags.getWatchedList().add(docList.get(2).getId());
     	
-    	UserTags userTags = new UserTags();
-    	userTags.setEmail(user.getEmail());
-    	userTags.getWatchedList().add(docList.get(0).getId());
-    	userTags.getWatchedList().add(docList.get(1).getId());
-    	userTags.getWatchedList().add(docList.get(2).getId());
-    	
-    	userTagsService.addUserTags(userTags);
-    	
-    	userTagsService.updateWatchList(user.getEmail(), docList.get(0).getId());
-    	userTagsService.updateWatchList(user.getEmail(), docList.get(1).getId());
-    	userTagsService.updateWatchList(user.getEmail(), docList.get(2).getId());
-    	
+    	for(Document item : docList){
+    		if(item != null)
+    			userTagsService.updateWatchList(user.getEmail(), item.getId());
+    	}
     	mav.addObject("docList", docList);
     	
 		return mav;
+	}
+	
+
+	@RequestMapping(value="/doLike.do",method=RequestMethod.GET)
+	public boolean doLike(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		boolean rValue = false;
+		/*
+		String email = request.getParameter("email");
+		String id = request.getParameter("id");
+		*/
+		String email = "pooingx2@gmail.com";
+		String id = "155511123";
+		
+		return userTagsService.updateLikeList(email, id);
 	}
 	
 	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
