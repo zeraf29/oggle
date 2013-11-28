@@ -1,6 +1,9 @@
 package com.mju.oggle.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +90,34 @@ public class MainController {
 			
 			return mav;
 		}
+	}
+	
+	@RequestMapping(value ="/getHtml.do",method = RequestMethod.GET)
+	public ModelAndView getHtml(HttpServletRequest request, HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
+		String str = "";
+		String urls = request.getParameter("url");
+		ModelAndView mav = new ModelAndView("getHtml");
+		  try{
+		    URL url = new URL(urls);
+		    // url클래스로 접근한 호스트의 정보를 보여줍니다.
+
+		    
+		    InputStreamReader isr = new InputStreamReader(url.openStream(), "UTF-8");//입력스트림을 생성합니다. 
+		    BufferedReader br = new BufferedReader(isr); 
+		    String inLine = null;
+
+		    while ((inLine=br.readLine())!= null){ // 라인단위로 읽어들이기
+		      str += inLine; 
+		    }
+
+		    br.close(); //데이터 읽기가 끝나면 close메소드로 스트림을 닫습니다.
+
+		  }catch (IOException e) { 
+		    str = e.toString(); 
+		  }
+		  mav.addObject("html",str);
+		  return mav;
 	}
 	
 	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
