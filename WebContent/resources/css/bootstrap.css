@@ -7183,8 +7183,7 @@ padding-bottom : 10px;
 
 .like_list{
 	height:80px;
-	margin-left : 10%;
-	margin-right:-10%;
+	width : 450px;
 	margin-top : 10px;
 	margin-bottom : 10px;
 	background-color : #FFF7D7;
@@ -7205,7 +7204,6 @@ padding-bottom : 10px;
 	-webkit-border-radius: 10px; 
 	border: 2px solid #FFD110;
 	 overflow-y: scroll;
-	 overflow : hidden;
 }
 .result_content{
 	margin-left : 20px;
