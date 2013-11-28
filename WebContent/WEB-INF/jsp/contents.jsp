@@ -21,56 +21,46 @@
   </head>
   <body>
   
-  <div id = "result" class = "row" style = "margin : 50px 0px 0px 0px">
-	  <div id = "result1" class = "col-md-4" style = "background-color:#FFE766;">
-	  	<div style = "text-align: center;"><h1>${user.tag1}</h1></div>
-		<div id = "result_content1" class = "result_content">
-			<div class = "title" style = "margin :15px;"><h3><strong>${docList[0].title}</strong></h3></div>
-			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[0].url}</h5></div>
-			<div class = "link_group">
-				<a id = "move_src_docList0" href = "#"><img src = "resources/image/move_icon.png"/></a>
-				<a id = "like_docList0" href = "#"><img src = "resources/image/like_icon.png"/></a>
+  <div id = "Keyword_list" class = "row" style = "margin : 50px 0px 0px 0px; text-align:center;">
+ 	 <div class="col-md-4">
+         <div style = "text-align: center;"><h1>${user.tag1}</h1></div>
+         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first" >show more>></button>
+        </div>
+        <div class="col-md-4">
+           <div style = "text-align: center;"><h1>${user.tag2}</h1></div>
+         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#second">show more>></button>
+       </div>
+        <div class="col-md-4">
+           <div style = "text-align: center;"><h1>${user.tag3}</h1></div>
+           <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#third">show more>></button>
+        </div>
+	</div>
+
+	<div class="page-header">
+	  <div><h3>TiTLE</h3></div>
+	  <div>
+	  <a id = "move" href = "#"><img src = "resources/image/move_icon.png"/></a>
+	  <a id = "next" href = "#"><img src = "resources/image/move_icon.png"/></a>
+	  <a id = "like" href = "#"><img src = "resources/image/move_icon.png"/></a>
+	  </div>
+	</div>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div class="tab-pane fade in active" id="first">
+			<div id="article_c_1" class="article_contents"
+				style="overflow: scroll; margin-left: 30px; margin-top: 40px;">
 			</div>
-			<div id="article_c_1" class = "article_contents" style = "overflow:scroll;margin-left :30px; margin-top : 40px;"></div>
-			<!-- 
-			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[0].content}</div>
-			-->
 		</div>
-	  </div>
-	  <div id = "result2" class = "col-md-4" style = "background-color:#FFCF66;  box-shadow: 1px 1px 10px 1px;">
-	 	<div style = "text-align: center;"><h1>${user.tag2}</h1></div>
-	 	<div id = "result_content2" class = "result_content">
-	 	<div>
-		 	<div class = "title" style = "margin :15px;"><h3><strong>${docList[1].title}</strong></h3></div>
-			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[1].url}</h5></div>
-			<div class = "link_group">
-				<a id = "move_src_docList1" href = "#"><img src = "resources/image/move_icon.png"/></a>
-				<a id = "like_docList1" href = "#"><img src = "resources/image/like_icon.png"/></a>
-			</div>
-			<div id="article_c_2" class = "article_contents" style = "overflow:scroll;margin-left :30px; margin-top : 40px;"></div>
-			<!-- 
-			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[1].content}</div>
-	 		-->
-	 	</div>
-	 	</div>
-	  </div>
-	  <div id = "result3" class = "col-md-4" style = "background-color:#F7FD65;  box-shadow: 0px 1px 10px 1px;">
-	  	<div style = "text-align: center;"><h1>${user.tag3}</h1></div>
-	  	<div id = "result_content3" class = "result_content">
-	  	<div>
-		  	<div class = "title" style = "margin :15px;"><h3><strong>${docList[2].title}</strong></h3></div>
-			<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${docList[2].url}</h5></div>
-				<div class = "link_group">
-				<a id = "move_src_docList2" href = "#"><img src = "resources/image/move_icon.png"/></a>
-				<a id = "like_docList2" href = "#"><img src = "resources/image/like_icon.png"/></a>
-			</div>
-			<div id="article_c_3" class = "article_contents" style = "overflow:scroll;margin-left :30px; margin-top : 40px;"></div>
-			<!--<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[2].content}</div>
-	  		-->
-	  	</div>
-	  	</div>
-	  </div>
-  </div>
+		<div class="tab-pane fade" id="second">
+			<div id="article_c_2" class="article_contents"
+				style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+		</div>
+		<div class="tab-pane fade" id="third">
+			<div id="article_c_3" class="article_contents"
+				style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+		</div>
+	</div>
  
 	<script>
 	$(document).ready(function(){
@@ -79,37 +69,25 @@
 		getHTML("${docList[1].url}","article_c_2");
 		getHTML("${docList[2].url}","article_c_3");
 	    
-		$("#result1").height(($(window).height() - 50) );
-	    $("#result2").height(($(window).height() - 50) );
-	    $("#result3").height(($(window).height() - 50) );
-	    $("#result3").height(($(window).height() - 50) );
-	    $("#result_content1").height(($(window).height() - 190) );
-	    $("#result_content2").height(($(window).height() - 190) );
-	    $("#result_content3").height(($(window).height() - 190) );
+		//$("#result1").height(($(window).height() - 50) );
+		
+		page_flag = 1;
 		});
+	
 		$(window).resize(function() {
-			$("#result1").height(($(window).height() - 50));
-			$("#result2").height(($(window).height() - 50));
-			$("#result3").height(($(window).height() - 50));
-		    $("#result_content1").height(($(window).height() - 190) );
-		    $("#result_content2").height(($(window).height() - 190) );
-		    $("#result_content3").height(($(window).height() - 190) );
 		});
 		
-		$("#move_src_docList0").click(function(){
-			window.open("${docList[0].url}", 'window name', 'window settings');
+		
+		$("#move").click(function(){
+		//	window.open("${docList[0].url}", 'window name', 'window settings');
 		});
-		$("#move_src_docList1").click(function(){
-			window.open("${docList[1].url}", 'window name', 'window settings');
+		$("#next").click(function(){
+		//	window.open("${docList[1].url}", 'window name', 'window settings');
 		});
-		$("#move_src_docList2").click(function(){
-			window.open("${docList[2].url}", 'window name', 'window settings');
+		$("#like").click(function(){
+			//window.open("${docList[2].url}", 'window name', 'window settings');
 		});
 		
-		$("#like_docList0").click(function(){
-			alert("kkdd");
-		});
-				
 		function getHTML(url,id){
 			var params = "url="+url;
 			$.ajax({      
