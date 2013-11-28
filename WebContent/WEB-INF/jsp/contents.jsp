@@ -20,46 +20,54 @@
     <![endif]-->
   </head>
   <body>
-  
-  <div id = "Keyword_list" class = "row" style = "margin : 50px 0px 0px 0px; text-align:center;">
+  <div style = "background-color:#ffe766;">
+  <div id = "Keyword_list" class = "row" style = "margin : 50px 0px 0px 0px; text-align:center; ">
  	 <div class="col-md-4">
-         <div style = "text-align: center;"><h1>${user.tag1}</h1></div>
+         <div style = "text-align: center;"><p style = "font-size : 60px; margin : 30px;">${user.tag1}</p></div>
          <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first" >show more>></button>
         </div>
         <div class="col-md-4">
-           <div style = "text-align: center;"><h1>${user.tag2}</h1></div>
+           <div style = "text-align: center;"><p style = "font-size : 60px; margin : 30px;">${user.tag2}</p></div>
          <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#second">show more>></button>
        </div>
         <div class="col-md-4">
-           <div style = "text-align: center;"><h1>${user.tag3}</h1></div>
+           <div style = "text-align: center;"><p style = "font-size : 60px; margin : 30px;">${user.tag3}</p></div>
            <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#third">show more>></button>
         </div>
 	</div>
+	
 
 	<div class="page-header">
-	  <div><h3>TiTLE</h3></div>
-	  <div>
-	  <a id = "move" href = "#"><img src = "resources/image/move_icon.png"/></a>
-	  <a id = "next" href = "#"><img src = "resources/image/move_icon.png"/></a>
-	  <a id = "like" href = "#"><img src = "resources/image/move_icon.png"/></a>
-	  </div>
+		<div class="title_box" sytle="padding-right:10%;padding-left:10%;margin-right:auto;margin-left:auto;">
+			<div style="text-align:left;">
+				<h3>TITLE</h3>
+				<h3><small>wwww.gkdkdkdkdkdkd.com</small></h3>
+			</div>
+			<div style="text-align:right;">
+				<a id="move" href="#"><img src="resources/image/move_icon.png" /></a>
+				<a id="next" href="#"><img src="resources/image/move_icon.png" /></a>
+				<a id="like" href="#"><img src="resources/image/move_icon.png" /></a>
+			</div>
+		</div>
 	</div>
+</div>
 
 	<!-- Tab panes -->
 	<div class="tab-content">
-		<div class="tab-pane fade in active" id="first">
-			<div id="article_c_1" class="article_contents"
-				style="overflow: scroll; margin-left: 30px; margin-top: 40px;">
+			<div class="tab-pane fade in active" id="first">
+						<div id="article_c_1" class="article_contents"
+					style="overflow: scroll; margin-left: 30px; margin-top: 40px;">
+				</div>
+			
 			</div>
-		</div>
-		<div class="tab-pane fade" id="second">
-			<div id="article_c_2" class="article_contents"
-				style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
-		</div>
-		<div class="tab-pane fade" id="third">
-			<div id="article_c_3" class="article_contents"
-				style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
-		</div>
+			<div class="tab-pane fade" id="second">
+				<div id="article_c_2" class="article_contents"
+					style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+			</div>
+			<div class="tab-pane fade" id="third">
+				<div id="article_c_3" class="article_contents"
+					style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+			</div>
 	</div>
  
 	<script>
@@ -70,8 +78,6 @@
 		getHTML("${docList[2].url}","article_c_3");
 	    
 		//$("#result1").height(($(window).height() - 50) );
-		
-		page_flag = 1;
 		});
 	
 		$(window).resize(function() {
@@ -79,7 +85,7 @@
 		
 		
 		$("#move").click(function(){
-		//	window.open("${docList[0].url}", 'window name', 'window settings');
+			window.open("${docList[0].url}", 'window name', 'window settings');
 		});
 		$("#next").click(function(){
 		//	window.open("${docList[1].url}", 'window name', 'window settings');

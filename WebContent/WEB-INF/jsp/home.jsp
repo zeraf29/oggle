@@ -134,7 +134,7 @@
 		});
 		$("#History_btn img").mouseover(function() {
 			if(page_flag != 2){
-			$(this).attr("src", "resources/image/icon_selected.png");
+				$(this).attr("src", "resources/image/icon_selected.png");
 			}
 		});
 		$("#History_btn img").mouseout(function(){

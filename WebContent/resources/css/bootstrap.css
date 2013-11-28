@@ -7226,3 +7226,30 @@ padding-bottom : 10px;
 	text-align : right;
 	padding-right: 30px;
 }
+
+.title_box{
+ padding-right: 30%;
+  padding-left: 30%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.title_box:before,
+.title_box:after {
+  display: table;
+  content: " ";
+}
+
+.title_box:after {
+  clear: both;
+}
+
+.title_box:before,
+.title_box:after {
+  display: table;
+  content: " ";
+}
+
+.title_box:after {
+  clear: both;
+}
