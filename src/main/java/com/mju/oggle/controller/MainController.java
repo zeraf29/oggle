@@ -114,7 +114,7 @@ public class MainController {
 		UserDAO dao = new UserDAO();
 		
 		User user2 = dao.selectUser(user.getEmail());
-		
+		System.out.println(user.getEmail());
 		mav.addObject("tag1", user2.getTag1());
 		mav.addObject("tag2", user2.getTag2());
 		mav.addObject("tag3", user2.getTag3());
@@ -138,7 +138,7 @@ public class MainController {
         	docList.add(documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()));
         	docList.add(documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()));
     	}
-
+    	System.out.println(docList.get(0).getId());
 		if(documentService.selectTopBoostDocument(user2.getTag1()) != null)
 			userTags.getWatchedList().add(docList.get(0).getId());
     	if(documentService.selectTopBoostDocument(user2.getTag2()) != null)
