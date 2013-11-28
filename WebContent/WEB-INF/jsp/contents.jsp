@@ -58,8 +58,8 @@
 				</div>
 				<div style="text-align: right;">
 					<a id="move" href="#"><img src="resources/image/move_icon.png" /></a>
-					<a id="next" href="#"><img src="resources/image/move_icon.png" /></a>
-					<a id="like" href="#"><img src="resources/image/move_icon.png" /></a>
+					<a id="dislike" href="#"><img src="resources/image/dislike_icon.png" /></a>
+					<a id="like" href="#"><img src="resources/image/like_icon.png" /></a>
 				</div>
 			</div>
 		</div>
