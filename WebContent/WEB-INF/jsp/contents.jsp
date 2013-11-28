@@ -20,24 +20,25 @@
     <![endif]-->
   </head>
   <body>
-  
+  <jsp:include page="header.jsp"></jsp:include>
   <div id = "Keyword_list" class = "row" style = "margin : 50px 0px 0px 0px; text-align:center;">
  	 <div class="col-md-4">
          <div style = "text-align: center;"><h1>${user.tag1}</h1></div>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first" >show more>></button>
+         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first" id="firstBtn">show more>></button>
         </div>
         <div class="col-md-4">
            <div style = "text-align: center;"><h1>${user.tag2}</h1></div>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#second">show more>></button>
+           <a href = "/Oggle/contents.do?content=2">asdfasdf</a>
+         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#second" id="secondBtn">show more>></button>
        </div>
         <div class="col-md-4">
            <div style = "text-align: center;"><h1>${user.tag3}</h1></div>
-           <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#third">show more>></button>
+           <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#third" id="thirdBtn">show more>></button>
         </div>
 	</div>
 
 	<div class="page-header">
-	  <div><h3>TiTLE</h3></div>
+	  <div><h3>${doc.title}</h3></div>
 	  <div>
 	  <a id = "move" href = "#"><img src = "resources/image/move_icon.png"/></a>
 	  <a id = "next" href = "#"><img src = "resources/image/move_icon.png"/></a>
@@ -63,15 +64,14 @@
 	</div>
  
 	<script>
+	
 	$(document).ready(function(){
-		
-		getHTML("${docList[0].url}","article_c_1");
-		getHTML("${docList[1].url}","article_c_2");
-		getHTML("${docList[2].url}","article_c_3");
-	    
+    
 		//$("#result1").height(($(window).height() - 50) );
+		//var content = "${content}";
+		//alert(content);
+		getHTML("${doc.url}","article_c_1");
 		
-		page_flag = 1;
 		});
 	
 		$(window).resize(function() {
@@ -88,6 +88,21 @@
 			//window.open("${docList[2].url}", 'window name', 'window settings');
 		});
 		
+		$("#firstBtn").click(function(){
+			getHTML("${doc.url}","article_c_1");
+		});
+		$("#secondBtn").click(function(){
+			//location.r("/Oggle/contents.do?content=2");
+			alert("${doc.url}");
+			//alert("${doc.url}");
+			getHTML("${doc.url}","article_c_2");
+		});
+		$("#thirdBtn").click(function(){
+			//location.replace("/Oggle/contents.do?content=3");
+			alert("${doc.url}");
+			getHTML("${doc.url}","article_c_3");
+		});
+		
 		function getHTML(url,id){
 			var params = "url="+url;
 			$.ajax({      
@@ -102,7 +117,8 @@
 		            $("#"+id).html(args);
 		        }
 		    });  
-		}
+		}	
+		
 	</script>
   </body>
 </html>
