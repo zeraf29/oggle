@@ -26,9 +26,14 @@
 		<div class="backGround_4" id="history_background">
 			<div class="row">
 				<div class="col-md-3" id="history_menu">
+					<button type="button" class="btn btn-primary" style="pull-right" id="delete">delete History</button>
 					<c:forEach var="doc" items="${docList}">
 						<div class="like_list container">
+<<<<<<< HEAD
 							<h4><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h4>
+=======
+							<h3><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h3>
+>>>>>>> c58d9601bd55a216fa404459cd16c988ad614fe6
 							<h5 style = "color : gray;">${doc.url}</h5>
 						</div>
 					</c:forEach>
@@ -70,6 +75,10 @@
 			 $("#history_menu").height(($(window).height() - 50) );
 			 $("#history_content").height(($(window).height() - 50) );
 			 $("#article").height(($(window).height() - 80) );
+		});
+		 
+		$("#delete").click(function(){
+			location.replace("/Oggle/deleteHistory.do");
 		});
 		 
 		 
