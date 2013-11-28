@@ -21,30 +21,33 @@
   </head>
   <body>
 
-	<div style="background-color: #ffe766;">
+	<div style="background-color: #ffe766; box-shadow : 2px 2px 3px 3px;">
 		<jsp:include page="header.jsp"></jsp:include>
 		<div id="Keyword_list" class="row"
-			style="margin: 50px 0px 0px 0px; text-align: center;">
-			<div class="col-md-4">
-				<div style="text-align: center;">
-					<h1>${user.tag1}</h1>
+			style="margin: 40px 0px 10px 0px; text-align: center;">
+			<div style = "margin : 10px 0px 0px 0px;">
+				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FFE576;">
+					<div style="text-align: center;padding : 0px 0px 30px 0px;">
+						<h1><strong>${user.tag1}</strong></h1>
+					</div>
+					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
+						data-target="#third" id="firstBtn"/>
+					</a>
 				</div>
-				<button class="btn btn-primary btn-sm" data-toggle="tab"
-					data-target="#first" id="firstBtn">show more>></button>
-			</div>
-			<div class="col-md-4">
-				<div style="text-align: center;">
-					<h1>${user.tag2}</h1>
+				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FF8E5C;">
+					<div style="text-align: center;padding : 0px 0px 30px 0px;">
+						<h1><strong>${user.tag2}</strong></h1>
+					</div>
+					<a href = "#"><img src = "resources/image/detail_btn2.png" data-toggle="tab"
+						data-target="#third" id="secondBtn"/></a>
 				</div>
-				<button class="btn btn-primary btn-sm" data-toggle="tab"
-					data-target="#second" id="secondBtn">show more>></button>
-			</div>
-			<div class="col-md-4">
-				<div style="text-align: center;">
-					<h1>${user.tag3}</h1>
+				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FFFDC5;">
+					<div style="text-align: center;padding : 0px 0px 30px 0px;">
+						<h1><strong>${user.tag3}</strong></h1>
+					</div>
+					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
+						data-target="#third" id="thirdBtn"/></a>
 				</div>
-				<button class="btn btn-primary btn-sm" data-toggle="tab"
-					data-target="#third" id="thirdBtn">show more>></button>
 			</div>
 		</div>
 
@@ -68,17 +71,17 @@
 		<div class="tab-content">
 			<div class="tab-pane fade in active" id="first">
 				<div id="article_c_1" class="article_contents"
-					style="overflow: scroll; margin-left: 30px; margin-top: 40px;">
+					style="overflow: hidden; margin-left: 30px; margin-top: 40px;">
 				</div>
 
 			</div>
 			<div class="tab-pane fade" id="second">
 				<div id="article_c_2" class="article_contents"
-					style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+					style="overflow: hidden; margin-left: 30px; margin-top: 40px;"></div>
 			</div>
 			<div class="tab-pane fade" id="third">
 				<div id="article_c_3" class="article_contents"
-					style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+					style="overflow: hidden; margin-left: 30px; margin-top: 40px;"></div>
 			</div>
 		</div>
 
