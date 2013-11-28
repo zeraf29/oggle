@@ -61,14 +61,8 @@ public class MongoController {
     @RequestMapping(value = "/document.do", method = RequestMethod.GET)  
 	public ModelAndView getdocList(ModelMap model) {
     	
-		List<String> list = new ArrayList<String>();
-		list.add("529653cb5bc5b0e42d339bd3");
-		list.add("529653cb5bc5b0e414339bd3");
-		
     	ModelAndView mav = new ModelAndView("dOutput");
-    	mav.addObject("docList", documentService.listDocument("사령관", list)); 
-//    	mav.addObject("docList", documentService.listDocument()); 
-//    	mav.addObject("docList", documentService.sortDocument()); 
+    	mav.addObject("docList", documentService.listDocument()); 
     	
         return mav;  
     }  
@@ -77,16 +71,6 @@ public class MongoController {
 	public ModelAndView getTagList(ModelMap model) {
     	
     	ModelAndView mav = new ModelAndView("uOutput");
-    	
-//    	UserTags userTags = new UserTags();
-//    	userTags.setEmail("pooasd@naver.com");
-    	
-//    	userTags.getWatchedList().add("asdfasdf");
-//    	userTags.getTag1().add("tag1");
-//    	userTagsService.addUserTags(userTags);
-    	
-//    	userTagsService.updateWatchList("pooingx2@gmail.com","123133323");
-    	
     	mav.addObject("utList", userTagsService.listUserTags()); 
 
         return mav;  

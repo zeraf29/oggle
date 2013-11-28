@@ -36,7 +36,6 @@
 				<div style="text-align: center;">
 					<h1>${user.tag2}</h1>
 				</div>
-				<a href="/Oggle/contents.do?content=2">asdfasdf</a>
 				<button class="btn btn-primary btn-sm" data-toggle="tab"
 					data-target="#second" id="secondBtn">show more>></button>
 			</div>
@@ -122,7 +121,7 @@
 		        data:params,
 		        beforeSend: function( xhr ) {
 		            xhr.overrideMimeType( "text/plain; charset=utf-8" );
-		          },
+				},
 		        success:function(args){   
 		            $("#"+id).html(args);
 		        }

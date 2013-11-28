@@ -23,20 +23,11 @@
 		<div class="col-md-2">
 			<nav class="navbar navbar-default" role ="navigation">
 
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-
 				<div class="collapse navbar-collapse">
 					<div class="panel-heading sidemenu_header">User_config</div>
 					<ul class="nav nav-stacked sidemenu_list">
 						<li><a href="#" id = "modify_profile">modify_profile</a></li>
 						<li><a href="#" id = "keyword_setting">keyword_setting</a></li>
-						<li><a href="#" id = "friends">friends</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</nav>
@@ -64,14 +55,7 @@
 			    });
 			});
 		});
-		
-		$("#friends").click(function(){
-			$('#Config_subContents').fadeOut('slow', function(){
-				$("#Config_subContents").load("configSub3.do", function(){
-			        $("#Config_subContents").fadeIn('slow');
-			    });
-			});
-		});
+
 	</script>
   </body>
 </html>

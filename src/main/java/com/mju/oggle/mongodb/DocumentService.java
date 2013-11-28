@@ -25,6 +25,10 @@ public class DocumentService {
 	
 	public static final String COLLECTION_NAME = "oggletest";
 	
+	public Document selectDocument(String id) {
+		return mongoTemplate.findById(id, Document.class, COLLECTION_NAME);
+		
+	}
 	public List<Document> listDocument() {
 		
 		return mongoTemplate.findAll(Document.class, COLLECTION_NAME);

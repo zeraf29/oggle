@@ -28,7 +28,7 @@ import com.mju.oggle.mongodb.UserTagsService;
 
 
 @Controller
-public class MainController {
+public class HistoryContoller {
 
 	@Autowired
 	private DocumentService documentService;
@@ -39,90 +39,8 @@ public class MainController {
 	@Autowired
 	private UserTagsService userTagsService;
 
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public ModelAndView getAuth(HttpServletRequest request, HttpServletResponse response) throws IOException{
 
-		String email = request.getParameter("email");
-		String nonce = request.getParameter("nonce");
-
-		ModelAndView mav = new ModelAndView("main");
-
-		if(email == null || nonce == null)
-			return mav;
-		else {
-
-			System.out.println("email : " + email);
-			System.out.println("nonce : " + nonce);
-
-			UserDAO userDAO = new UserDAO();
-			User user = userDAO.selectUser(email);
-
-			String auth;
-
-			if(user == null)
-				auth = "Error";
-
-			else if(!(nonce.equals(user.getNonce()))){
-				auth = "Error";
-			}
-
-			else {
-				auth = "Success";
-				userDAO.changeUserState(email);
-				mav.addObject("email", email);
-			}
-
-			mav.addObject("auth", auth);
-
-			return mav;
-		}
-	}
-
-	@RequestMapping(value ="/getHtml.do",method = RequestMethod.GET)
-	public ModelAndView getHtml(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("getHtml");
-		response.setContentType("text/html;charset=UTF-8");
-		String str = "";
-		String urls = request.getParameter("url");
-		ModelAndView mav = new ModelAndView("getHtml");
-		try{
-			URL url = new URL(urls);
-			// url클래스로 접근한 호스트의 정보를 보여줍니다.
-
-			InputStreamReader isr = new InputStreamReader(url.openStream(), "UTF-8");//입력스트림을 생성합니다. 
-			BufferedReader br = new BufferedReader(isr); 
-			String inLine = null;
-
-			while ((inLine=br.readLine())!= null){ // 라인단위로 읽어들이기
-				str += inLine; 
-			}
-
-			br.close(); //데이터 읽기가 끝나면 close메소드로 스트림을 닫습니다.
-
-		}catch (IOException e) { 
-			str = e.toString(); 
-		}
-		mav.addObject("html",str);
-		return mav;
-	}
-
-	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-	public ModelAndView getHome(HttpServletRequest request, HttpServletResponse response){
-
-		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
-		System.out.println("session(name) : " + user.getName());
-		System.out.println("session(email) : " + user.getEmail());
-		System.out.println("session(state) : " + user.getState());
-
-		ModelAndView mav = new ModelAndView("home");
-
-		mav.addObject("user",user);
-
-		return mav;
-	}
-
-	
+	/*
 	@RequestMapping(value = "/contents.do", method = RequestMethod.GET)
 	public ModelAndView getContents(HttpServletRequest request, HttpServletResponse response) throws IOException{
 
@@ -171,5 +89,35 @@ public class MainController {
 		
 		return mav;
 	}
+	*/
 
+
+
+	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
+	public ModelAndView getHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
+
+		String id = request.getParameter("id");
+		
+		ModelAndView mav = new ModelAndView("history");
+		
+		User user = (User) request.getSession().getAttribute("user");
+		UserTags userTags = userTagsService.findOneUserTags(user.getEmail());
+		
+		List<Document> docList = new ArrayList<Document>();
+		for(String item : userTags.getWatchedList()){
+			docList.add(documentService.selectDocument(item));
+		}
+		
+		Document selectedDoc = new Document();
+		if(id!=null){
+			selectedDoc = documentService.selectDocument(id);
+			mav.addObject("selectedDoc", selectedDoc);
+		}
+		
+		
+		mav.addObject("pageNum", 2);
+		mav.addObject("docList", docList);
+		
+		return mav;
+	}
 }
