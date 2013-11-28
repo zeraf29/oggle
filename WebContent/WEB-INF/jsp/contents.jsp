@@ -36,7 +36,6 @@
 				<div style="text-align: center;">
 					<h1>${user.tag2}</h1>
 				</div>
-				<a href="/Oggle/contents.do?content=2">asdfasdf</a>
 				<button class="btn btn-primary btn-sm" data-toggle="tab"
 					data-target="#second" id="secondBtn">show more>></button>
 			</div>
@@ -59,8 +58,8 @@
 				</div>
 				<div style="text-align: right;">
 					<a id="move" href="#"><img src="resources/image/move_icon.png" /></a>
-					<a id="next" href="#"><img src="resources/image/move_icon.png" /></a>
-					<a id="like" href="#"><img src="resources/image/move_icon.png" /></a>
+					<a id="dislike" href="#"><img src="resources/image/dislike_icon.png" /></a>
+					<a id="like" href="#"><img src="resources/image/like_icon.png" /></a>
 				</div>
 			</div>
 		</div>
