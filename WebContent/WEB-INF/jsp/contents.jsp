@@ -124,7 +124,7 @@
 		        data:params,
 		        beforeSend: function( xhr ) {
 		            xhr.overrideMimeType( "text/plain; charset=utf-8" );
-		          },
+				},
 		        success:function(args){   
 		            $("#"+id).html(args);
 		        }

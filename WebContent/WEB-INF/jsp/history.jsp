@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -24,26 +26,21 @@
 		<div class="backGround_4" id="history_background">
 			<div class="row">
 				<div class="col-md-3" id="history_menu">
+					<c:forEach var="doc" items="${docList}">
 						<div class="like_list container"">
-							<h3><strong>네이버 뉴스 : 다들 고생고생</strong></h3>
-							<h5 style = "color : gray;">www.naver.com</h5>
+							<h3><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h3>
+							<h5 style = "color : gray;">${doc.url}</h5>
 						</div>
+					</c:forEach>
 				</div>
 				<!-- 페이지 본문 -->
 				<div class="col-md-9 backGround_2" style="box-shadow: 3px 3px 50px 3px" id="history_content">
 				<div class = "like_content" id = "article">
-					<div class = "title" style = "margin :15px;"><h3><strong>네이버 뉴스 : 다들 고생고생</strong></h3></div>
-					<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">www.naver.com</h5></div>
+					<div class = "title" style = "margin :15px;"><h3><strong>${selectedDoc.title}</strong></h3></div>
+					<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${selectedDoc.url}</h5></div>
 					<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-					  sed do eiusmod tempor incididunt ut labore et dolore magna
-					  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					  Duis aute irure dolor in reprehenderit in voluptate velit
-					  esse cillum dolore eu fugiat nulla pariatur. Excepteur
-					  sint occaecat cupidatat non proident, sunt in culpa qui
-					  officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-				  </div>
+						<!-- ${selectedDoc.content} -->
+				  	</div>
 				</div>
 				<!-- ./페이지 본문 -->
 				</div>
@@ -59,7 +56,17 @@
 		    $("#history_menu").height(($(window).height() - 50) );
 		    $("#history_content").height(($(window).height() - 50) );
 		    $("#article").height(($(window).height() - 80) );
+		    
+		    var selectedID = "${selectedDoc.id}";
+		    if(selectedID =="" || selectedID == null){
+		    	selectedID = "${docList[0].id}";
+				location.replace("/Oggle/history.do?id="+selectedID);
+		    }
+		    
+		    var selectedURL = "${selectedDoc.url}";
+		    getHTML(selectedURL,"article");
 		});
+		
 		 $(window).resize(function(){
 			 $("#history_background").height(($(window).height() - 50) );
 			 $("#history_menu").height(($(window).height() - 50) );
@@ -67,6 +74,22 @@
 			 $("#article").height(($(window).height() - 80) );
 		});
 		 
+		 
+		 function getHTML(url,id){
+				var params = "url="+url;
+				$.ajax({      
+			        type:"GET",
+			        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			        url:"/Oggle/getHtml.do",
+			        data:params,
+			        beforeSend: function( xhr ) {
+			            xhr.overrideMimeType( "text/plain; charset=utf-8" );
+					},
+			        success:function(args){   
+			            $("#"+id).html(args);
+			        }
+			    });  
+			}
 	</script>
   </body>
 </html>
