@@ -25,28 +25,24 @@
 	<div class="margin_50px">
 		<div class="backGround_4" id="history_background">
 			<div class="row">
-				<div class="col-md-3" id="history_menu" style = "height:1030px;width:500px; overflow:auto;">
+				<div class="col-md-3" id="history_menu" style = "overflow-y:auto; overflow-x : hidden; padding-left : 50px;">
 					<c:forEach var="doc" items="${docList}">
-						<div class="like_list container">
-							<h4><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h3>
-							<h5 style = "color : gray;">${doc.url}</h5>
+						<div class="like_list">
+						<h5><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h5>
+
+							<h6 style = "color : gray;">${doc.url}</h6>
 						</div>
 					</c:forEach>
 				</div>
-				<!-- 페이지 본문 -->
-				<div class="col-md-9 backGround_2" style="box-shadow: 3px 3px 50px 3px; height:1030px;width:1420px; overflow:auto;" id="history_content">
-				<div class = "like_content" id = "article">
-					<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">
-						<!-- ${selectedDoc.content} -->
-				  	</div>
-				</div>
-				<!-- ./페이지 본문 -->
-				</div>
-				
+
+				<div class="col-md-9 backGround_2" style="box-shadow: 3px 3px 50px 3px; padding:30px;" id="history_content">
+					<iframe name="iframe" frameborder = "0" id = "contents_frame" height = 950 width=1390>
+					</iframe>
+				</div> 
 			</div>
-		</div>
+		</div>		
 	</div>
-	
+
 	
 	<script>
 		$(document).ready(function(){
@@ -62,7 +58,10 @@
 		    }
 		    
 		    var selectedURL = "${selectedDoc.url}";
-		    getHTML(selectedURL,"article");
+		    
+		    document.getElementById('contents_frame').src = selectedURL;
+		    
+		   // getHTML(selectedURL,"article");
 		});
 		
 		 $(window).resize(function(){

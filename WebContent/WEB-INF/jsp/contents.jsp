@@ -94,7 +94,7 @@
 		<script>
 	
 		$(document).ready(function(){
-			getHTML("${doc.url}","article_c_1");
+			//getHTML("${doc.url}","article_c_1");
 			$("#contents_frame").css("height", $(window).height()-420);
 			$("#contents_frame").css("width", $(window).width());
 		});
@@ -106,7 +106,7 @@
 		
 		
 		$("#move").click(function(){
-			window.open("${docList[0].url}", 'window name', 'window settings');
+		//	window.open("${docList[0].url}", 'window name', 'window settings');
 		});
 		$("#next").click(function(){
 		//	window.open("${docList[1].url}", 'window name', 'window settings');
@@ -126,6 +126,7 @@
 		});
 		
 		function getHTML(url,id){
+			/*
 			var params = "url="+url;
 			$.ajax({      
 		        type:"GET",
@@ -138,7 +139,8 @@
 		        success:function(args){   
 		            $("#"+id).html(args);
 		        }
-		    });  
+		    });
+			*/
 		}	
 		
 	</script>

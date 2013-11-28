@@ -7183,7 +7183,8 @@ padding-bottom : 10px;
 
 .like_list{
 	height:80px;
-	width : 450px;
+	width : 400px;
+	padding-left : 30px;
 	margin-top : 10px;
 	margin-bottom : 10px;
 	background-color : #FFF7D7;

@@ -158,9 +158,8 @@ public class MainController {
 			}
 		}
 		
-		userTags.getWatchedList().add(doc.getId());
-		
 		if(doc != null){
+			userTags.getWatchedList().add(doc.getId());
 			userTagsService.updateWatchList(user.getEmail(), doc.getId());
 		}
 		
