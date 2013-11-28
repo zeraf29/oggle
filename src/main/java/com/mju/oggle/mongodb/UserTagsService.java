@@ -53,14 +53,13 @@ public class UserTagsService {
 		return mongoTemplate.findAll(UserTags.class, COLLECTION_NAME);
 	}
 	
-	public List<UserTags> listUserTags(int limit) {
+	public UserTags findOneUserTags(String email) {
 		
-		BasicQuery query = new BasicQuery("{\"title\": {$regex : '" + "All Classes" + "'} }");
-		query.limit(limit);
+		BasicQuery query = new BasicQuery("{email : \'"+email+"\'}");
+		UserTags userTags = new UserTags();
+		userTags = mongoTemplate.findOne(query, UserTags.class, COLLECTION_NAME);
 		
-		System.out.println(query.toString());
-
-		return mongoTemplate.find(query, UserTags.class, COLLECTION_NAME);
+		return userTags;
 	}
 	
 	public void updateWatchList(String email, String id) {

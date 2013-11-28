@@ -120,32 +120,36 @@ public class MainController {
 		mav.addObject("tag3", user2.getTag3());
 		
     	List<Document> docList = new ArrayList<Document>();
-
-    	docList.add(documentService.selectTopBoostDocument(user2.getTag1()));
-    	docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
-    	docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
     	
-
-//    	watcgedList.
-//    	UserTags userTags = new UserTags();
-//    	userTags.setEmail(user.getEmail());
-//    	userTags.getWatchedList().add(docList.get(0).getId());
-//    	userTags.getWatchedList().add(docList.get(1).getId());
-//    	userTags.getWatchedList().add(docList.get(2).getId());
-
-    	UserTags userTags = new UserTags();
-    	userTags.setEmail(user.getEmail());
-    	userTags.getWatchedList().add(docList.get(0).getId());
-    	userTags.getWatchedList().add(docList.get(1).getId());
-    	userTags.getWatchedList().add(docList.get(2).getId());
-
+    	UserTags userTags = userTagsService.findOneUserTags(user.getEmail());
     	
-//    	userTagsService.addUserTags(userTags);
+    	if(userTags == null) {
+    		userTags = new UserTags();
+        	userTags.setEmail(user.getEmail());
+        	userTagsService.addUserTags(userTags);
+        	
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag1()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
+    	}
+    	else {
+//    		System.out.println(userTags.getWatchedList().size());
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()));
+        	docList.add(documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()));
+    	}
+
+		if(documentService.selectTopBoostDocument(user2.getTag1()) != null)
+			userTags.getWatchedList().add(docList.get(0).getId());
+    	if(documentService.selectTopBoostDocument(user2.getTag2()) != null)
+    		userTags.getWatchedList().add(docList.get(1).getId());
+    	if(documentService.selectTopBoostDocument(user2.getTag3()) != null)
+    		userTags.getWatchedList().add(docList.get(2).getId());
     	
-    	userTagsService.updateWatchList(user.getEmail(), docList.get(0).getId());
-    	userTagsService.updateWatchList(user.getEmail(), docList.get(1).getId());
-    	userTagsService.updateWatchList(user.getEmail(), docList.get(2).getId());
-    	
+    	for(Document item : docList){
+    		if(item != null)
+    			userTagsService.updateWatchList(user.getEmail(), item.getId());
+    	}
     	mav.addObject("docList", docList);
     	
 		return mav;
