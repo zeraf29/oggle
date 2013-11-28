@@ -19,6 +19,7 @@
     <![endif]-->
   </head>
   <body>
+    <jsp:include page="header.jsp"></jsp:include>
 	<div class="margin_50px">
 		<div class="backGround_4" id="history_background">
 			<div class="row">

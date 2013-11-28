@@ -20,45 +20,58 @@
     <![endif]-->
   </head>
   <body>
-  <div style = "background-color:#ffe766;">
-  <div id = "Keyword_list" class = "row" style = "margin : 50px 0px 0px 0px; text-align:center; ">
- 	 <div class="col-md-4">
-         <div style = "text-align: center;"><p style = "font-size : 60px; margin : 30px;">${user.tag1}</p></div>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first" >show more>></button>
-        </div>
-        <div class="col-md-4">
-           <div style = "text-align: center;"><p style = "font-size : 60px; margin : 30px;">${user.tag2}</p></div>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#second">show more>></button>
-       </div>
-        <div class="col-md-4">
-           <div style = "text-align: center;"><p style = "font-size : 60px; margin : 30px;">${user.tag3}</p></div>
-           <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#third">show more>></button>
-        </div>
-	</div>
-	
-
-	<div class="page-header">
-		<div class="title_box" sytle="padding-right:10%;padding-left:10%;margin-right:auto;margin-left:auto;">
-			<div style="text-align:left;">
-				<h3>TITLE</h3>
-				<h3><small>wwww.gkdkdkdkdkdkd.com</small></h3>
+	<div style="background-color: #ffe766;">
+		<jsp:include page="header.jsp"></jsp:include>
+		<div id="Keyword_list" class="row"
+			style="margin: 50px 0px 0px 0px; text-align: center;">
+			<div class="col-md-4">
+				<div style="text-align: center;">
+					<h1>${user.tag1}</h1>
+				</div>
+				<button class="btn btn-primary btn-sm" data-toggle="tab"
+					data-target="#first" id="firstBtn">show more>></button>
 			</div>
-			<div style="text-align:right;">
-				<a id="move" href="#"><img src="resources/image/move_icon.png" /></a>
-				<a id="next" href="#"><img src="resources/image/move_icon.png" /></a>
-				<a id="like" href="#"><img src="resources/image/move_icon.png" /></a>
+			<div class="col-md-4">
+				<div style="text-align: center;">
+					<h1>${user.tag2}</h1>
+				</div>
+				<a href="/Oggle/contents.do?content=2">asdfasdf</a>
+				<button class="btn btn-primary btn-sm" data-toggle="tab"
+					data-target="#second" id="secondBtn">show more>></button>
+			</div>
+			<div class="col-md-4">
+				<div style="text-align: center;">
+					<h1>${user.tag3}</h1>
+				</div>
+				<button class="btn btn-primary btn-sm" data-toggle="tab"
+					data-target="#third" id="thirdBtn">show more>></button>
 			</div>
 		</div>
-	</div>
-</div>
 
-	<!-- Tab panes -->
-	<div class="tab-content">
+
+		<div class="page-header">
+			<div class="title_box">
+				<div style="text-align: left;">
+					<h3>${doc.title}</h3>
+					<h3>
+						<small>${doc.url}</small>
+					</h3>
+				</div>
+				<div style="text-align: right;">
+					<a id="move" href="#"><img src="resources/image/move_icon.png" /></a>
+					<a id="next" href="#"><img src="resources/image/move_icon.png" /></a>
+					<a id="like" href="#"><img src="resources/image/move_icon.png" /></a>
+				</div>
+			</div>
+		</div>
+</div>
+		<!-- Tab panes -->
+		<div class="tab-content">
 			<div class="tab-pane fade in active" id="first">
-						<div id="article_c_1" class="article_contents"
+				<div id="article_c_1" class="article_contents"
 					style="overflow: scroll; margin-left: 30px; margin-top: 40px;">
 				</div>
-			
+
 			</div>
 			<div class="tab-pane fade" id="second">
 				<div id="article_c_2" class="article_contents"
@@ -68,16 +81,18 @@
 				<div id="article_c_3" class="article_contents"
 					style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
 			</div>
-	</div>
- 
-	<script>
+		</div>
+
+		<script>
+	
 	$(document).ready(function(){
-		
-		getHTML("${docList[0].url}","article_c_1");
-		getHTML("${docList[1].url}","article_c_2");
-		getHTML("${docList[2].url}","article_c_3");
-	    
+    
 		//$("#result1").height(($(window).height() - 50) );
+
+		//var content = "${content}";
+		//alert(content);
+		getHTML("${doc.url}","article_c_1");
+		
 		});
 	
 		$(window).resize(function() {
@@ -94,6 +109,21 @@
 			//window.open("${docList[2].url}", 'window name', 'window settings');
 		});
 		
+		$("#firstBtn").click(function(){
+			getHTML("${doc.url}","article_c_1");
+		});
+		$("#secondBtn").click(function(){
+			//location.r("/Oggle/contents.do?content=2");
+			alert("${doc.url}");
+			//alert("${doc.url}");
+			getHTML("${doc.url}","article_c_2");
+		});
+		$("#thirdBtn").click(function(){
+			//location.replace("/Oggle/contents.do?content=3");
+			alert("${doc.url}");
+			getHTML("${doc.url}","article_c_3");
+		});
+		
 		function getHTML(url,id){
 			var params = "url="+url;
 			$.ajax({      
@@ -108,9 +138,10 @@
 		            $("#"+id).html(args);
 		        }
 		    });  
-		}
+		}	
+		
 	</script>
-  </body>
+</body>
 </html>
 
 

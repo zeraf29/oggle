@@ -20,7 +20,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body onload="">
+  <body>
 	 
 	 <div class="navbar navbar-inverse navbar-fixed-top row" role="navigation">
 		<div class="navbar-header col-md-4">
@@ -33,40 +33,25 @@
 			</button>
 			<a class="navbar-brand" href="#"><strong class="margin_left_30">OGGLE</strong></a>
 		</div>
-			<div class = "col-md-4"  style = "text-align:center;">
-				<div class="collapse navbar-collapse col-md-5 col-md-offset-3">
-					<ul class="nav navbar-nav .menu_btn">
-						<li id="MyContents_btn"><a href="#"><img src = "resources/image/icon_selected.png"/></a></li>
-						<li id="History_btn"><a href="#"><img src = "resources/image/icon.png"/></a></li>
-						<li id="Config_btn"><a href="#"><img src = "resources/image/icon.png"/></a></li>
-					</ul>
-				</div>
+		<div class = "col-md-4"  style = "text-align:center;">
+			<div class="collapse navbar-collapse col-md-5 col-md-offset-3">
+				<ul class="nav navbar-nav .menu_btn">
+					<li id="MyContents_btn"><a href="#"><img src = "resources/image/icon_selected.png"/></a></li>
+					<li id="History_btn"><a href="history.do"><img src = "resources/image/icon.png"/></a></li>
+					<li id="Config_btn"><a href="config.do"><img src = "resources/image/icon.png"/></a></li>
+				</ul>
 			</div>
-			<div class = "col-md-4">
-				<p class="navbar-text pull-right">
-						<b> ${user.name} </b> <a href="logout.do" class="navbar-link">Logout</a>
-					</p>
-			</div>
+		</div>
+		<div class = "col-md-4">
+			<p class="navbar-text pull-right">
+				<b> ${user.name} </b> <a href="logout.do" class="navbar-link">Logout</a>
+			</p>
+		</div>
 	</div>
 	
-	
-	
-	<div id = "Contents"></div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
 	<script>
-		//page Change
-		$(document).ready(function(){
-			$('#Contents').fadeOut('slow', function(){
-				$("#Contents").load("contents.do", function(){
-			        $("#Contents").fadeIn('slow');
-			    });
-			});
-
-		});
-
 		var page_flag = 1;
 		
 		$("#MyContents_btn").click(function() {
@@ -74,16 +59,20 @@
 			if(page_flag == 2){
 				$("#History_btn img").attr("src", "resources/image/icon.png");
 			}
-		else if(page_flag ==3)
+			else if(page_flag ==3)
 			{
 				$("#Config_btn  img").attr("src", "resources/image/icon.png");
 			}
 			page_flag = 1;
+
+			location.replace("/Oggle/contents.do?content=1"); 
+			/*
 			$('#Contents').fadeOut('slow', function() {
 				$("#Contents").load("contents.do", function() {
 					$("#Contents").fadeIn('slow');
 				});
 			});
+			*/
 		});
 
 		$("#History_btn").click(function() {
@@ -96,11 +85,15 @@
 					$("#Config_btn img").attr("src", "resources/image/icon.png");
 				}
 			page_flag = 2;
+
+			location.replace("/Oggle/history.do"); 
+			/*
 			$('#Contents').fadeOut('slow', function() {
 				$("#Contents").load("history.do", function() {
 					$("#Contents").fadeIn('slow');
 				});
 			});
+			*/
 		});
 
 		$("#Config_btn").click(function() {
@@ -108,16 +101,19 @@
 			if(page_flag == 1){
 				$("#MyContents_btn img").attr("src", "resources/image/icon.png");
 			}
-		else if(page_flag ==2)
+			else if(page_flag ==2)
 			{
 				$("#History_btn img").attr("src", "resources/image/icon.png");
 			}
 			page_flag = 3;
+			location.replace("/Oggle/config.do");
+			/*
 			$('#Contents').fadeOut('slow', function() {
 				$("#Contents").load("config.do", function() {
 					$("#Contents").fadeIn('slow');
 				});
 			});
+			*/
 		});
 		
 		//hover
@@ -134,7 +130,7 @@
 		});
 		$("#History_btn img").mouseover(function() {
 			if(page_flag != 2){
-				$(this).attr("src", "resources/image/icon_selected.png");
+			$(this).attr("src", "resources/image/icon_selected.png");
 			}
 		});
 		$("#History_btn img").mouseout(function(){
@@ -156,9 +152,5 @@
 		});
 
 	</script>
-  <body>
-  	<script>
-  		location.replace("/Oggle/contents.do?content=1"); 
-  	</script>
   </body>
 </html>
