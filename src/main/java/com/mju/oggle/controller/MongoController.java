@@ -1,7 +1,9 @@
 package com.mju.oggle.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,8 +61,13 @@ public class MongoController {
     @RequestMapping(value = "/document.do", method = RequestMethod.GET)  
 	public ModelAndView getdocList(ModelMap model) {
     	
+		List<String> list = new ArrayList<String>();
+		list.add("529653cb5bc5b0e42d339bd3");
+		list.add("529653cb5bc5b0e414339bd3");
+		
     	ModelAndView mav = new ModelAndView("dOutput");
-    	mav.addObject("docList", documentService.listDocument()); 
+    	mav.addObject("docList", documentService.listDocument("사령관", list)); 
+//    	mav.addObject("docList", documentService.listDocument()); 
 //    	mav.addObject("docList", documentService.sortDocument()); 
     	
         return mav;  
