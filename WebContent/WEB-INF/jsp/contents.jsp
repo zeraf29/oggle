@@ -64,7 +64,7 @@
 				</div>
 			</div>
 		</div>
-</div>
+	</div>
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div class="tab-pane fade in active" id="first">
@@ -86,11 +86,7 @@
 		<script>
 	
 		$(document).ready(function(){
-			var content = "${content}";
-			alert(content);
-			getHTML("${doc.url}","article_c_"+content);
-
-		
+			getHTML("${doc.url}","article_c_1");
 		});
 	
 		$(window).resize(function() {
@@ -109,19 +105,12 @@
 		
 		$("#firstBtn").click(function(){
 			location.replace("/Oggle/contents.do?content=1");
-			//getHTML("${doc.url}","article_c_1");
 		});
 		$("#secondBtn").click(function(){
 			location.replace("/Oggle/contents.do?content=2");
-			//alert("${doc.url}");
-			//alert("${doc.url}");
-			//getHTML("${doc.url}","article_c_2");
 		});
 		$("#thirdBtn").click(function(){
 			location.replace("/Oggle/contents.do?content=3");
-			//location.replace("/Oggle/contents.do?content=3");
-			//alert("${doc.url}");
-			//getHTML("${doc.url}","article_c_3");
 		});
 		
 		function getHTML(url,id){
