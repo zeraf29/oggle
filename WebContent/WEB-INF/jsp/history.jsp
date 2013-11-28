@@ -27,28 +27,26 @@
 			<div class="row">
 				<div class="col-md-3" id="history_menu">
 					<c:forEach var="doc" items="${docList}">
-						<div class="like_list container"">
-							<h3><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h3>
+						<div class="like_list container">
+							<h4><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h4>
 							<h5 style = "color : gray;">${doc.url}</h5>
 						</div>
 					</c:forEach>
 				</div>
 				<!-- 페이지 본문 -->
 				<div class="col-md-9 backGround_2" style="box-shadow: 3px 3px 50px 3px" id="history_content">
-				<div class = "like_content" id = "article">
-					<div class = "title" style = "margin :15px;"><h3><strong>${selectedDoc.title}</strong></h3></div>
-					<div class = "adress"  style = "margin-left : 30px;"><h5 style = "color : gray;">${selectedDoc.url}</h5></div>
-					<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">
+					<iframe src = "${doc.url}"></iframe>				
+				<!-- <div class = "like_content" id = "article"> -->
+				
+				
+					<!-- <div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">
 						<!-- ${selectedDoc.content} -->
-				  	</div>
+				  	</div> 
 				</div>
 				<!-- ./페이지 본문 -->
 				</div>
 				
 			</div>
-		</div>
-	</div>
-	
 	
 	<script>
 		$(document).ready(function(){

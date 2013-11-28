@@ -31,22 +31,22 @@
 						<h1><strong>${user.tag1}</strong></h1>
 					</div>
 					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
-						data-target="#third" id="firstBtn"/>
+						data-target="first" id="firstBtn"/>
 					</a>
 				</div>
 				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FF8E5C;">
 					<div style="text-align: center;padding : 0px 0px 30px 0px;">
 						<h1><strong>${user.tag2}</strong></h1>
 					</div>
-					<a href = "#"><img src = "resources/image/detail_btn2.png" data-toggle="tab"
-						data-target="#third" id="secondBtn"/></a>
+					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
+						data-target="first" id="secondBtn"/></a>
 				</div>
 				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FFFDC5;">
 					<div style="text-align: center;padding : 0px 0px 30px 0px;">
 						<h1><strong>${user.tag3}</strong></h1>
 					</div>
 					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
-						data-target="#third" id="thirdBtn"/></a>
+						data-target="first" id="thirdBtn"/></a>
 				</div>
 			</div>
 		</div>
@@ -70,9 +70,13 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div class="tab-pane fade in active" id="first">
+				<!-- 
 				<div id="article_c_1" class="article_contents"
 					style="overflow: hidden; margin-left: 30px; margin-top: 40px;">
-				</div>
+					
+				</div> -->
+				<iframe src = "${doc.url}" frameborder = "0" id = "contents_frame" >
+				</iframe>
 
 			</div>
 			<div class="tab-pane fade" id="second">
@@ -89,9 +93,13 @@
 	
 		$(document).ready(function(){
 			getHTML("${doc.url}","article_c_1");
+			$("#contents_frame").css("height", $(window).height()-420);
+			$("#contents_frame").css("width", $(window).width());
 		});
 	
 		$(window).resize(function() {
+			$("#contents_frame").css("height", $(window).height()-420);
+			$("#contents_frame").css("width", $(window).width());
 		});
 		
 		
