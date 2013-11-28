@@ -135,14 +135,14 @@
 				<div class="height_60 backGround_2"></div>
 				<div class="carousel-caption">
 					<img src="resources/image/explain3.png" />
-					<h3>당신이 놓쳤던 다양한 인터넷 속 정보를 손쉽게 받아보세요</h3>
+					<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">당신이 놓쳤던 다양한 인터넷 속 정보를 손쉽게 받아보세요</h3></p>
 				</div>
 			</div>
 			<div class="item">
 				<div class="height_60 backGround_3"></div>
 				<div class="carousel-caption">
 					<img src="resources/image/explain2.png" />
-					<h3>당신의 관심사에 꼭 맞는 정보를 제공해 드립니다</h3>
+					<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">당신의 관심사에 꼭 맞는 정보를 제공해 드립니다</h3></p>
 
 				</div>
 				</div>
@@ -150,7 +150,7 @@
 					<div class="height_60 backGround_1"></div>
 					<div class="carousel-caption">
 						<img src="resources/image/explain.png" />
-						<h3>Oggle의 내부엔진은 오로지 당신의 관심사만을 찾아냅니다.</h3>
+						<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">Oggle의 내부엔진은 오로지 당신의 관심사만을 찾아냅니다.</h3></p>
 					</div>
 				</div>
 			</div>
