@@ -95,6 +95,15 @@
 			//getHTML("${doc.url}","article_c_1");
 			$("#contents_frame").css("height", $(window).height()-420);
 			$("#contents_frame").css("width", $(window).width());
+			var docID = "${doc.id}";
+			if(docID==""){
+				if("${content}"==1)
+					alert("${user.tag1}"+"의 검색 결과가 없습니다.");
+				else if("${content}"==2)
+					alert("${user.tag2}"+"의 검색 결과가 없습니다.");
+				else if("${content}"==3)
+					alert("${user.tag3}"+"의 검색 결과가 없습니다.");
+			}
 		});
 	
 		$(window).resize(function() {
@@ -124,7 +133,6 @@
 		});
 		
 		function getHTML(url,id){
-			/*
 			var params = "url="+url;
 			$.ajax({      
 		        type:"GET",
@@ -138,7 +146,6 @@
 		            $("#"+id).html(args);
 		        }
 		    });
-			*/
 		}	
 		
 	</script>
