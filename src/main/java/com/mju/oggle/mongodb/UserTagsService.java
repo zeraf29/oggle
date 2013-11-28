@@ -30,7 +30,7 @@ public class UserTagsService {
 		query.addCriteria(Criteria.where("_id").is(email));
 		//BasicQuery query = new BasicQuery("{\"email\": \""+ email + "\" }");
 		UserTags user =  mongoTemplate.findOne(query, UserTags.class, COLLECTION_NAME);
-
+		//query.addCriteria(Criteria.where("content").regex("test").and("_id").nin();
 		if(!user.getEmail().isEmpty()){
 			Update update = new Update();
 			update.addToSet("likeList", id);
