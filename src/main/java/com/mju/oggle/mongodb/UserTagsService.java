@@ -73,8 +73,6 @@ public class UserTagsService {
 		System.out.println(userTags.getWatchedList());
 		
 		for (String item : userTags.getWatchedList()) {
-			System.out.println("\n\n"+id);
-			System.out.println(item);
 			if (item.equals(id)) return;
 		}
 		
