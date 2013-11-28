@@ -20,56 +20,76 @@
     <![endif]-->
   </head>
   <body>
-  <jsp:include page="header.jsp"></jsp:include>
-  
-  <div id = "Keyword_list" class = "row" style = "margin : 50px 0px 0px 0px; text-align:center;">
- 	 <div class="col-md-4">
-         <div style = "text-align: center;"><h1>${user.tag1}</h1></div>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#first" id="firstBtn">show more>></button>
-        </div>
-        <div class="col-md-4">
-           <div style = "text-align: center;"><h1>${user.tag2}</h1></div>
-           <a href = "/Oggle/contents.do?content=2">asdfasdf</a>
-         <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#second" id="secondBtn">show more>></button>
-       </div>
-        <div class="col-md-4">
-           <div style = "text-align: center;"><h1>${user.tag3}</h1></div>
-           <button class="btn btn-primary btn-sm" data-toggle="tab" data-target="#third" id="thirdBtn">show more>></button>
-        </div>
-	</div>
 
-	<div class="page-header">
-	  <div><h3>${doc.title}</h3></div>
-	  <div>
-		  <a id = "move" href = "#"><img src = "resources/image/move_icon.png"/></a>
-		  <a id = "next" href = "#"><img src = "resources/image/move_icon.png"/></a>
-		  <a id = "like" href = "#"><img src = "resources/image/move_icon.png"/></a>
-	  </div>
-	</div>
-
-	<!-- Tab panes -->
-	<div class="tab-content">
-		<div class="tab-pane fade in active" id="first">
-			<div id="article_c_1" class="article_contents"
-				style="overflow: scroll; margin-left: 30px; margin-top: 40px;">
+	<div style="background-color: #ffe766;">
+		<jsp:include page="header.jsp"></jsp:include>
+		<div id="Keyword_list" class="row"
+			style="margin: 50px 0px 0px 0px; text-align: center;">
+			<div class="col-md-4">
+				<div style="text-align: center;">
+					<h1>${user.tag1}</h1>
+				</div>
+				<button class="btn btn-primary btn-sm" data-toggle="tab"
+					data-target="#first" id="firstBtn">show more>></button>
+			</div>
+			<div class="col-md-4">
+				<div style="text-align: center;">
+					<h1>${user.tag2}</h1>
+				</div>
+				<a href="/Oggle/contents.do?content=2">asdfasdf</a>
+				<button class="btn btn-primary btn-sm" data-toggle="tab"
+					data-target="#second" id="secondBtn">show more>></button>
+			</div>
+			<div class="col-md-4">
+				<div style="text-align: center;">
+					<h1>${user.tag3}</h1>
+				</div>
+				<button class="btn btn-primary btn-sm" data-toggle="tab"
+					data-target="#third" id="thirdBtn">show more>></button>
 			</div>
 		</div>
-		<div class="tab-pane fade" id="second">
-			<div id="article_c_2" class="article_contents"
-				style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+
+		<div class="page-header">
+			<div class="title_box">
+				<div style="text-align: left;">
+					<h3>${doc.title}</h3>
+					<h3>
+						<small>${doc.url}</small>
+					</h3>
+				</div>
+				<div style="text-align: right;">
+					<a id="move" href="#"><img src="resources/image/move_icon.png" /></a>
+					<a id="next" href="#"><img src="resources/image/move_icon.png" /></a>
+					<a id="like" href="#"><img src="resources/image/move_icon.png" /></a>
+				</div>
+			</div>
 		</div>
-		<div class="tab-pane fade" id="third">
-			<div id="article_c_3" class="article_contents"
-				style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+</div>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="first">
+				<div id="article_c_1" class="article_contents"
+					style="overflow: scroll; margin-left: 30px; margin-top: 40px;">
+				</div>
+
+			</div>
+			<div class="tab-pane fade" id="second">
+				<div id="article_c_2" class="article_contents"
+					style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+			</div>
+			<div class="tab-pane fade" id="third">
+				<div id="article_c_3" class="article_contents"
+					style="overflow: scroll; margin-left: 30px; margin-top: 40px;"></div>
+			</div>
 		</div>
-	</div>
- 
-	<script>
+
+		<script>
 	
 		$(document).ready(function(){
 			var content = "${content}";
 			alert(content);
 			getHTML("${doc.url}","article_c_"+content);
+
 		
 		});
 	
@@ -78,7 +98,7 @@
 		
 		
 		$("#move").click(function(){
-		//	window.open("${docList[0].url}", 'window name', 'window settings');
+			window.open("${docList[0].url}", 'window name', 'window settings');
 		});
 		$("#next").click(function(){
 		//	window.open("${docList[1].url}", 'window name', 'window settings');
@@ -121,7 +141,7 @@
 		}	
 		
 	</script>
-  </body>
+</body>
 </html>
 
 
