@@ -29,29 +29,19 @@
 					<button type="button" class="btn btn-primary" style="pull-right" id="delete">delete History</button>
 					<c:forEach var="doc" items="${docList}">
 						<div class="like_list container">
-<<<<<<< HEAD
-							<h4><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h4>
-=======
 							<h3><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h3>
->>>>>>> c58d9601bd55a216fa404459cd16c988ad614fe6
 							<h5 style = "color : gray;">${doc.url}</h5>
 						</div>
 					</c:forEach>
 				</div>
-				<!-- 페이지 본문 -->
 				<div class="col-md-9 backGround_2" style="box-shadow: 3px 3px 50px 3px" id="history_content">
-					<iframe src = "${doc.url}"></iframe>				
-				<!-- <div class = "like_content" id = "article"> -->
-				
-				
-					<!-- <div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">
-						<!-- ${selectedDoc.content} -->
-				  	</div> 
-				</div>
-				<!-- ./페이지 본문 -->
-				</div>
-				
+					<iframe name="iframe" frameborder = "0" id = "contents_frame" >
+					</iframe>
+				</div> 
 			</div>
+		</div>
+				
+	</div>
 	
 	<script>
 		$(document).ready(function(){
@@ -67,7 +57,10 @@
 		    }
 		    
 		    var selectedURL = "${selectedDoc.url}";
-		    getHTML(selectedURL,"article");
+		    
+		    document.getElementById('contents_frame').src = selectedURL;
+		    
+		   // getHTML(selectedURL,"article");
 		});
 		
 		 $(window).resize(function(){
