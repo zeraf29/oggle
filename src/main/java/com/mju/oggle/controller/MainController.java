@@ -136,58 +136,6 @@ public class MainController {
 		return mav;
 	}
 
-	/*
-	@RequestMapping(value = "/contents.do", method = RequestMethod.GET)
-	public ModelAndView getMcontents(HttpServletRequest request, HttpServletResponse response) throws IOException{
-
-		ModelAndView mav = new ModelAndView("contents");
-
-		User user = (User) request.getSession().getAttribute("user");
-		UserDAO dao = new UserDAO();
-
-		User user2 = dao.selectUser(user.getEmail());
-//		mav.addObject("tag1", user2.getTag1());
-//		mav.addObject("tag2", user2.getTag2());
-//		mav.addObject("tag3", user2.getTag3());
-
-		List<Document> docList = new ArrayList<Document>();
-
-		UserTags userTags = userTagsService.findOneUserTags(user.getEmail());
-
-		if(userTags == null) {
-			userTags = new UserTags();
-			userTags.setEmail(user.getEmail());
-			userTagsService.addUserTags(userTags);
-
-			docList.add(documentService.selectTopBoostDocument(user2.getTag1()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
-		}
-		else {
-			//    		System.out.println(userTags.getWatchedList().size());
-			docList.add(documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()));
-		}
-		
-		if(documentService.selectTopBoostDocument(user2.getTag1()) != null)
-			userTags.getWatchedList().add(docList.get(0).getId());
-		if(documentService.selectTopBoostDocument(user2.getTag2()) != null)
-			userTags.getWatchedList().add(docList.get(1).getId());
-		if(documentService.selectTopBoostDocument(user2.getTag3()) != null)
-			userTags.getWatchedList().add(docList.get(2).getId());
-		
-		System.out.println("\n\n"+docList.size());
-
-		for(Document item : docList){
-			if(item != null)
-				userTagsService.updateWatchList(user.getEmail(), item.getId());
-		}
-		mav.addObject("docList", docList);
-
-		return mav;
-	}
-	*/
 	
 	@RequestMapping(value = "/contents.do", method = RequestMethod.GET)
 	public ModelAndView getContents(HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -197,25 +145,9 @@ public class MainController {
 		User user = (User) request.getSession().getAttribute("user");
 		UserDAO dao = new UserDAO();
 		
-//		String tag1 = (String)request.getParameter("tag1");
-//		String tag2 = (String)request.getParameter("tag2");
-//		String tag3 = (String)request.getParameter("tag3");
-//
-//		System.out.println(tag1);
-//		System.out.println(tag2);
-//		System.out.println(tag3);
-		
 		int content = Integer.parseInt((String)request.getParameter("content"));
 		System.out.println("\n\ncontent : "+content);
 		
-//		int option = 0;
-		
-//		if(tag1 != null) option=1;
-//		if(tag2 != null) option=2;
-//		if(tag3 != null) option=3;
-		
-//		System.out.println(option+"");
-
 		Document doc = new Document();
 		
 		User user2 = dao.selectUser(user.getEmail());
@@ -227,68 +159,31 @@ public class MainController {
 			userTagsService.addUserTags(userTags);
 			
 			switch(content){
-			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1()); System.out.println(1); break;
-			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2()); System.out.println(2); break;
-			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3()); System.out.println(3); break;
+			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1()); break;
+			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2()); break;
+			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3()); break;
 			}
 		}
 		else {
 			switch(content){
-			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()); System.out.println(4); break;
-			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()); System.out.println(5); break;
-			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()); System.out.println(6); break;
+			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()); break;
+			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()); break;
+			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()); break;
 			}
 		}
 		
-
-		System.out.println(doc.getTitle());
-		System.out.println(doc.getContent());
-		System.out.println(doc.getUrl());
+		userTags.getWatchedList().add(doc.getId());
+		
+		if(doc != null){
+			userTagsService.updateWatchList(user.getEmail(), doc.getId());
+		}
+		
 		
 		mav.addObject("doc", doc);
 		mav.addObject("content", content);
+		mav.addObject("pageNum", 1);
 		
 		return mav;
-		
-//		userTags.getWatchedList().add(doc.getId());
-		
-		/*
-		if(doc != null){
-			userTagsService.updateWatchList(user.getEmail(), doc.getId());
-			mav.addObject("doc", doc);
-		}
-		System.out.println(doc.getId());
-		System.out.println(doc.getUrl());
-		System.out.println(doc.getContent());
-		
-		return mav;
-		*/
-/*
-			docList.add(documentService.selectTopBoostDocument(user2.getTag1()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag2()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag3()));
-		}
-		else {
-			//    		System.out.println(userTags.getWatchedList().size());
-			docList.add(documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()));
-			docList.add(documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()));
-		}
-		System.out.println(docList.get(0).getId());
-		if(documentService.selectTopBoostDocument(user2.getTag1()) != null)
-			userTags.getWatchedList().add(docList.get(0).getId());
-		if(documentService.selectTopBoostDocument(user2.getTag2()) != null)
-			userTags.getWatchedList().add(docList.get(1).getId());
-		if(documentService.selectTopBoostDocument(user2.getTag3()) != null)
-			userTags.getWatchedList().add(docList.get(2).getId());
-
-		for(Document item : docList){
-			if(item != null)
-				userTagsService.updateWatchList(user.getEmail(), item.getId());
-		}
-		mav.addObject("docList", docList);
-*/
-//		return mav;
 	}
 
 
@@ -309,6 +204,8 @@ public class MainController {
 	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
 	public ModelAndView getHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("history");
+
+		mav.addObject("pageNum", 2);
 		return mav;
 	}
 }

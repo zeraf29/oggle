@@ -52,19 +52,26 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
 	<script>
-		var page_flag = 1;
+		
+		var pageNum = "${pageNum}";
+		
+		if(pageNum == 1){
+			$("#MyContents_btn img").attr("src", "resources/image/icon_selected.png");
+			$("#History_btn img").attr("src", "resources/image/icon.png"); 
+			$("#Config_btn img").attr("src", "resources/image/icon.png"); 
+		}
+		else if(pageNum == 2){
+			$("#History_btn img").attr("src", "resources/image/icon_selected.png"); 
+			$("#MyContents_btn img").attr("src", "resources/image/icon.png"); 
+			$("#Config_btn img").attr("src", "resources/image/icon.png"); 
+		}
+		else if(pageNum == 3){
+			$("#Config_btn  img").attr("src", "resources/image/icon_selected.png"); 
+			$("#MyContents_btn img").attr("src", "resources/image/icon.png"); 
+			$("#History_btn img").attr("src", "resources/image/icon.png"); 
+		}
 		
 		$("#MyContents_btn").click(function() {
-			$(this).attr("src", "resources/image/icon_selected.png");
-			if(page_flag == 2){
-				$("#History_btn img").attr("src", "resources/image/icon.png");
-			}
-			else if(page_flag ==3)
-			{
-				$("#Config_btn  img").attr("src", "resources/image/icon.png");
-			}
-			page_flag = 1;
-
 			location.replace("/Oggle/contents.do?content=1"); 
 			/*
 			$('#Contents').fadeOut('slow', function() {
@@ -76,16 +83,6 @@
 		});
 
 		$("#History_btn").click(function() {
-			$(this).attr("src", "resources/image/icon_selected.png");
-			if(page_flag == 1){
-					$("#MyContents_btn img").attr("src", "resources/image/icon.png");
-				}
-			else if(page_flag ==3)
-				{
-					$("#Config_btn img").attr("src", "resources/image/icon.png");
-				}
-			page_flag = 2;
-
 			location.replace("/Oggle/history.do"); 
 			/*
 			$('#Contents').fadeOut('slow', function() {
@@ -97,15 +94,6 @@
 		});
 
 		$("#Config_btn").click(function() {
-			$(this).attr("src", "resources/image/icon_selected.png");
-			if(page_flag == 1){
-				$("#MyContents_btn img").attr("src", "resources/image/icon.png");
-			}
-			else if(page_flag ==2)
-			{
-				$("#History_btn img").attr("src", "resources/image/icon.png");
-			}
-			page_flag = 3;
 			location.replace("/Oggle/config.do");
 			/*
 			$('#Contents').fadeOut('slow', function() {
@@ -119,35 +107,34 @@
 		//hover
 		
 		$("#MyContents_btn img").mouseover(function() {
-			if(page_flag != 1){
+			if(pageNum != 1){
 				$(this).attr("src", "resources/image/icon_selected.png");
 			}
 		});
 		$("#MyContents_btn img").mouseout(function(){
-			if(page_flag != 1){
+			if(pageNum != 1){
 				$(this).attr("src", "resources/image/icon.png");
 			}
 		});
 		$("#History_btn img").mouseover(function() {
-			if(page_flag != 2){
-			$(this).attr("src", "resources/image/icon_selected.png");
+			if(pageNum != 2){
+				$(this).attr("src", "resources/image/icon_selected.png");
 			}
 		});
 		$("#History_btn img").mouseout(function(){
-			if(page_flag != 2)
-			{
+			if(pageNum != 2){
 				$(this).attr("src", "resources/image/icon.png");
 			}
 		});
 		
 		$("#Config_btn img").mouseover(function() {
-			if(page_flag !=3){
-			$(this).attr("src", "resources/image/icon_selected.png");
+			if(pageNum !=3){
+				$(this).attr("src", "resources/image/icon_selected.png");
 			}
 		});
 		$("#Config_btn img").mouseout(function(){
-			if(page_flag !=3){
-			$(this).attr("src", "resources/image/icon.png");
+			if(pageNum !=3){
+				$(this).attr("src", "resources/image/icon.png");
 			}
 		});
 
