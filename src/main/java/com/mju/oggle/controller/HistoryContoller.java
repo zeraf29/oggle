@@ -40,59 +40,6 @@ public class HistoryContoller {
 	private UserTagsService userTagsService;
 
 
-	/*
-	@RequestMapping(value = "/contents.do", method = RequestMethod.GET)
-	public ModelAndView getContents(HttpServletRequest request, HttpServletResponse response) throws IOException{
-
-		ModelAndView mav = new ModelAndView("contents");
-
-		User user = (User) request.getSession().getAttribute("user");
-		UserDAO dao = new UserDAO();
-		
-		int content = Integer.parseInt((String)request.getParameter("content"));
-		System.out.println("\n\ncontent : "+content);
-		
-		Document doc = new Document();
-		
-		User user2 = dao.selectUser(user.getEmail());
-		UserTags userTags = userTagsService.findOneUserTags(user.getEmail());
-
-		if(userTags == null) {
-			userTags = new UserTags();
-			userTags.setEmail(user.getEmail());
-			userTagsService.addUserTags(userTags);
-			
-			switch(content){
-			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1()); break;
-			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2()); break;
-			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3()); break;
-			}
-		}
-		else {
-			switch(content){
-			case 1: doc = documentService.selectTopBoostDocument(user2.getTag1(),userTags.getWatchedList()); break;
-			case 2: doc = documentService.selectTopBoostDocument(user2.getTag2(),userTags.getWatchedList()); break;
-			case 3: doc = documentService.selectTopBoostDocument(user2.getTag3(),userTags.getWatchedList()); break;
-			}
-		}
-		
-		userTags.getWatchedList().add(doc.getId());
-		
-		if(doc != null){
-			userTagsService.updateWatchList(user.getEmail(), doc.getId());
-		}
-		
-		
-		mav.addObject("doc", doc);
-		mav.addObject("content", content);
-		mav.addObject("pageNum", 1);
-		
-		return mav;
-	}
-	*/
-
-
-
 	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
 	public ModelAndView getHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
 
@@ -114,9 +61,18 @@ public class HistoryContoller {
 			mav.addObject("selectedDoc", selectedDoc);
 		}
 		
-		
 		mav.addObject("pageNum", 2);
 		mav.addObject("docList", docList);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/deleteHistory.do", method = RequestMethod.GET)
+	public ModelAndView deleteHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		ModelAndView mav = new ModelAndView("home");
+		
+		User user = (User) request.getSession().getAttribute("user");
+		userTagsService.deleteWatchList(user.getEmail());
 		
 		return mav;
 	}

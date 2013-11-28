@@ -1,5 +1,6 @@
 package com.mju.oggle.mongodb;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -77,6 +78,19 @@ public class UserTagsService {
 		}
 		
 		userTags.getWatchedList().add(id);
+		
+		mongoTemplate.save(userTags);
+	}
+	
+	
+	public void deleteWatchList(String email) {
+		
+//		BasicQuery query = new BasicQuery("{email : 'pooingx2@gmail.com'}");
+		BasicQuery query = new BasicQuery("{email : \'"+email+"\'}");
+		UserTags userTags = new UserTags();
+		
+		userTags = mongoTemplate.findOne(query, UserTags.class, COLLECTION_NAME);
+		userTags.setWatchedList(new ArrayList<String>());
 		
 		mongoTemplate.save(userTags);
 	}
