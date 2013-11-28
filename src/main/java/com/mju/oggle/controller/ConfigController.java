@@ -36,6 +36,7 @@ public class ConfigController {
 	@RequestMapping(value = "/config.do", method = RequestMethod.GET)
 	public ModelAndView getConfig(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("config");
+		mav.addObject("pageNum", 3);
 		return mav;
 	}
 	

@@ -197,25 +197,9 @@ public class MainController {
 		User user = (User) request.getSession().getAttribute("user");
 		UserDAO dao = new UserDAO();
 		
-//		String tag1 = (String)request.getParameter("tag1");
-//		String tag2 = (String)request.getParameter("tag2");
-//		String tag3 = (String)request.getParameter("tag3");
-//
-//		System.out.println(tag1);
-//		System.out.println(tag2);
-//		System.out.println(tag3);
-		
 		int content = Integer.parseInt((String)request.getParameter("content"));
 		System.out.println("\n\ncontent : "+content);
 		
-//		int option = 0;
-		
-//		if(tag1 != null) option=1;
-//		if(tag2 != null) option=2;
-//		if(tag3 != null) option=3;
-		
-//		System.out.println(option+"");
-
 		Document doc = new Document();
 		
 		User user2 = dao.selectUser(user.getEmail());
@@ -247,6 +231,7 @@ public class MainController {
 		
 		mav.addObject("doc", doc);
 		mav.addObject("content", content);
+		mav.addObject("pageNum", 1);
 		
 		return mav;
 		
@@ -309,6 +294,8 @@ public class MainController {
 	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
 	public ModelAndView getHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("history");
+
+		mav.addObject("pageNum", 2);
 		return mav;
 	}
 }
