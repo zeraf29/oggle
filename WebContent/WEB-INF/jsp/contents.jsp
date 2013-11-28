@@ -31,7 +31,10 @@
 				<a id = "move_src_docList0" href = "#"><img src = "resources/image/move_icon.png"/></a>
 				<a id = "like_docList0" href = "#"><img src = "resources/image/like_icon.png"/></a>
 			</div>
+			<div id="article_c_1" class = "article_contents" style = "overflow:scroll;margin-left :30px; margin-top : 40px;"></div>
+			<!-- 
 			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[0].content}</div>
+			-->
 		</div>
 	  </div>
 	  <div id = "result2" class = "col-md-4" style = "background-color:#FFCF66;  box-shadow: 1px 1px 10px 1px;">
@@ -44,7 +47,10 @@
 				<a id = "move_src_docList1" href = "#"><img src = "resources/image/move_icon.png"/></a>
 				<a id = "like_docList1" href = "#"><img src = "resources/image/like_icon.png"/></a>
 			</div>
+			<div id="article_c_2" class = "article_contents" style = "overflow:scroll;margin-left :30px; margin-top : 40px;"></div>
+			<!-- 
 			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[1].content}</div>
+	 		-->
 	 	</div>
 	 	</div>
 	  </div>
@@ -58,7 +64,9 @@
 				<a id = "move_src_docList2" href = "#"><img src = "resources/image/move_icon.png"/></a>
 				<a id = "like_docList2" href = "#"><img src = "resources/image/like_icon.png"/></a>
 			</div>
-			<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[2].content}</div>
+			<div id="article_c_3" class = "article_contents" style = "overflow:scroll;margin-left :30px; margin-top : 40px;"></div>
+			<!--<div class = "article_contents" style = "margin-left :30px; margin-top : 40px;">${docList[2].content}</div>
+	  		-->
 	  	</div>
 	  	</div>
 	  </div>
@@ -66,7 +74,12 @@
  
 	<script>
 	$(document).ready(function(){
-	    $("#result1").height(($(window).height() - 50) );
+		
+		getHTML("${docList[0].url}","article_c_1");
+		getHTML("${docList[1].url}","article_c_2");
+		getHTML("${docList[2].url}","article_c_3");
+	    
+		$("#result1").height(($(window).height() - 50) );
 	    $("#result2").height(($(window).height() - 50) );
 	    $("#result3").height(($(window).height() - 50) );
 	    $("#result3").height(($(window).height() - 50) );
@@ -96,6 +109,22 @@
 		$("#like_docList0").click(function(){
 			alert("kkdd");
 		});
+				
+		function getHTML(url,id){
+			var params = "url="+url;
+			$.ajax({      
+		        type:"GET",
+		        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		        url:"/Oggle/getHtml.do",
+		        data:params,
+		        beforeSend: function( xhr ) {
+		            xhr.overrideMimeType( "text/plain; charset=utf-8" );
+		          },
+		        success:function(args){   
+		            $("#"+id).html(args);
+		        }
+		    });  
+		}
 	</script>
   </body>
 </html>

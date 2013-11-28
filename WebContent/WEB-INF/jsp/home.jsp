@@ -20,7 +20,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="">
 	 
 	 <div class="navbar navbar-inverse navbar-fixed-top row" role="navigation">
 		<div class="navbar-header col-md-4">
