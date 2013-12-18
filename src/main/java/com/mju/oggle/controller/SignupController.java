@@ -40,7 +40,7 @@ public class SignupController {
 		String tag2 = request.getParameter("tag2");
 		String tag3 = request.getParameter("tag3");
 		
-		// 이메일 인증을 위한 64비트 난수 발생
+		// �대찓���몄쬆���꾪븳 64鍮꾪듃 �쒖닔 諛쒖깮
 		Random random = new Random();
 		String nonce = Long.toString(Math.abs(random.nextLong()));
 		
@@ -68,7 +68,7 @@ public class SignupController {
 			System.out.println(tag1+ " " + tag2+ " " + tag3);
 			msg = "1";
 
-			// 인증 이메일 전송
+			// �몄쬆 �대찓���꾩넚
 			//sender.sendEmail(email, nonce);
 			sender.setParameter(email, nonce);
 			new Thread(sender).start();

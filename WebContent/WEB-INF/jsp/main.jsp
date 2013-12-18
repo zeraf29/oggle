@@ -47,9 +47,9 @@
 				var reg_email=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
 				
 				if(email == "" || pwd == "")	
-					alert("Input Text");
+					alert("텍스트를 입력해 주십시오");
 				else if (email.search(reg_email) == -1)
-					alert("Incorrect email");
+					alert("올바른 이메일 형식이 아닙니다.");
 				else {
 					$.post( "login.do", { 	
 							email: email, 
@@ -57,7 +57,29 @@
 						},
 						function (data) {
 							var obj = jQuery.parseJSON(data);
-							alert(obj.msg);
+							switch(obj.msg){
+							case '1':
+								$("#alert_modal_body").html("존재하지 않는 이메일 입니다.");
+								$("#alert_modal").modal('show');
+								//존재하지 않는 이메일
+								break;
+							case '2':
+								$("#alert_modal_body").html("잘못된 패스워드 입니다.");
+								$("#alert_modal").modal('show');
+								//틀린 비밀번호
+								break;
+							case '3':
+								$("#alert_modal_body").html("인증되지 않은 이메일 입니다.");
+								$("#alert_modal").modal('show');
+								//인증되지 않은 이메일
+								break;
+							case '4':
+								//정상 로그인
+								break;
+							default:
+								break;
+							}
+							//alert(obj.msg);
 							if(obj.email != null){
 								location.replace("/Oggle/home.do");
 							}
@@ -101,7 +123,16 @@
 						function (data) {
 							var obj = jQuery.parseJSON(data);
 							var msg = obj.msg;
-							alert(msg);
+							
+							switch(msg){
+							case '1':
+								//가입완료
+								break;
+							default:
+						//		$("#alert_text").val("이미 존재하는 이메일 입니다.");
+								break;
+							}
+							
 							location.replace("/Oggle/main.do"); 
 	                    }
 					);
@@ -111,9 +142,6 @@
 			$("#cancel").click(function() {  
 				$("input").val("");
 			});
-			
-			
-			
 		});
 		
 		$("intro_carousel").carousel('cycle');
@@ -121,6 +149,49 @@
   </head>
   
   <body class = "backGround_4">
+  <div id = main_header class = "backGround_1" style = "height:50px;">
+  	<div class = "col-md-6">
+ 		<a class="navbar-brand" style = "width : 300px; color:white; padding-bottom : 0px;"href="#"><strong class="margin_left_30"><img src = "resources/image/small_icon.png" align="bottom">OGGLE</strong></a>
+ 	</div>
+ 	<div class = "col-md-6" style = "padding-top:8px; text-align : right;">
+			<form class="form-inline" role="form">
+				<div class="form-group">
+				 <input type="text" id="email" class="form-control" placeholder="Email address" style = "box-shadow : 1px 1px 1px 1px inset; width : 250px;"required autofocus>
+				</div>
+				<div class="form-group">
+					<input type="password" id="pwd" class="form-control " style = "box-shadow : 1px 1px 1px 1px inset;  width : 250px;" placeholder="Password"	required>
+				</div>
+				<button id="login" class="btn btn-mini" type="button">Login</button>
+				<button class="btn btn-mini btn-success" type="button" data-toggle="modal" data-target="#myModal4">Signup</button>
+			</form>
+ 	</div>
+  </div>
+  
+    <!-- --------------------------------------------------------------------------------------------- -->
+		  <!-- alert_Modal -->
+		<div class="modal fade" id="alert_modal" tabindex="-1" role="dialog" aria-labelledby="alert_modallabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">잘못된 접근입니다.</h4>
+		      </div>
+		      <div class="modal-body" id = "alert_modal_body">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.alert_modal -->
+  
+  <!-- --------------------------------------------------------------------------------------------- -->
+  <div id = "project_title" style = "height : 500px; text-align : center; padding-top:60px; background-color:white;">
+  	<img src = "resources/image/oggle_logo.png"/>
+  	<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;color:gray;">진협이형 멘트점 써주세영ㅋㄴ</h3></p>
+  </div>
+  
+  
 	<div id="intro_carousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -156,25 +227,12 @@
 			</div>
 		</div>
 		<!-- /.carousel -->
-
-	<div class = "margin_left_10">
-		<p style = "font-size: 150px;">OGGLE</p>
-	</div>
 	<div class = "backGround_4">
 		<div class="container">
 			<div class="col-md-8"></div>
 	
 			<div class="col-md-4 padding_top_10">
-				<input type="text" id="email" class="form-control"
-					placeholder="Email address" style = "background-color :  #F3CA5A; box-shadow : 1px 1px 1px 1px inset;"required autofocus> <input
-					type="password" id="pwd" class="form-control " style = "background-color :  #F3CA5A; box-shadow : 1px 1px 1px 1px inset;" placeholder="Password"
-					required>
-	
-				<div class="float_right">
-					<button id="login" class="btn btn-mini btn-primary" type="button">Login</button>
-					<button class="btn btn-mini btn-primary" type="button"
-						data-toggle="modal" data-target="#myModal4">Signup</button>
-				</div>
+			
 			</div>
 			</button>
 		</div>
@@ -213,6 +271,7 @@
 						placeholder="세번째 검색어" >
 					</div>
 					<div class="modal-footer backGround_2">
+						<p style = "float : left" id = "alert_text"></p>
 						<button type="button" class="btn btn-default" id="signup"><span class="glyphicon glyphicon-ok-circle"></span>     Signup</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal"
 							id="cancel"> <span class="glyphicon glyphicon-remove-circle"></span>     Cancel</button>

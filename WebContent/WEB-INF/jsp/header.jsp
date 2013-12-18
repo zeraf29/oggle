@@ -31,7 +31,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><strong class="margin_left_30">OGGLE</strong></a>
+			<a class="navbar-brand" style = "width : 300px;"href="#"><strong class="margin_left_30"><img src = "resources/image/small_icon.png" align="bottom">OGGLE</strong></a>
 		</div>
 		<div class = "col-md-4"  style = "text-align:center;">
 			<div class="collapse navbar-collapse col-md-5 col-md-offset-3">
