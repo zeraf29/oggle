@@ -69,6 +69,8 @@ public class LoginCheckFilter implements Filter {
 		
 		if(uri.startsWith("/Oggle/main.do")){
 			return true;
+		}else if(uri.startsWith("/Oggle/signup.do")){
+			return true;
 		}else if(uri.startsWith("/Oggle/login.do")){
 			return true;
 		}else if(uri.startsWith("/Oggle/resources/")){

@@ -110,7 +110,6 @@
 				else if (email.search(reg_email) == -1)
 					alert("Incorrect email");
 				else {
-
 					$.post( "signup.do", {
 							email: email,
 							pwd1: pwd1, 
@@ -127,8 +126,10 @@
 							switch(msg){
 							case '1':
 								//가입완료
+								alert("가입 완료");
 								break;
 							default:
+								alert("존재하는 이메일");
 						//		$("#alert_text").val("이미 존재하는 이메일 입니다.");
 								break;
 							}
