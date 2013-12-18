@@ -189,33 +189,33 @@
 					<div class="modal-header backGround_2">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel" style = "color : white;">SIGNUP</h4>
+						<h4 class="modal-title" id="myModalLabel" style = "color : white; font-weight : bold;">SIGN - UP</h4>
 					</div>
 					<div class="modal-body" id="#user_profile">
-						<p>E-mail</p>
+						<p><span class="glyphicon glyphicon-envelope"></span>   E-mail</p>
 						<input type="text" id="sEmail" class="form-control"
-							placeholder="Email address" required autofocus>
-						<p>Password</p>
+							placeholder="회원님의 로그인 정보로 활용할 E-mail을 입력해 주십시오" required autofocus>
+						<p><span class="glyphicon glyphicon-chevron-right"></span>패스워드</p>
 						<input type="password" id="sPwd1" class="form-control"
-							placeholder="Password">
-						<p>confirm_Password</p>
+							placeholder="패스워드를 입력해 주세요">
+						<p><span class="glyphicon glyphicon-chevron-right"></span>패스워드 확인</p>
 						<input type="password" id="sPwd2" class="form-control"
-							placeholder="confirm_Password" >
-						<p>User_name</p>
+							placeholder="패스워드를 한번 더 입력해 주십시오." >
+						<p><span class="glyphicon glyphicon-chevron-right"></span>사용자 이름</p>
 						<input type="text" id="sName" class="form-control"
-							placeholder="User_name" >
-						<p>Tag</p>
+							placeholder="사용자의 이름을 입력해 주십시오" >
+						<p><span class="glyphicon glyphicon-search"></span>   최초의 검색 키워드를 설정해 주세요.</br>이 검색어를 토대로 회원님의 검색이 시작됩니다.</p>
 						<input type="text" id="tag1" class="form-control"
-							placeholder="tag1" >
+							placeholder="첫번째 검색어" >
 						<input type="text" id="tag2" class="form-control"
-						placeholder="tag2" >
+						placeholder="두번째 검색어" >
 						<input type="text" id="tag3" class="form-control"
-						placeholder="tag3" >
+						placeholder="세번째 검색어" >
 					</div>
 					<div class="modal-footer backGround_2">
-						<button type="button" class="btn btn-default" id="signup">Signup</button>
+						<button type="button" class="btn btn-default" id="signup"><span class="glyphicon glyphicon-ok-circle"></span>     Signup</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal"
-							id="cancel">Cancel</button>
+							id="cancel"> <span class="glyphicon glyphicon-remove-circle"></span>     Cancel</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
