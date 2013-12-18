@@ -50,6 +50,11 @@ public class HistoryContoller {
 		User user = (User) request.getSession().getAttribute("user");
 		UserTags userTags = userTagsService.findOneUserTags(user.getEmail());
 		
+		if(userTags.getWatchedList().size() == 0) {
+			ModelAndView mav2 = new ModelAndView("home");
+			return mav2;
+		}
+		
 		List<Document> docList = new ArrayList<Document>();
 		for(String item : userTags.getWatchedList()){
 			docList.add(documentService.selectDocument(item));
@@ -61,7 +66,6 @@ public class HistoryContoller {
 			mav.addObject("selectedDoc", selectedDoc);
 		}
 		
-		mav.addObject("pageNum", 2);
 		mav.addObject("docList", docList);
 		
 		return mav;

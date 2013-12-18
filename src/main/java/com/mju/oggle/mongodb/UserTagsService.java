@@ -106,7 +106,7 @@ public class UserTagsService {
 		   if(s.equals(id))
 			   i.remove();
 		}
-				
+		
 		mongoTemplate.save(userTags);
 	}
 	
