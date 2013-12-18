@@ -1,12 +1,10 @@
 package com.mju.oggle.mongodb;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -15,7 +13,6 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.mju.oggle.model.UserTags;
-import com.mongodb.WriteResult;
 
 @Repository
 public class UserTagsService {
@@ -85,13 +82,31 @@ public class UserTagsService {
 	
 	public void deleteWatchList(String email) {
 		
-//		BasicQuery query = new BasicQuery("{email : 'pooingx2@gmail.com'}");
 		BasicQuery query = new BasicQuery("{email : \'"+email+"\'}");
 		UserTags userTags = new UserTags();
 		
 		userTags = mongoTemplate.findOne(query, UserTags.class, COLLECTION_NAME);
 		userTags.setWatchedList(new ArrayList<String>());
 		
+		mongoTemplate.save(userTags);
+	}
+	
+	public void deleteWatchItem(String email, String id) {
+		
+		BasicQuery query = new BasicQuery("{email : \'"+email+"\'}");
+		UserTags userTags = new UserTags();
+		userTags = mongoTemplate.findOne(query, UserTags.class, COLLECTION_NAME);
+		
+		System.out.println(userTags.getEmail());
+		System.out.println(userTags.getWatchedList());
+		
+		Iterator<String> i = userTags.getWatchedList().iterator();
+		while (i.hasNext()) {
+		   String s = i.next();
+		   if(s.equals(id))
+			   i.remove();
+		}
+				
 		mongoTemplate.save(userTags);
 	}
 	

@@ -67,12 +67,27 @@ public class HistoryContoller {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/deleteHistory.do", method = RequestMethod.GET)
-	public ModelAndView deleteHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	@RequestMapping(value = "/deleteAllHistory.do", method = RequestMethod.GET)
+	public ModelAndView deleteAllHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mav = new ModelAndView("home");
 		
 		User user = (User) request.getSession().getAttribute("user");
 		userTagsService.deleteWatchList(user.getEmail());
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/deleteHistory.do", method = RequestMethod.GET)
+	public ModelAndView deleteHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		String id = request.getParameter("id");
+
+		System.out.println("deleteHistory.do : "+id);
+		
+		ModelAndView mav = new ModelAndView("history");
+		
+		User user = (User) request.getSession().getAttribute("user");
+		userTagsService.deleteWatchItem(user.getEmail(), id);
 		
 		return mav;
 	}
