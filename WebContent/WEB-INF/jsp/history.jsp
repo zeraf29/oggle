@@ -24,11 +24,14 @@
     <jsp:include page="header.jsp"></jsp:include>
     
 			<div class="margin_50px">
-				<div class="col-md-3 backGround_4" id="history_menu" style = "overflow-y:auto; overflow-x : hidden; padding-left : 50px;">
+				<div class="col-md-3 backGround_4" id="history_menu" style = "overflow-y:auto; overflow-x : hidden;">
 					<c:forEach var="doc" items="${docList}">
 						<div class="like_list">
+							<div class = "col-md-1"><a href = "#"><span class="glyphicon glyphicon-remove remove_btn" style = "color : gray; float:right;"></span></a></div>
+							<div class = "col-md-10">
 							<h5><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h5>
 							<h6 style = "color : gray; overflow : hidden">${doc.url}</h6>
+							</div>	
 						</div>
 					</c:forEach>
 				</div>
