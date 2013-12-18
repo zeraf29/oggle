@@ -27,8 +27,6 @@ public class SessionController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public void PostLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException{
 
-		ModelAndView mav = new ModelAndView("login");
-		
 		System.out.println("Post");
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
@@ -41,18 +39,18 @@ public class SessionController {
 		String msg;
 		
 		if(user == null)
-			msg = "Email doesn't exist";
+			msg = "1";
 		
 		else if(!(user.getPwd().equals(pwd)))
-			msg = "Incorrect password";
+			msg = "2";
 		
 		else if(!(user.getState().equals("y")))
-			msg = "Unauthorized Email : Check your email \n("+user.getEmail()+")";
+			msg = "3";
 		
 		else {
 			HttpSession session = request.getSession();
 			session.setAttribute("user",user);
-			msg = "Welcome";
+			msg = "4";
 			obj.put("email", user.getEmail());
 		}
 		

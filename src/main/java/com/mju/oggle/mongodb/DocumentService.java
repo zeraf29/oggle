@@ -59,12 +59,21 @@ public class DocumentService {
 		Document doc = null;
 		//(?i)
 //		BasicQuery query = new BasicQuery("{name : 'aaa'}");
-		BasicQuery query = new BasicQuery("{\"content\": {$regex : '" +"(?i)"+ regex + "'} }");
+		BasicQuery query = new BasicQuery("{\"title\": {$regex : '" +"(?i)"+ regex + "'} }");
 		query.with(new Sort(Direction.DESC, "boost"));
 //		query.limit(limit);
 		
 		doc = mongoTemplate.findOne(query, Document.class, COLLECTION_NAME);
 		
+		if(doc == null || doc.equals("")) {
+			System.out.println(regex + " : null");
+			query = new BasicQuery("{\"content\": {$regex : '" +"(?i)"+ regex + "'} }");
+			query.with(new Sort(Direction.DESC, "boost"));
+			
+			doc = mongoTemplate.findOne(query, Document.class, COLLECTION_NAME);
+		}
+		
+		System.out.println(doc);
 		return doc;
 	}
 	
@@ -73,7 +82,7 @@ public class DocumentService {
 		Document doc = null;
 		
 		Query query = new Query();
-		query.addCriteria(Criteria.where("content").regex(regex).and("_id").nin(list));
+		query.addCriteria(Criteria.where("title").regex(regex).and("_id").nin(list));
 		query.with(new Sort(Direction.DESC, "boost"));
 		
 		//(?i)
@@ -84,6 +93,17 @@ public class DocumentService {
 		
 		doc = mongoTemplate.findOne(query, Document.class, COLLECTION_NAME);
 		
+		if(doc == null || doc.equals("")) {
+
+			System.out.println(regex + " : null");
+			query = new Query();
+			query.addCriteria(Criteria.where("content").regex(regex).and("_id").nin(list));
+			query.with(new Sort(Direction.DESC, "boost"));
+
+			doc = mongoTemplate.findOne(query, Document.class, COLLECTION_NAME);
+		}
+
+		System.out.println(doc);
 		return doc;
 	}
 	
