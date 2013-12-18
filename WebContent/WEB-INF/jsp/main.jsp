@@ -186,8 +186,8 @@
 		</div><!-- /.alert_modal -->
   
   <!-- --------------------------------------------------------------------------------------------- -->
-  <div id = "project_title" style = "height : 500px; text-align : center; padding-top:60px; background-color:white;">
-  	<img src = "resources/image/oggle_logo.png"/>
+  <div id = "project_title" style = "height : 400px; text-align : center; padding-top:30px; background-color:white;">
+  	<img src = "resources/image/oggle_logo_3.png"/>
   	<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;color:gray;">진협이형 멘트점 써주세영ㅋㄴ</h3></p>
   </div>
   
