@@ -66,7 +66,7 @@ public class SignupController {
 			
 			System.out.println(email+ " " + pwd1+ " " + name);
 			System.out.println(tag1+ " " + tag2+ " " + tag3);
-			msg = "메일 전송을 완료했습니다. \n("+email+")";
+			msg = "1";
 
 			// 인증 이메일 전송
 			//sender.sendEmail(email, nonce);
@@ -74,7 +74,7 @@ public class SignupController {
 			new Thread(sender).start();
 		}
 		else {
-			msg = email + " 은 이미 가입된 이메일 입니다.";
+			msg = email + "2";
 		}
 		
 		try {
