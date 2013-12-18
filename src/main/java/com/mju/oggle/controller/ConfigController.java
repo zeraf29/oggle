@@ -89,7 +89,7 @@ public class ConfigController {
 		UserDAO userDAO = new UserDAO();
 		userDAO.updateProfile(user);
 		
-		msg = "Profile update completion";
+		msg = "1";
 		
 		System.out.println(name+ " " + pwd1+ " " + email);
 		System.out.println(msg);
@@ -129,7 +129,7 @@ public class ConfigController {
 		UserDAO userDAO = new UserDAO();
 		userDAO.updateTag(user);
 		
-		msg = "keyword update completion";
+		msg = "1";
 		
 		System.out.println(tag1+ " " + tag2+ " " + tag3);
 		System.out.println(user.getTag1()+ " " + user.getTag2()+ " " + user.getTag3());
