@@ -20,6 +20,28 @@
 <body>
   <body>
   
+  
+    
+	<div>
+	<div class = "backGround_3">
+		<p style = "font-size:40px; color:white; padding : 10px; margin:0px;">${user.email}</p>
+	</div>	
+	<div class = "backGround_4" style = "padding-top : 30px; padding-left : 30px;" id = "config_tag">
+		  <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>첫번째 검색어</p>
+	        <input type="text" id="tag1" class="form-control input-lg" style = "width: 50%; font-size : 20px; margin-left : 30px;">
+		  <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>두번째 검색어</p>
+	        <input type="text" id="tag2" class="form-control input-lg" style = "width: 50%; font-size : 20px; margin-left : 30px;">
+	      <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>세번째 검색어</p>
+	        <input type="text" id="tag3" class="form-control input-lg"style = "width: 50%; font-size : 20px; margin-left : 30px;">
+	        <br/>
+	      <button type="button" id="update" class="btn btn-default"><p style = "margin : 0px; padding : 0px; font-weight : bold;"><span class="glyphicon glyphicon-ok-circle"></span>   Update</p></button>
+          <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal" id = "cancel"><span class="glyphicon glyphicon-remove-circle"></span>   Cancel</button>
+     </div>    
+    </div> <!-- /container -->
+  
+  
+  <!-- 
+  
 	<div class="container">
 		<h3>${user.email}</h3> <br/>
 		
@@ -43,6 +65,7 @@
 	<script>
 	$(document).ready(function(){
 		
+		 $("#config_tag").height(($(window).height() - 157) );
 		var tag1 = "${user.tag1}";
 		var tag2 = "${user.tag2}";
 		var tag3 = "${user.tag3}";
@@ -77,6 +100,10 @@
 			}
 		});
 		
+		 $(window).resize(function(){
+			 $("#config_tag").height(($(window).height() - 157) );
+		 });
+		 
 		$("#cancel").click(function(e){
 			$("input").val("");
 			$("#name").val(tag1);

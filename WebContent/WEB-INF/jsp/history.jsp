@@ -22,33 +22,29 @@
   </head>
   <body>
     <jsp:include page="header.jsp"></jsp:include>
-	<div class="margin_50px">
-		<div class="backGround_4" id="history_background">
-			<div class="row">
-				<div class="col-md-3" id="history_menu" style = "overflow-y:auto; overflow-x : hidden; padding-left : 50px;">
+    
+			<div class="margin_50px">
+				<div class="col-md-3 backGround_4" id="history_menu" style = "overflow-y:auto; overflow-x : hidden; padding-left : 50px;">
 					<c:forEach var="doc" items="${docList}">
 						<div class="like_list">
-						<h5><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h5>
-
-							<h6 style = "color : gray;">${doc.url}</h6>
+							<h5><strong><a href="history.do?id=${doc.id}">${doc.title}</a></strong></h5>
+							<h6 style = "color : gray; overflow : hidden">${doc.url}</h6>
 						</div>
 					</c:forEach>
 				</div>
 
-				<div class="col-md-9 backGround_2" style="box-shadow: 3px 3px 50px 3px; padding:30px;" id="history_content">
-					<iframe name="iframe" frameborder = "0" id = "contents_frame" height = 950 width=1390>
+				<div class="col-md-9 backGround_2" style="box-shadow: 3px 3px 50px 3px; padding:30px 0px 0px 30px;" id="history_content">
+					<iframe name="iframe" frameborder = "0" id = "contents_frame" height = 95% width=98%>
 					</iframe>
 				</div> 
 			</div>
-		</div>		
-	</div>
 
 	
 	<script>
 		$(document).ready(function(){
 		    $("#history_background").height(($(window).height() - 50) );
 		    $("#history_menu").height(($(window).height() - 50) );
-		    $("#history_content").height(($(window).height() - 50) );
+		    $("#history_content").height(($(window).height() - 80) );
 		    $("#article").height(($(window).height() - 80) );
 		    
 		    var selectedID = "${selectedDoc.id}";
@@ -67,7 +63,7 @@
 		 $(window).resize(function(){
 			 $("#history_background").height(($(window).height() - 50) );
 			 $("#history_menu").height(($(window).height() - 50) );
-			 $("#history_content").height(($(window).height() - 50) );
+			 $("#history_content").height(($(window).height() - 80) );
 			 $("#article").height(($(window).height() - 80) );
 		});
 		 

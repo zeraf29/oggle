@@ -19,7 +19,8 @@
   </head>
   <body>
     <jsp:include page="header.jsp"></jsp:include>
-	<div class = "margin_50px padding_20px">
+ <!-- 
+	<div class = "margin_50px padding_20px">	
 		<div class="col-md-2">
 			<nav class="navbar navbar-default" role ="navigation">
 
@@ -29,17 +30,38 @@
 						<li><a href="#" id = "modify_profile">modify_profile</a></li>
 						<li><a href="#" id = "keyword_setting">keyword_setting</a></li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
+				</div><!-- /.navbar-collapse --
 			</nav>
-		</div><!--/end left column-->
-
-		<div class="col-md-10">
+		</div>/end left column
+                                                                                                                  
+		<div class="col-md-10  ">
 			<div id = "Config_subContents"></div>
 		</div>
 	</div>
-		
+	 	 -->
+	 	 <div class = "margin_50px">
+		 	 <div class = "col-md-3 backGround_2" style =  "overflow : hidden;" id = "config_menu">
+		 	 <p style = "margin-top : 20px; font-size : 60px; font-weight : bold; color:white;">CONFIG</p>
+		 		 <div class = "pull-right" style = "margin-top : 30px; margin-bottom : 30px;">
+		 	 		<a href = "#" id = "modify_profile" style = "color:white;"><h3><span class="glyphicon glyphicon-user"></span>  USER-CONFIG</h3></a>
+		 	 		<a href = "#" id = "keyword_setting" style = "color:white;"><h3><span class="glyphicon glyphicon-pencil"></span>  Keyword-setting</h3></a>
+		 		 </div>
+		 	 </div>
+		 	 <div class = "col-md-9" style = "padding:0px;" id = "Config_subContents">
+		 	 </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+	 	 </div>
+	 	 
 	<script>
-		
+	$(document).ready(function(){
+	    $("#config_menu").height(($(window).height() - 50) );
+	    $("#Config_subContents").load("configSub1.do", function(){
+	        $("#Config_subContents").fadeIn('slow');
+	    });
+	});
+	
+	 $(window).resize(function(){
+		 $("#config_menu").height(($(window).height() - 50) );
+	 });
 		$("#modify_profile").click(function(){
 			$('#Config_subContents').fadeOut('slow', function(){
 				$("#Config_subContents").load("configSub1.do", function(){

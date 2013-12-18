@@ -185,11 +185,11 @@
 		<div class="modal fade" id="myModal4" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
+				<div class="modal-content backGround_4">
+					<div class="modal-header backGround_2">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">SIGNUP</h4>
+						<h4 class="modal-title" id="myModalLabel" style = "color : white;">SIGNUP</h4>
 					</div>
 					<div class="modal-body" id="#user_profile">
 						<p>E-mail</p>
@@ -212,7 +212,7 @@
 						<input type="text" id="tag3" class="form-control"
 						placeholder="tag3" >
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer backGround_2">
 						<button type="button" class="btn btn-default" id="signup">Signup</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal"
 							id="cancel">Cancel</button>

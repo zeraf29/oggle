@@ -7,6 +7,7 @@
  */
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 article,
 aside,
@@ -7182,6 +7183,7 @@ padding-bottom : 10px;
 }
 
 .like_list{
+	overflow : hidden;
 	height:80px;
 	width : 400px;
 	padding-left : 30px;
@@ -7234,7 +7236,7 @@ padding-bottom : 10px;
 }
 
 .title_box:before,
-.title_box:after {
+.title_box:after 
   display: table;
   content: " ";
 }
