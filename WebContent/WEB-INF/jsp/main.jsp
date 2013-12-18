@@ -189,7 +189,7 @@
   <!-- --------------------------------------------------------------------------------------------- -->
   <div id = "project_title" style = "height : 400px; text-align : center; padding-top:30px; background-color:white;">
   	<img src = "resources/image/oggle_logo_3.png"/>
-  	<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;color:gray;">진협이형 멘트점 써주세영ㅋㄴ</h3></p>
+  	<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;color:gray;">당신에 의한, 당신을 위한, 당신의 검색 서비스</h3></p>
   </div>
   
   
@@ -204,14 +204,14 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="height_60 backGround_2"></div>
+				<div class="height_60 backGround_1"></div>
 				<div class="carousel-caption">
 					<img src="resources/image/explain3.png" />
 					<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">당신이 놓쳤던 다양한 인터넷 속 정보를 손쉽게 받아보세요</h3></p>
 				</div>
 			</div>
 			<div class="item">
-				<div class="height_60 backGround_3"></div>
+				<div class="height_60 backGround_2"></div>
 				<div class="carousel-caption">
 					<img src="resources/image/explain2.png" />
 					<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">당신의 관심사에 꼭 맞는 정보를 제공해 드립니다</h3></p>
@@ -219,7 +219,7 @@
 				</div>
 				</div>
 				<div class="item">
-					<div class="height_60 backGround_1"></div>
+					<div class="height_60 backGround_3"></div>
 					<div class="carousel-caption">
 						<img src="resources/image/explain.png" />
 						<p><h3 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">Oggle의 내부엔진은 오로지 당신의 관심사만을 찾아냅니다.</h3></p>
