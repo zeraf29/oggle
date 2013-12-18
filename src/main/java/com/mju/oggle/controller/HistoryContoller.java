@@ -50,6 +50,11 @@ public class HistoryContoller {
 		User user = (User) request.getSession().getAttribute("user");
 		UserTags userTags = userTagsService.findOneUserTags(user.getEmail());
 		
+		if(userTags.getWatchedList().size() == 0) {
+			ModelAndView mav2 = new ModelAndView("home");
+			return mav2;
+		}
+		
 		List<Document> docList = new ArrayList<Document>();
 		for(String item : userTags.getWatchedList()){
 			docList.add(documentService.selectDocument(item));
@@ -61,18 +66,32 @@ public class HistoryContoller {
 			mav.addObject("selectedDoc", selectedDoc);
 		}
 		
-		mav.addObject("pageNum", 2);
 		mav.addObject("docList", docList);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/deleteAllHistory.do", method = RequestMethod.GET)
+	public ModelAndView deleteAllHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		ModelAndView mav = new ModelAndView("home");
+		
+		User user = (User) request.getSession().getAttribute("user");
+		userTagsService.deleteWatchList(user.getEmail());
 		
 		return mav;
 	}
 	
 	@RequestMapping(value = "/deleteHistory.do", method = RequestMethod.GET)
 	public ModelAndView deleteHistory(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		ModelAndView mav = new ModelAndView("home");
+		
+		String id = request.getParameter("id");
+
+		System.out.println("deleteHistory.do : "+id);
+		
+		ModelAndView mav = new ModelAndView("history");
 		
 		User user = (User) request.getSession().getAttribute("user");
-		userTagsService.deleteWatchList(user.getEmail());
+		userTagsService.deleteWatchItem(user.getEmail(), id);
 		
 		return mav;
 	}
