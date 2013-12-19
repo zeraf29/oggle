@@ -21,6 +21,10 @@
 	
     <script>
    
+	    $(window).resize(function(){
+			 $("#myModal4").height(($(window).height() - 450) );
+		 });
+	    
 		$(function() {
 			
 			var auth = "${auth}";
@@ -149,7 +153,7 @@
 	</script>
   </head>
   
-  <body class = "backGround_4">
+  <body class = "backGround_4" style = "overflow : hidden;">
   <div id = main_header class = "backGround_1" style = "height:50px;">
   	<div class = "col-md-6">
  		<a class="navbar-brand" style = "width : 300px; color:white; padding-bottom : 0px;"href="#"><strong class="margin_left_30"><img src = "resources/image/small_icon.png" align="bottom">OGGLE</strong></a>
@@ -228,16 +232,7 @@
 			</div>
 		</div>
 		<!-- /.carousel -->
-	<div class = "backGround_4">
-		<div class="container">
-			<div class="col-md-8"></div>
 	
-			<div class="col-md-4 padding_top_10">
-			
-			</div>
-			</button>
-		</div>
-	</div>
 	
 	
 	<!--LogIn Modal -->

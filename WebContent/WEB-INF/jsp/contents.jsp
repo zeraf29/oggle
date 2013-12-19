@@ -21,16 +21,16 @@
   </head>
   <body>
 
-<!-- 
+ 
 	<div style="background-color: #ffe766; box-shadow : 2px 2px 3px 3px;">
 		<jsp:include page="header.jsp"></jsp:include>
 		
 		<div id="Keyword_list" class="row"
-			style="margin: 40px 0px 10px 0px; text-align: center;">
+			style="margin: 40px 0px 10px 0px; text-align: center;  box-shadow : 1px 1px 5px 3px;">
 			<div style = "margin : 10px 0px 0px 0px;">
 				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FFE576;">
 					<div style="text-align: center;padding : 0px 0px 30px 0px;">
-						<h2><strong>${user.tag1}</strong></h2>
+						<h2 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">${user.tag1}</h2>
 					</div>
 					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
 						data-target="first" id="firstBtn"/>
@@ -38,14 +38,14 @@
 				</div>
 				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FF8E5C;">
 					<div style="text-align: center;padding : 0px 0px 30px 0px;">
-						<h2><strong>${user.tag2}</strong></h2>
+						<h2 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">${user.tag2}</h2>
 					</div>
 					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
 						data-target="first" id="secondBtn"/></a>
 				</div>
 				<div class="col-md-4" style = "padding : 0px 0px 50px 0px;background-color:#FFFDC5;">
 					<div style="text-align: center;padding : 0px 0px 30px 0px;">
-						<h2><strong>${user.tag3}</strong></h2>
+						<h2 style="font-family:Malgun Gothic,Gothic;font-weight:bold;">${user.tag3}</h2>
 					</div>
 					<a href = "#"><img src = "resources/image/detail_btn.png" data-toggle="tab"
 						data-target="first" id="thirdBtn"/></a>

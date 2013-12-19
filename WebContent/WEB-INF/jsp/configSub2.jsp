@@ -92,7 +92,16 @@
 					function (data) {
 						var obj = jQuery.parseJSON(data);
 						var msg = obj.msg;
-						alert(msg);
+						switch(msg){
+						case '1':
+							alert("정상적으로 변경되었습니다.");
+							//$("#alert_modal_body").html("정상적으로 변경이 완료되었습니다.");
+						//	$("#config_alert_modal").modal('show');
+							break;
+						default:
+							alert("변경을 실패했습니다.");
+							break;
+						}
 						location.replace("/Oggle/home.do"); 
 						//$("input").val("");
                     }

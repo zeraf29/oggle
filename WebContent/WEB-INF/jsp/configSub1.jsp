@@ -22,27 +22,49 @@
    <body>
   
 	<div>
-	<div class = "backGround_3">
-		<p style = "font-size:40px; color:white; padding : 10px; margin:0px;">${user.email}</p>
-	</div>	
-	<div class = "backGround_4" style = "padding-top : 30px; padding-left : 30px;" id = "config_profile">
-		  <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>패스워드</p>
-	        <input type="password" id="pwd1" class="form-control input-lg" style = "width: 50%; font-size : 20px; margin-left : 30px;" placeholder="패스워드를 입력하세요" required>
-		  <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>패스워드 확인</p>
-	        <input type="password" id="pwd2" class="form-control input-lg" style = "width: 50%; font-size : 20px; margin-left : 30px;" placeholder="패스워드를 한번 더 입력해 주세요" required>
-	      <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>사용자 이름</p>
-	        <input type="text" id="name" class="form-control input-lg"style = "width: 50%; font-size : 20px; margin-left : 30px;" placeholder="User_name" required>
-	        <br/>
-	      <button type="button" id="update" class="btn btn-default"><p style = "margin : 0px; padding : 0px; font-weight : bold;"><span class="glyphicon glyphicon-ok-circle"></span>   Update</p></button>
-          <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal" id = "cancel"><span class="glyphicon glyphicon-remove-circle"></span>   Cancel</button>
-     </div>    
+		<div class = "backGround_3">
+			<p style = "font-size:40px; color:white; padding : 10px; margin:0px;">${user.email}</p>
+		</div>	
+		<div class = "backGround_4" style = "padding-top : 30px; padding-left : 30px;" id = "config_profile">
+			  <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>패스워드</p>
+		        <input type="password" id="pwd1" class="form-control input-lg" style = "width: 50%; font-size : 20px; margin-left : 30px;" placeholder="패스워드를 입력하세요" required>
+			  <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>패스워드 확인</p>
+		        <input type="password" id="pwd2" class="form-control input-lg" style = "width: 50%; font-size : 20px; margin-left : 30px;" placeholder="패스워드를 한번 더 입력해 주세요" required>
+		      <p style = "font-size:20px; font-weight : bold;"><span class="glyphicon glyphicon-chevron-right"></span>사용자 이름</p>
+		        <input type="text" id="name" class="form-control input-lg"style = "width: 50%; font-size : 20px; margin-left : 30px;" placeholder="User_name" required>
+		        <br/>
+		      <button type="button" id="update" class="btn btn-default"><p style = "margin : 0px; padding : 0px; font-weight : bold;"><span class="glyphicon glyphicon-ok-circle"></span>   Update</p></button>
+	          <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal" id = "cancel"><span class="glyphicon glyphicon-remove-circle"></span>   Cancel</button>
+	     </div>  
     </div> <!-- /container -->
+	     
 
+   <!-- --------------------------------------------------------------------------------------------- -->
+		  <!-- alert_Modal -->
+		<div class="modal fade" id="config_alert_modal" tabindex="-1" role="dialog" aria-labelledby="alert_modallabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">잘못된 접근입니다.</h4>
+		      </div>
+		      <div class="modal-body" id = "alert_modal_body">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.alert_modal -->
+  
+  <!-- --------------------------------------------------------------------------------------------- -->  
+  
+  
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/bootstrap.js"></script>
 	
 	<script>
 
@@ -73,7 +95,16 @@
 					function (data) {
 						var obj = jQuery.parseJSON(data);
 						var msg = obj.msg;
-						alert(msg);
+						switch(msg){
+						case '1':
+							alert("정상적으로 변경되었습니다.");
+							//$("#alert_modal_body").html("정상적으로 변경이 완료되었습니다.");
+						//	$("#config_alert_modal").modal('show');
+							break;
+						default:
+							alert("변경을 실패했습니다.");
+							break;
+						}
 						location.replace("/Oggle/home.do"); 
 						$("input").val("");
 						$("#name").val(name);
