@@ -1,8 +1,14 @@
 .classpath
 .project
-.settings/
 build/
 bin/
 /target
 target/
 target/*
+*.class
+
+mongo-connector/
+nutch_cData/
+RemoteSystemsTempFiles/
+Servers/
+.metadata/
